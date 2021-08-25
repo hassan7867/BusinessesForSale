@@ -40,6 +40,7 @@
     <script src="js/jquery.lazy.min.js"></script>
     <script src="js/jquery.lazy.plugins.min.js"></script>
     <script src="js/designesia.js"></script>
+    <script src="js/popper.js"></script>
 </head>
 
 <body>
@@ -67,6 +68,10 @@
                         </div>
                         <div class="de-flex-col header-col-mid">
                             <!-- mainmenu begin -->
+                            <div class="menu_side_area">
+                                <a href="wallet.html" class="btn-main" style="padding: 15px!important;">Sell Your Business</a>
+                                <span id="menu-btn"></span>
+                            </div>
                             <ul id="mainmenu">
                                 <li>
                                     <a href="index.html">Home<span></span></a>
@@ -121,10 +126,6 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <div class="menu_side_area">
-                                <a href="wallet.html" class="btn-main">Connect Wallet</a>
-                                <span id="menu-btn"></span>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -352,7 +352,7 @@
     </style>
     <div class="container" style="padding: 30px;margin-top: 100px">
         <div>
-            <div style="float: right"><span>Are you can existing member?</span> <button class="ml-2 btn-main" >LOGIN</button></div>
+            <div style="float: right"><span>Are you can existing member?</span> <button class="ml-2 btn-main" style="margin-left: 15px">LOGIN</button></div>
         </div>
         <div style="padding: 10px">
             <section class="signup-step-container">

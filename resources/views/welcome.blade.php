@@ -606,7 +606,7 @@
     </div>
 <div class="modal" id="myModal">
     <div class="modal-dialog modal-xl">
-        <div class="modal-content">
+        <div class="modal-content" style="margin-top: 200px">
 
             <!-- Modal body -->
             <div class="modal-body">

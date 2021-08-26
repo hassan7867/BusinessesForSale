@@ -69,7 +69,7 @@
                         <div class="de-flex-col header-col-mid">
                             <!-- mainmenu begin -->
                             <div class="menu_side_area">
-                                <a href="wallet.html" class="btn-main" style="padding: 15px!important;">Sell Your Business</a>
+                                <a href="wallet.html" class="btn-main" data-toggle="modal" data-target="#myModal" style="padding: 15px!important;">Sell Your Business</a>
                                 <span id="menu-btn"></span>
                             </div>
                             <ul id="mainmenu">
@@ -132,4 +132,5 @@
             </div>
         </div>
     </header>
+
     <!-- header close -->

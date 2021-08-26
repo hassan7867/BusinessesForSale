@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('sell-private-business',"\App\Http\Controllers\UserController@registerPrivateSellerPage");
+Route::get('pricing-table',"\App\Http\Controllers\UserController@openPricingPage");

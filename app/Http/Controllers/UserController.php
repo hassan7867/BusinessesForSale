@@ -9,4 +9,9 @@ class UserController extends Controller
     public function registerPrivateSellerPage(){
         return view('auth.register-private-seller');
     }
+
+    public function openPricingPage()
+    {
+        return view('pricing-page');
+    }
 }

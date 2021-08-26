@@ -2,6 +2,10 @@
 
 @section('content')
     <style>
+        .form-control{
+            width: inherit!important;
+        }
+
         @import url('https://fonts.googleapis.com/css?family=Roboto');
 
         body{
@@ -64,7 +68,7 @@
             height: 2px;
             background: #e0e0e0;
             position: absolute;
-            width: 75%;
+            width: 80%;
             margin: 0 auto;
             left: 0;
             right: 0;
@@ -99,9 +103,9 @@
             color:#555555;
         }
         .wizard li.active span.round-tab {
-            background: #0db02b;
+            background: #8364E2;
             color: #fff;
-            border-color: #0db02b;
+            border-color: #8364E2;
         }
         .wizard li.active span.round-tab i{
             color: #5bc0de;
@@ -111,7 +115,7 @@
         }
 
         .wizard .nav-tabs > li {
-            width: 25%;
+            width: 20%;
         }
 
         .wizard li:after {
@@ -157,7 +161,7 @@
 
         .wizard .tab-pane {
             position: relative;
-            padding-top: 20px;
+            padding-top: 0px;
         }
 
 
@@ -173,7 +177,8 @@
             margin-top: 30px;
         }
         .next-step{
-            background-color: #0db02b;
+            background-color: #8364E2;
+            color: white;
         }
         .skip-btn{
             background-color: #cec12d;
@@ -321,8 +326,8 @@
             transform: rotate(-45deg);
         }
         input[type="checkbox"]:checked::before{
-            background-color: #18ba60;
-            border-color: #18ba60;
+            background-color: #8364E2;
+            border-color: #8364E2;
         }
 
 
@@ -350,12 +355,15 @@
         }
 
     </style>
+{{--    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&amp;display=swap" rel="stylesheet">--}}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <div class="container" style="padding: 30px;margin-top: 100px">
         <div>
             <div style="float: right"><span>Are you can existing member?</span> <button class="ml-2 btn-main" style="margin-left: 15px">LOGIN</button></div>
         </div>
         <div style="padding: 10px">
-            <section class="signup-step-container">
+            <section class="signup-step-container" style="padding-top: 100px">
                 <div class="container">
                     <div class="row d-flex justify-content-center">
                         <div class="col-md-8">
@@ -364,93 +372,119 @@
                                     <div class="connecting-line"></div>
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li role="presentation" class="active">
-                                            <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" aria-expanded="true"><span class="round-tab">1 </span> <i>Step 1</i></a>
+                                            <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" aria-expanded="true"><span class="round-tab">1 </span> <i>Contact Details</i></a>
                                         </li>
                                         <li role="presentation" class="disabled">
-                                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" aria-expanded="false"><span class="round-tab">2</span> <i>Step 2</i></a>
+                                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" aria-expanded="false"><span class="round-tab">2</span> <i>Build Your Listing</i></a>
                                         </li>
                                         <li role="presentation" class="disabled">
-                                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab"><span class="round-tab">3</span> <i>Step 3</i></a>
+                                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab"><span class="round-tab">3</span> <i>Further Business Details</i></a>
                                         </li>
                                         <li role="presentation" class="disabled">
-                                            <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab"><span class="round-tab">4</span> <i>Step 4</i></a>
+                                            <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab"><span class="round-tab">4</span> <i>Review Your Order</i></a>
+                                        </li>
+                                        <li role="presentation" class="disabled">
+                                            <a href="#step5" data-toggle="tab" aria-controls="step5" role="tab"><span class="round-tab">5</span> <i>Final Confirmation</i></a>
                                         </li>
                                     </ul>
                                 </div>
 
                                 <form role="form" action="index.html" class="login-box">
                                     <div class="tab-content" id="main_form">
+                                        <div id="loadergif" style="margin: 0 auto;max-width: 100px;display: none">
+                                            <img src="{{url('loader.gif')}}" style="height: 100px">
+                                        </div>
                                         <div class="tab-pane active" role="tabpanel" id="step1">
-                                            <h4 class="text-center">Step 1</h4>
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                            <h4 class="text-center">Register with {{env('APP_NAME')}}</h4>
+                                            <div class="row" style="margin-top: 50px">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label>First and Last Name *</label>
-                                                        <input class="form-control" type="text" name="name" placeholder="">
+                                                        <label>Title *</label>
+                                                        <select class="form-control" name="title" id="title" >
+                                                            <option value="">Select Your Title</option>
+                                                            <option value="Mr">Mr</option>
+                                                            <option value="Mrs">Mrs</option>
+                                                            <option value="Miss">Miss</option>
+                                                            <option value="Ms">Ms</option>
+                                                            <option value="Dr">Dr</option>
+                                                        </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label>Phone Number  *</label>
-                                                        <input class="form-control" type="text" name="name" placeholder="">
+                                                        <label>First Name *</label>
+                                                        <input class="form-control" type="text" name="firstName" id="firstName" placeholder="First Name">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Last Name *</label>
+                                                        <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Last Name">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="row" style="margin-top: 20px">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Telephone *</label>
+                                                        <input class="form-control" type="text" name="telephone" id="telephone" placeholder="Telephone">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label>Email Address *</label>
-                                                        <input class="form-control" type="email" name="name" placeholder="">
+                                                        <input class="form-control" type="text" name="email" id="email" placeholder="Email Address">
                                                     </div>
                                                 </div>
-
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label>Password *</label>
-                                                        <input class="form-control" type="password" name="name" placeholder="">
+                                                        <input class="form-control" type="password" name="password" id="password" placeholder="Password">
                                                     </div>
                                                 </div>
-
-
+                                            </div>
+                                            <div class="row" style="margin-top: 20px">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Confirm Password *</label>
+                                                        <input class="form-control" type="password" name="conpassword" id="conpassword" placeholder="Confirm Password">
+                                                    </div>
+                                                </div>
                                             </div>
                                             <ul class="list-inline pull-right">
                                                 <li><button type="button" class="default-btn next-step">Continue to next step</button></li>
                                             </ul>
                                         </div>
                                         <div class="tab-pane" role="tabpanel" id="step2">
-                                            <h4 class="text-center">Step 2</h4>
-                                            <div class="row">
+                                            <h4 class="text-center">Build Your Listing</h4>
+                                            <div class="row" style="margin-top: 20px">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>Address 1 *</label>
-                                                        <input class="form-control" type="text" name="name" placeholder="">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>City / Town *</label>
-                                                        <input class="form-control" type="text" name="name" placeholder="">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Country *</label>
-                                                        <select name="country" class="form-control" id="country">
-                                                            <option value="NG" selected="selected">Nigeria</option>
-                                                            <option value="NU">Niue</option>
-                                                            <option value="NF">Norfolk Island</option>
-                                                            <option value="KP">North Korea</option>
-                                                            <option value="MP">Northern Mariana Islands</option>
-                                                            <option value="NO">Norway</option>
-                                                        </select>
+                                                        <label>Listing Heading *</label>
+                                                        <input class="form-control" type="text" name="heading" id="heading" placeholder="Heading">
                                                     </div>
                                                 </div>
 
 
-
-                                                <div class="col-md-6">
+                                            </div>
+                                            <div style="margin-top: 20px">
+                                                <div>
                                                     <div class="form-group">
-                                                        <label>Registration No.</label>
-                                                        <input class="form-control" type="text" name="name" placeholder="">
+                                                        <label>Listing Summary *</label>
+                                                        <textarea class="form-control" type="text" style="width: 300px!important;height: 150px" name="summary" id="summary" placeholder="Summary"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 20px">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Status of Business *</label>
+                                                        <br>
+                                                        <input type="radio" name="statusOfBusiness" id="statusOfBusiness" value="For Sale" checked> For Sale
+                                                        <input type="radio" name="statusOfBusiness" id="statusOfBusiness" value="Under Offer"> Under Offer
+                                                        <input type="radio" name="statusOfBusiness" id="statusOfBusiness" value="Sold (Subject to Contract)"> Sold (Subject to Contract)
                                                     </div>
                                                 </div>
                                             </div>
@@ -660,50 +694,164 @@
         </div>
     </div>
 
-    <script>
-        // ------------step-wizard-------------
-        $(document).ready(function () {
-            $('.nav-tabs > li a[title]').tooltip();
 
-            //Wizard
-            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 
-                var target = $(e.target);
+<script>
+    // ------------step-wizard-------------
+    let currentStep  = 1;
+    $(document).ready(function () {
+        $('.nav-tabs > li a[title]').tooltip();
 
-                if (target.parent().hasClass('disabled')) {
-                    return false;
+        //Wizard
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+            var target = $(e.target);
+
+            if (target.parent().hasClass('disabled')) {
+                return false;
+            }
+        });
+
+        $(".next-step").click(function (e) {
+
+            // var active = $('.wizard .nav-tabs li.active');
+            // active.next().removeClass('disabled');
+            // nextTab(active);
+            // if (currentStep === 1){
+            //     saveBasicDetails();
+            // }
+            gotoNextStep();
+
+        });
+        $(".prev-step").click(function (e) {
+
+            var active = $('.wizard .nav-tabs li.active');
+            prevTab(active);
+
+        });
+    });
+
+    function nextTab(elem) {
+        $(elem).next().find('a[data-toggle="tab"]').click();
+        currentStep++;
+    }
+    function prevTab(elem) {
+        $(elem).prev().find('a[data-toggle="tab"]').click();
+    }
+
+
+    $('.nav-tabs').on('click', 'li', function() {
+        $('.nav-tabs li.active').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    function gotoNextStep(){
+        var active = $('.wizard .nav-tabs li.active');
+        active.next().removeClass('disabled');
+        nextTab(active);
+    }
+
+    function saveBasicDetails(){
+
+        let title = document.getElementById('title').value;
+        let firstName = document.getElementById('firstName').value;
+        let lastName = document.getElementById('lastName').value;
+        let telephone = document.getElementById('telephone').value;
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+        let conpassword = document.getElementById('conpassword').value;
+        if (title === '' || title === undefined){
+            showError("Title is required");
+            return;
+        }
+        if (firstName === '' || firstName === undefined){
+            showError("First Name is required");
+            return;
+        }
+        if (lastName === '' || lastName === undefined){
+            showError("Last Name is required");
+            return;
+        }
+        if (telephone === '' || telephone === undefined){
+            showError("Telephone is required");
+            return;
+        }
+        if (email === '' || email === undefined){
+            showError("Email is required");
+            return;
+        }
+        if (password === '' || password === undefined){
+            showError("Password is required");
+            return;
+        }
+        if (password !== conpassword){
+            showError("Confirm Password does not match with password");
+            return;
+        }
+
+        let formData = new FormData();
+        formData.append('title', title);
+        formData.append('firstName', firstName);
+        formData.append('lastName',  lastName);
+        formData.append('telephone',  telephone);
+        formData.append('email',  email);
+        formData.append('password',  password);
+
+
+        formData.append("_token", "{{ csrf_token() }}");
+        document.getElementById('loadergif').style.display = 'flex';
+        $.ajax({
+            url: `{{env('APP_URL')}}/save-basic-details`,
+            type: 'POST',
+            dataType: "JSON",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (result) {
+                document.getElementById('loadergif').style.display = 'none';
+
+                if (result.status === true) {
+                    gotoNextStep();
+
+                } else {
+                    swal({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: result.message,
+                    });
                 }
-            });
+            },
+            error: function (data) {
+                document.getElementById('loadergif').style.display = 'none';
 
-            $(".next-step").click(function (e) {
-
-                var active = $('.wizard .nav-tabs li.active');
-                active.next().removeClass('disabled');
-                nextTab(active);
-
-            });
-            $(".prev-step").click(function (e) {
-
-                var active = $('.wizard .nav-tabs li.active');
-                prevTab(active);
-
-            });
+                swal({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "server Error",
+                });
+            }
         });
-
-        function nextTab(elem) {
-            $(elem).next().find('a[data-toggle="tab"]').click();
-        }
-        function prevTab(elem) {
-            $(elem).prev().find('a[data-toggle="tab"]').click();
-        }
+    }
 
 
-        $('.nav-tabs').on('click', 'li', function() {
-            $('.nav-tabs li.active').removeClass('active');
-            $(this).addClass('active');
+    function showError(message){
+        swal({
+            icon: 'error',
+            title: 'Oops...',
+            text: message,
         });
+    }
+
+    function showSuccess(message){
+        swal({
+            icon: 'Success',
+            title: 'Congrats',
+            text: message,
+        });
+    }
 
 
 
-    </script>
+</script>
 @endsection

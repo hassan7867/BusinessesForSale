@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::get('sell-private-business',"\App\Http\Controllers\UserController@registerPrivateSellerPage");
 Route::post('save-basic-details',"\App\Http\Controllers\UserController@saveBasicDetails");
+Route::get('pricing-table',"\App\Http\Controllers\UserController@openPricingPage");

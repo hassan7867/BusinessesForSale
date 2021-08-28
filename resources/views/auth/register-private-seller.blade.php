@@ -3,7 +3,7 @@
 @section('content')
     <style>
         .form-control{
-            width: inherit!important;
+            /*width: inherit!important;*/
         }
 
         @import url('https://fonts.googleapis.com/css?family=Roboto');
@@ -293,42 +293,42 @@
         }
         /*-----------custom-checkbox-----------*/
         /*----------Custom-Checkbox---------*/
-        input[type="checkbox"]{
-            position: relative;
-            display: inline-block;
-            margin-right: 5px;
-        }
-        input[type="checkbox"]::before,
-        input[type="checkbox"]::after {
-            position: absolute;
-            content: "";
-            display: inline-block;
-        }
-        input[type="checkbox"]::before{
-            height: 16px;
-            width: 16px;
-            border: 1px solid #999;
-            left: 0px;
-            top: 0px;
-            background-color: #fff;
-            border-radius: 2px;
-        }
-        input[type="checkbox"]::after{
-            height: 5px;
-            width: 9px;
-            left: 4px;
-            top: 4px;
-        }
-        input[type="checkbox"]:checked::after{
-            content: "";
-            border-left: 1px solid #fff;
-            border-bottom: 1px solid #fff;
-            transform: rotate(-45deg);
-        }
-        input[type="checkbox"]:checked::before{
-            background-color: #8364E2;
-            border-color: #8364E2;
-        }
+        /*input[type="checkbox"]{*/
+        /*    position: relative;*/
+        /*    display: inline-block;*/
+        /*    margin-right: 5px;*/
+        /*}*/
+        /*input[type="checkbox"]::before,*/
+        /*input[type="checkbox"]::after {*/
+        /*    position: absolute;*/
+        /*    content: "";*/
+        /*    display: inline-block;*/
+        /*}*/
+        /*input[type="checkbox"]::before{*/
+        /*    height: 16px;*/
+        /*    width: 16px;*/
+        /*    border: 1px solid #999;*/
+        /*    left: 0px;*/
+        /*    top: 0px;*/
+        /*    background-color: #fff;*/
+        /*    border-radius: 2px;*/
+        /*}*/
+        /*input[type="checkbox"]::after{*/
+        /*    height: 5px;*/
+        /*    width: 9px;*/
+        /*    left: 4px;*/
+        /*    top: 4px;*/
+        /*}*/
+        /*input[type="checkbox"]:checked::after{*/
+        /*    content: "";*/
+        /*    border-left: 1px solid #fff;*/
+        /*    border-bottom: 1px solid #fff;*/
+        /*    transform: rotate(-45deg);*/
+        /*}*/
+        /*input[type="checkbox"]:checked::before{*/
+        /*    background-color: #8364E2;*/
+        /*    border-color: #8364E2;*/
+        /*}*/
 
 
 
@@ -469,6 +469,7 @@
 
 
                                             </div>
+
                                             <div style="margin-top: 20px">
                                                 <div>
                                                     <div class="form-group">
@@ -477,18 +478,173 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="row" style="margin-top: 20px">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>Status of Business *</label>
                                                         <br>
-                                                        <input type="radio" name="statusOfBusiness" id="statusOfBusiness" value="For Sale" checked> For Sale
-                                                        <input type="radio" name="statusOfBusiness" id="statusOfBusiness" value="Under Offer"> Under Offer
-                                                        <input type="radio" name="statusOfBusiness" id="statusOfBusiness" value="Sold (Subject to Contract)"> Sold (Subject to Contract)
+                                                        <input type="radio" name="statusOfBusiness" id="statusOfBusiness" value="For Sale" checked style="margin-left: 10px"> For Sale
+                                                        <input type="radio" name="statusOfBusiness" id="statusOfBusiness" value="Under Offer" style="margin-left: 10px"> Under Offer
+                                                        <input type="radio" name="statusOfBusiness" id="statusOfBusiness" value="Sold (Subject to Contract)" style="margin-left: 10px"> Sold (Subject to Contract)
                                                     </div>
                                                 </div>
                                             </div>
+                                            <p>Select Your Business Type * </p>
+                                            <div class="row">
+                                                <div class="col-md-4" id="headCategories">
 
+                                                </div>
+                                                <div class="col-md-4" id="subheadCategories">
+
+                                                </div>
+                                                <div class="col-md-4" id="subheadCategories2">
+
+                                                </div>
+                                            </div>
+                                            <p>Selected Categories</p>
+                                            <div id="selected-categories">
+
+                                            </div>
+
+                                            <div class='row'>
+                                                <div class="col-md-6">
+                                                    <p>Region *</p>
+                                                    <select id="region" class="form-control" onchange="getCities(this.value)">
+                                                        <option value="">Select Region</option>
+                                                        @foreach($regions as $region)
+                                                            <option value="{{$region->id}}">{{$region->name}}</option>
+                                                        @endforeach
+
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>City/Town *</p>
+                                                    <select id="cities" class="form-control">
+                                                        <option value="">Select City/Town</option>
+
+
+                                                    </select>
+                                                </div>
+
+                                            </div>
+                                            <div class="row" style="margin-top: 25px">
+                                                <div class="col-md-3">
+                                                    <p>Property Status * </p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                        <input type="radio" value="Real Property" name="propertyStatus" id="propertyStatus" style="margin-left: 10px"> Real Property
+                                                        <input type="radio" value="Lease" name="propertyStatus" id="propertyStatus" style="margin-left: 10px"> Lease
+                                                        <input type="radio" value="Both freehold and leasehold" name="propertyStatus" id="propertyStatus" style="margin-left: 10px"> Both freehold and leasehold
+                                                        <input type="radio" value="N/A" name="propertyStatus" id="propertyStatus" style="margin-left: 10px"> N/A
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 25px">
+                                                <div class="col-md-2">
+                                                    <p>Asking Price * </p>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <select id="askingprice" style="padding: 10px" class="form-control">
+                                                        <option value="">Select...</option>
+                                                        <option value="Under $100K">Under $100K</option>
+                                                        <option value="$100K-$250K">$100K-$250K</option>
+                                                        <option value="$250K-$500K">$250K-$500K</option>
+                                                        <option value="$500K-$1m">$500K-$1m</option>
+                                                        <option value="$1m-$5m">$1m-$5m</option>
+                                                        <option value="Over $5m">Over $5m</option>
+                                                        <option value="Undisclosed">Undisclosed</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <input class="form-control" placeholder="OR speicfy the price in USD" type="text" value="" name="askingSpecificPrice" id="askingSpecificPrice" >
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 25px">
+                                                <div class="col-md-12">
+                                                    <span>Quick Sale</span>    <input type="checkbox" name="quickSale" id="quickSale" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Check this box if the asking price is negotiable for a quick sale.</span>
+
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 25px">
+                                                <div class="col-md-2">
+                                                    <p>Sales Revenue * </p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select id="salesRevenue" style="padding: 10px" class="form-control">
+                                                        <option value="">Select...</option>
+                                                        <option value="Under $100K">Under $100K</option>
+                                                        <option value="$100K-$250K">$100K-$250K</option>
+                                                        <option value="$250K-$500K">$250K-$500K</option>
+                                                        <option value="$500K-$1m">$500K-$1m</option>
+                                                        <option value="$1m-$5m">$1m-$5m</option>
+                                                        <option value="Over $5m">Over $5m</option>
+                                                        <option value="Undisclosed">Undisclosed</option>
+                                                        <option value="NotApplicable">NotApplicable</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <input class="form-control" placeholder="OR specify the sales Revenue in USD" type="text" value="" name="salesRevenueSpecific" id="salesRevenueSpecific" >
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <select id="salesRevenueTerm" style="padding: 10px" class="form-control">
+                                                        <option value="Annual">Annual</option>
+                                                        <option value="Quarterly">Quarterly</option>
+                                                        <option value="Weekly">Weekly</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row" style="margin-top: 25px">
+                                                <div class="col-md-2">
+                                                    <p>Cash Flow * </p>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <select id="cashFlow" style="padding: 10px" class="form-control">
+                                                        <option value="">Select...</option>
+                                                        <option value="Under $100K">Under $100K</option>
+                                                        <option value="$100K-$250K">$100K-$250K</option>
+                                                        <option value="$250K-$500K">$250K-$500K</option>
+                                                        <option value="$500K-$1m">$500K-$1m</option>
+                                                        <option value="$1m-$5m">$1m-$5m</option>
+                                                        <option value="Over $5m">Over $5m</option>
+                                                        <option value="Undisclosed">Undisclosed</option>
+                                                        <option value="NotApplicable">NotApplicable</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <input class="form-control" placeholder="OR specify the cash flow in USD" type="text" value="" name="cashflowSpecific" id="cashflowSpecific" >
+                                                </div>
+                                            </div>
+
+                                            <div class="row" style="margin-top: 25px">
+                                                <div class="col-md-4">
+                                                    <p>Upload Photos </p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                   <input type="file" name="photos" id="photos" accept="image/png, image/gif, image/jpeg" multiple>
+                                                    <p style="font-size: 12px">you can upload multiple photos by holding CTRL button</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="row" style="margin-top: 25px">
+                                                <div class="col-md-4">
+                                                    <p>Upload Document </p>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="file" name="documents" id="documents" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*" multiple>
+                                                    <p style="font-size: 12px">you can upload multiple document by holding CTRL button</p>
+                                                </div>
+                                            </div>
+                                            <div style="margin-top: 20px">
+                                                <p>Website Address</p>
+                                                <input type="text" name="websiteAddress" id="websiteAddress" placeholder="https://" class="form-control">
+                                            </div>
+                                            <div style="margin-top: 20px">
+                                                <p>Embed Video</p>
+                                                <input type="text" name="embededVideo" id="embededVideo" placeholder="<iframe ..."  class="form-control">
+                                            </div>
 
                                             <ul class="list-inline pull-right">
                                                 <li><button type="button" class="default-btn prev-step">Back</button></li>
@@ -496,6 +652,7 @@
                                                 <li><button type="button" class="default-btn next-step">Continue</button></li>
                                             </ul>
                                         </div>
+
                                         <div class="tab-pane" role="tabpanel" id="step3">
                                             <h4 class="text-center">Step 3</h4>
                                             <div class="row">
@@ -717,10 +874,13 @@
             // var active = $('.wizard .nav-tabs li.active');
             // active.next().removeClass('disabled');
             // nextTab(active);
-            // if (currentStep === 1){
-            //     saveBasicDetails();
-            // }
-            gotoNextStep();
+            if (currentStep === 1){
+                saveBasicDetails();
+            }
+            if (currentStep === 2){
+                saveListingDetails();
+            }
+            // gotoNextStep();
 
         });
         $(".prev-step").click(function (e) {
@@ -734,6 +894,9 @@
     function nextTab(elem) {
         $(elem).next().find('a[data-toggle="tab"]').click();
         currentStep++;
+        if (currentStep === 2){
+            getCategories(-1);
+        }
     }
     function prevTab(elem) {
         $(elem).prev().find('a[data-toggle="tab"]').click();
@@ -824,6 +987,401 @@
             },
             error: function (data) {
                 document.getElementById('loadergif').style.display = 'none';
+
+                swal({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "server Error",
+                });
+            }
+        });
+    }
+
+    function saveListingDetails(){
+
+        let heading = document.getElementById('heading').value;
+        let summary = document.getElementById('summary').value;
+        let statusOfBusiness = document.getElementById('statusOfBusiness').value;
+        let region = document.getElementById('region').value;
+        let cities = document.getElementById('cities').value;
+        let propertyStatus = document.getElementById('propertyStatus').value;
+        let askingprice = document.getElementById('askingprice').value;
+        let askingSpecificPrice = document.getElementById('askingSpecificPrice').value;
+        let quickSale = document.getElementById('quickSale').checked;
+        let salesRevenue = document.getElementById('salesRevenue').value;
+        let salesRevenueSpecific = document.getElementById('salesRevenueSpecific').value;
+        let salesRevenueTerm = document.getElementById('salesRevenueTerm').value;
+        let cashFlow = document.getElementById('cashFlow').value;
+        let cashflowSpecific = document.getElementById('cashflowSpecific').value;
+        let photos = document.getElementById('photos').files;
+        let documents = document.getElementById('documents').files;
+        let websiteAddress = document.getElementById('websiteAddress').files;
+        let embededVideo = document.getElementById('embededVideo').files;
+
+        if (heading === '' || heading === undefined){
+            showError("Listing Heading is required");
+            return;
+        }
+        else if (summary === '' || summary === undefined){
+            showError("Listing Summary is required");
+            return;
+        }
+        else if (statusOfBusiness === '' || statusOfBusiness === undefined){
+            showError("Select Status of business");
+            return;
+        }
+        else if (selectedCategoriesList.length === 0){
+            showError("Category not selected");
+            return;
+        }
+        else if (region === '' || region === undefined){
+            showError("Region is required");
+            return;
+        }
+        else if (cities === '' || cities === undefined){
+            showError("City/Town is required");
+            return;
+        }
+        if (askingprice === '' && askingSpecificPrice === ''){
+            showError("Asking Price is required");
+            return;
+        }
+        else if (askingprice === '' && askingSpecificPrice === ''){
+            showError("Asking Price is required");
+            return;
+        }
+        else if (salesRevenue === '' && salesRevenueSpecific === ''){
+            showError("Sales Revenue is required");
+            return;
+        }
+        else if (cashFlow === '' && cashflowSpecific === ''){
+            showError("Cash Flow is required");
+            return;
+        }
+
+        if (askingprice === ''){
+            askingprice = askingSpecificPrice;
+        }
+        if (salesRevenue === ''){
+            salesRevenue = salesRevenueSpecific;
+        }
+        if (cashFlow === ''){
+            cashFlow = cashflowSpecific;
+        }
+
+        let formData = new FormData();
+        formData.append('heading', heading);
+        formData.append('summary', summary);
+        formData.append('statusOfBusiness',  statusOfBusiness);
+        formData.append('selectedCategoriesList',  JSON.stringify(selectedCategoriesList));
+        formData.append('region',  region);
+        formData.append('cities',  cities);
+        formData.append('propertyStatus',  propertyStatus);
+        formData.append('askingPrice',  askingprice);
+        formData.append('salesRevenue',  salesRevenue);
+        formData.append('cashFlow',  cashFlow);
+
+        formData.append('websiteAddress',  websiteAddress);
+        formData.append('embededVideo',  embededVideo);
+        formData.append('quickSale',  quickSale);
+        formData.append('salesRevenueTerm',  salesRevenueTerm);
+        for (let i=0;i<photos.length;i++){
+            formData.append('photos[]',  photos[i]);
+        }
+        for (let i=0;i<documents.length;i++){
+            formData.append('documents[]',  documents[i]);
+        }
+        formData.append("_token", "{{ csrf_token() }}");
+        document.getElementById('loadergif').style.display = 'flex';
+        $.ajax({
+            url: `{{env('APP_URL')}}/save-listing-details`,
+            type: 'POST',
+            dataType: "JSON",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (result) {
+                document.getElementById('loadergif').style.display = 'none';
+
+                if (result.status === true) {
+                    gotoNextStep();
+
+                } else {
+                    swal({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: result.message,
+                    });
+                }
+            },
+            error: function (data) {
+                document.getElementById('loadergif').style.display = 'none';
+
+                swal({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "server Error",
+                });
+            }
+        });
+    }
+
+    function getCategories(parentId){
+        let formData = new FormData();
+        formData.append('parentId', parentId);
+        formData.append("_token", "{{ csrf_token() }}");
+        $.ajax({
+            url: `{{env('APP_URL')}}/get-categories`,
+            type: 'POST',
+            dataType: "JSON",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (result) {
+
+                if (result.status === true) {
+                        document.getElementById('headCategories').innerHTML = '';
+                        document.getElementById('subheadCategories').innerHTML = '';
+                        document.getElementById('subheadCategories2').innerHTML = '';
+
+                    for (let i=0;i<result.data.length;i++){
+                        let p = document.createElement('p');
+                        p.style.padding = '10px';
+                        p.style.background = 'lightgray';
+                        p.style.color = 'black';
+                        p.style.cursor = 'pointer';
+                        p.style.borderBottom = '1px solid black';
+                        if (result.data[i].has_subcategory === 1 || result.data[i].has_subcategory === '1'){
+                            p.innerHTML = result.data[i].name + '<i class="fa fa-chevron-right" style="margin-left: 5px"></i>';
+                            p.addEventListener("click", function() {
+                               getCategories2(result.data[i].id)
+                            });
+                        }else{
+                            p.innerHTML = result.data[i].name;
+                            p.addEventListener("click", function() {
+                                selectCategory(result.data[i]);
+                            });
+                        }
+                        document.getElementById('headCategories').appendChild(p);
+
+                    }
+                } else {
+                    swal({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: result.message,
+                    });
+                }
+            },
+            error: function (data) {
+
+                swal({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "server Error",
+                });
+            }
+        });
+    }
+
+    function getCategories2(parentId){
+        let formData = new FormData();
+        formData.append('parentId', parentId);
+        formData.append("_token", "{{ csrf_token() }}");
+        $.ajax({
+            url: `{{env('APP_URL')}}/get-categories`,
+            type: 'POST',
+            dataType: "JSON",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (result) {
+
+                if (result.status === true) {
+                        document.getElementById('subheadCategories').innerHTML = '';
+                        document.getElementById('subheadCategories2').innerHTML = '';
+
+                    for (let i=0;i<result.data.length;i++){
+                        let p = document.createElement('p');
+                        p.style.padding = '10px';
+                        p.style.background = 'lightgray';
+                        p.style.color = 'black';
+                        p.style.cursor = 'pointer';
+                        p.style.borderBottom = '1px solid black';
+                        if (result.data[i].has_subcategory === 1 || result.data[i].has_subcategory === '1'){
+                            p.innerHTML = result.data[i].name + '<i class="fa fa-chevron-right" style="margin-left: 5px"></i>';
+                            p.addEventListener("click", function() {
+                               getCategories3(result.data[i].id)
+                            });
+                        }else{
+                            p.innerHTML = result.data[i].name;
+                            p.addEventListener("click", function() {
+                                selectCategory(result.data[i]);
+                            });
+
+                        }
+                        document.getElementById('subheadCategories').appendChild(p);
+
+                    }
+                } else {
+                    swal({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: result.message,
+                    });
+                }
+            },
+            error: function (data) {
+
+                swal({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "server Error",
+                });
+            }
+        });
+    }
+
+    function getCategories3(parentId){
+        let formData = new FormData();
+        formData.append('parentId', parentId);
+        formData.append("_token", "{{ csrf_token() }}");
+        $.ajax({
+            url: `{{env('APP_URL')}}/get-categories`,
+            type: 'POST',
+            dataType: "JSON",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (result) {
+
+                if (result.status === true) {
+                        document.getElementById('subheadCategories2').innerHTML = '';
+
+                    for (let i=0;i<result.data.length;i++){
+                        let p = document.createElement('p');
+                        p.style.padding = '10px';
+                        p.style.background = 'lightgray';
+                        p.style.color = 'black';
+                        p.style.cursor = 'pointer';
+                        p.style.borderBottom = '1px solid black';
+                        p.innerHTML = result.data[i].name;
+                        p.addEventListener("click", function() {
+                            selectCategory(result.data[i]);
+                        });
+                        document.getElementById('headCategories2').appendChild(p);
+
+                    }
+                } else {
+                    swal({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: result.message,
+                    });
+                }
+            },
+            error: function (data) {
+
+                swal({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "server Error",
+                });
+            }
+        });
+    }
+
+
+
+    let selectedCategoriesList = [];
+    function selectCategory(category){
+        if (selectedCategoriesList.length >= 3){
+            swal({
+                icon: 'error',
+                title: 'Oops...',
+                text: "You already selected maximum 3 categories",
+            });
+            return;
+        }
+        if (selectedCategoriesList.indexOf(category.id) > -1){
+            swal({
+                icon: 'error',
+                title: 'Oops...',
+                text: "You already selected this category",
+            });
+            return;
+        }
+        selectedCategoriesList.push(category.id);
+        let p = document.createElement('p');
+        p.setAttribute('id', 'list-number' + category.id);
+        p.style.padding = '10px';
+        p.style.background = 'lightgray';
+        p.style.color = 'black';
+        p.style.marginBottom = '5px';
+        let span = document.createElement('span');
+        span.innerText = category.name;
+        let icon = document.createElement('i');
+        icon.classList.add('fa', 'fa-trash');
+        icon.style.float = 'right';
+        icon.style.color = 'red';
+        icon.style.cursor = 'pointer';
+        icon.style.marginRight = '5px';
+
+        icon.addEventListener("click", function() {
+            document.getElementById('list-number' + category.id).remove();
+            const index = selectedCategoriesList.indexOf(category.id);
+            if (index > -1) {
+                selectedCategoriesList.splice(index, 1);
+            }
+            console.log(selectedCategoriesList);
+        });
+
+        p.appendChild(span);
+        p.appendChild(icon);
+        document.getElementById('selected-categories').appendChild(p);
+        console.log(selectedCategoriesList);
+    }
+
+
+    function getCities(region){
+        let formData = new FormData();
+        formData.append('region', region);
+        formData.append("_token", "{{ csrf_token() }}");
+        $.ajax({
+            url: `{{env('APP_URL')}}/get-cities`,
+            type: 'POST',
+            dataType: "JSON",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (result) {
+
+                if (result.status === true) {
+                    document.getElementById('cities').innerHTML = '';
+                    let option = document.createElement('option');
+                    option.value = "";
+                    option.innerText = "Select City/Town";
+                    document.getElementById('cities').appendChild(option);
+                    for (let i=0;i<result.data.length;i++){
+                        let option = document.createElement('option');
+                        option.value = result.data[i].id;
+                        option.innerText = result.data[i].name;
+                        document.getElementById('cities').appendChild(option);
+                    }
+                } else {
+                    swal({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: result.message,
+                    });
+                }
+            },
+            error: function (data) {
 
                 swal({
                     icon: 'error',

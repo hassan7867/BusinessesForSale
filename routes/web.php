@@ -23,3 +23,4 @@ Route::get('pricing-table',"\App\Http\Controllers\UserController@openPricingPage
 Route::post('get-categories',"\App\Http\Controllers\UserController@getCategories");
 Route::post('get-cities',"\App\Http\Controllers\UserController@getCities");
 Route::post('save-listing-details',"\App\Http\Controllers\UserController@saveListingDetails");
+Route::post('save-business-details',"\App\Http\Controllers\UserController@saveBusinessDetails");

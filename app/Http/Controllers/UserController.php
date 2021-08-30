@@ -10,12 +10,22 @@ use App\Models\ListingCategory;
 use App\Models\ListingDocuments;
 use App\Models\ListingPhotos;
 use App\Models\Region;
+use App\Models\Settings;
 use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Stripe\Charge;
 use Stripe\Stripe;
+use services\email_messages\InvitationMessageBody;
+use services\email_services\EmailAddress;
+use services\email_services\EmailBody;
+use services\email_services\EmailMessage;
+use services\email_services\EmailSender;
+use services\email_services\EmailSubject;
+use services\email_services\MailConf;
+use services\email_services\PhpMail;
+use services\email_services\SendEmailService;
 
 class UserController extends Controller
 {
@@ -54,8 +64,8 @@ class UserController extends Controller
     public function saveBusinessDetails(Request $request){
         try {
             $business = new BusinessDetail();
-            $business->listing_id = 1;
-            $business->user_id = 1;
+            $business->listing_id = Session::get('listingId');
+            $business->user_id = Session::get('userId');
             $business->location_details = $request->locationDetails;
             $business->premises = $request->premises;
             $business->competition = $request->competition;
@@ -131,7 +141,7 @@ class UserController extends Controller
             $listing->cash_flow = $request->cashFlow;
             $listing->website_address = $request->websiteAddress;
             $listing->embeded_video = $request->embededVideo;
-            $listing->user_id = 1;
+            $listing->user_id = Session::get('userId');
             $listing->save();
             Session::put('currentListingId', $listing->id);
             $listingCategories = json_decode($request->selectedCategoriesList, true);
@@ -177,9 +187,10 @@ class UserController extends Controller
 
     public function saveSubscriptionDetails(Request $request){
         try {
+            $userId = Session::get('userId');
             $subscription = new Subscription();
-            $subscription->user_id = Session::get('userId');
-            $subscription->package = $request->subscription;
+            $subscription->user_id = $userId;
+            $subscription->subscription = $request->subscription;
             if ($request->subscription != 'limitedTrial'){
                 $amount = 0;
                 if ($request->subscription == '6months'){
@@ -192,21 +203,48 @@ class UserController extends Controller
                     $amount = 49;
                 }
                 Stripe::setApiKey(env('STRIPE_SECRET'));
-                Charge::create ([
-                    "amount" => $amount,
+                Charge::create([
+                    "amount" => $amount * 100,
                     "currency" => "usd",
                     "source" => $request->stripeToken,
                     "description" => "This payment is for subscription"
                 ]);
+                $subscription->amount = $amount;
                 $subscription->save();
 
             }else{
+                $subscription->amount = 0;
                 $subscription->save();
             }
 
-            return json_encode(['status' => true, 'data' => ['listingId' => Session::get('listingId')]]);
+            $settings = new Settings();
+            $settings->user_id = $userId;
+            $settings->mailing_list = $request->mailingList;
+            $settings->terms_and_conditions = $request->termsAndConditions;
+            $settings->save();
+            $user = User::where('id', $userId)->first();
+            return json_encode(['status' => true, 'data' => ['listingId' => Session::get('listingId'), 'user' => $user]]);
 
         } catch (\Exception $exception) {
+            return json_encode(['status' => false, 'message' => $exception->getMessage()]);
+        }
+    }
+
+    public function finalizeWizard(Request $request){
+        try{
+            $user = User::where('id', Session::get('userId'))->first();
+            $listing = Listing::where('id', Session::get('listingId'))->first();
+            $subscription = Subscription::where('user_id', $user->id)->latest()->first();
+            $subject = new SendEmailService(new EmailSubject("Your ". env("APP_NAME") ." Listing"));
+            $mailTo = new EmailAddress($user->email);
+            $message = new InvitationMessageBody();
+            $emailBody = $message->invitationMessageBody($listing->heading, $listing->id, $subscription->subscription);
+            $body = new EmailBody($emailBody);
+            $emailMessage = new EmailMessage($subject->getEmailSubject(), $mailTo, $body);
+            $sendEmail = new EmailSender(new PhpMail(new MailConf(env("MAIL_HOST"), env("MAIL_USERNAME"), env("MAIL_PASSWORD"))));
+            $result = $sendEmail->send($emailMessage);
+            return json_encode(['status' => true, 'message' => 'Successfull']);
+        }catch (\Exception $exception){
             return json_encode(['status' => false, 'message' => $exception->getMessage()]);
         }
     }

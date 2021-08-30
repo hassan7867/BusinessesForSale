@@ -15,6 +15,12 @@ class CreateCardDetailsTable extends Migration
     {
         Schema::create('card_details', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id');
+            $table->string('name');
+            $table->string('card_number');
+            $table->string('cvv');
+            $table->string('exp_month');
+            $table->string('exp_year');
             $table->timestamps();
         });
     }

@@ -360,7 +360,7 @@
 
     <div class="container" style="padding: 30px;margin-top: 100px">
         <div>
-            <div style="float: right"><span>Are you can existing member?</span> <button class="ml-2 btn-main" style="margin-left: 15px">LOGIN</button></div>
+            <div style="float: right"><span>Are you can existing member?</span> <button class="ml-2 btn-main" style="margin-left: 15px">LOGIN </button></div>
         </div>
         <div style="padding: 10px">
             <section class="signup-step-container" style="padding-top: 100px">
@@ -942,6 +942,35 @@
 
                                             <ul class="list-inline pull-right">
                                                 <li><button type="button" class="default-btn prev-step">Back</button></li>
+                                                <li><button type="button" class="default-btn next-step">Continue</button></li>
+                                            </ul>
+                                        </div>
+                                        <div class="tab-pane" role="tabpanel" id="step5">
+                                            <h4 class="text-center">Final Confirmation</h4>
+                                            <div class="container">
+                                                    <p>Thank you <span id="customerName"></span></p>
+                                                    <p>Your business for sale listing has been created and is now being reviewed by our customer services team. Please allow
+                                                    at least one working day for it to be processed and go live on the site.
+                                                    </p>
+                                                <p>
+                                                    <span style="font-weight: bold">Your listing ID is : <span id="listingIdspan"></span></span><span> (Please refer this number for making inquiries)</span>
+                                                </p>
+                                                <p>
+                                                    <span style="font-weight: bold">Your username is : </span><span id="usernamespan"></span>
+                                                </p>
+                                                <p>
+                                                    We wish you the best of luck in finding a buyer and we will do all we can to help you sell your business quickly and easily.
+                                                </p>
+                                                <p>
+                                                    if you have any questions <span style="color: blue">contact us</span>
+                                                </p>
+                                                <p>
+                                                    We will send you email confirming these details
+                                                </p>
+                                            </div>
+
+                                            <ul class="list-inline pull-right">
+                                                <li><button type="button" class="default-btn prev-step">Back</button></li>
                                                 <li><button type="button" class="default-btn next-step">Finish</button></li>
                                             </ul>
                                         </div>
@@ -981,20 +1010,28 @@
             // var active = $('.wizard .nav-tabs li.active');
             // active.next().removeClass('disabled');
             // nextTab(active);
-            // if (currentStep === 1){
-            //     saveBasicDetails();
-            // }
-            // if (currentStep === 2){
-            //     saveListingDetails();
-            // }
-            // if (currentStep === 3){
-            //     saveBusinessDetails();
-            // }
+            if (currentStep === 1){
+                saveBasicDetails();
+            }
+            if (currentStep === 2){
+                saveListingDetails();
+            }
+            if (currentStep === 3){
+                saveBusinessDetails();
+            }
             if (currentStep === 4){
                 saveSubscriptionDetails();
-            }else{
-                gotoNextStep();
             }
+            if (currentStep === 5){
+                fianlizeWizard();
+            }
+
+            // if (currentStep === 5){
+            //     fianlizeWizard();
+            // }else{
+            //     gotoNextStep();
+            // }
+
 
 
         });
@@ -1250,6 +1287,43 @@
         }
     }
 
+    function fianlizeWizard(){
+        let formData = new FormData();
+        formData.append("_token", "{{ csrf_token() }}");
+        document.getElementById('loadergif').style.display = 'flex';
+        $.ajax({
+            url: `{{env('APP_URL')}}/finalize-wizard`,
+            type: 'POST',
+            dataType: "JSON",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (result) {
+                document.getElementById('loadergif').style.display = 'none';
+                if (result.status === true) {
+                   window.location.href = `{{env('APP_URL')}}/user-dashboard`
+
+                } else {
+                    swal({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: result.message,
+                    });
+                }
+            },
+            error: function (data) {
+                document.getElementById('loadergif').style.display = 'none';
+
+                swal({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "server Error",
+                });
+            }
+        });
+    }
+
     function saveSubscriptionDetails(){
 
         let limitedTrial = document.getElementById('limitedTrial').checked;
@@ -1263,9 +1337,7 @@
         let exp_year = document.getElementById('exp_year').value;
         let mailingList = document.getElementById('mailingList').checked;
         let termsAndConditions = document.getElementById('termsAndConditions').checked;
-        alert(subscription);
         if (limitedTrial === false){
-            alert('limitedTrial');
             if (nameOnCard === '' || nameOnCard === undefined){
                 showError("Name on Card is required");
                 return;
@@ -1350,8 +1422,10 @@
             processData: false,
             success: function (result) {
                 document.getElementById('loadergif').style.display = 'none';
-
                 if (result.status === true) {
+                    document.getElementById('customerName').innerText = result.data.user.first_name + ' ' + result.data.user.last_name;
+                    document.getElementById('listingIdspan').innerText = result.data.listingId;
+                    document.getElementById('usernamespan').innerText = result.data.user.email;
                     gotoNextStep();
 
                 } else {

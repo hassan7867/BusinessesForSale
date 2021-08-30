@@ -26,3 +26,4 @@ Route::post('save-listing-details',"\App\Http\Controllers\UserController@saveLis
 Route::get('list',"\App\Http\Controllers\FrontController@openList");
 Route::post('save-business-details',"\App\Http\Controllers\UserController@saveBusinessDetails");
 Route::post('save-subscription-details',"\App\Http\Controllers\UserController@saveSubscriptionDetails");
+Route::post('finalize-wizard',"\App\Http\Controllers\UserController@finalizeWizard");

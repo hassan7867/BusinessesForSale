@@ -10,9 +10,12 @@ use App\Models\ListingCategory;
 use App\Models\ListingDocuments;
 use App\Models\ListingPhotos;
 use App\Models\Region;
+use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class UserController extends Controller
 {
@@ -166,6 +169,42 @@ class UserController extends Controller
             }
 
             return json_encode(['status' => true, 'message' => 'Data Saved']);
+
+        } catch (\Exception $exception) {
+            return json_encode(['status' => false, 'message' => $exception->getMessage()]);
+        }
+    }
+
+    public function saveSubscriptionDetails(Request $request){
+        try {
+            $subscription = new Subscription();
+            $subscription->user_id = Session::get('userId');
+            $subscription->package = $request->subscription;
+            if ($request->subscription != 'limitedTrial'){
+                $amount = 0;
+                if ($request->subscription == '6months'){
+                    $amount = 89;
+                }
+                else if ($request->subscription == '3months'){
+                    $amount = 69;
+                }
+                else if ($request->subscription == '1months'){
+                    $amount = 49;
+                }
+                Stripe::setApiKey(env('STRIPE_SECRET'));
+                Charge::create ([
+                    "amount" => $amount,
+                    "currency" => "usd",
+                    "source" => $request->stripeToken,
+                    "description" => "This payment is for subscription"
+                ]);
+                $subscription->save();
+
+            }else{
+                $subscription->save();
+            }
+
+            return json_encode(['status' => true, 'data' => ['listingId' => Session::get('listingId')]]);
 
         } catch (\Exception $exception) {
             return json_encode(['status' => false, 'message' => $exception->getMessage()]);

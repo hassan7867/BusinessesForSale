@@ -25,3 +25,4 @@ Route::post('get-cities',"\App\Http\Controllers\UserController@getCities");
 Route::post('save-listing-details',"\App\Http\Controllers\UserController@saveListingDetails");
 Route::get('list',"\App\Http\Controllers\FrontController@openList");
 Route::post('save-business-details',"\App\Http\Controllers\UserController@saveBusinessDetails");
+Route::post('save-subscription-details',"\App\Http\Controllers\UserController@saveSubscriptionDetails");

@@ -110,9 +110,9 @@ class UserController extends Controller
         }
     }
 
-    public function openPricingPage()
+    public function openPricingPage($countryId)
     {
-        return view('pricing-page');
+        return view('pricing-page')->with(['countryId'=>$countryId]);
     }
 
     public function saveListingDetails(Request $request){

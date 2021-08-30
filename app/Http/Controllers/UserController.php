@@ -29,7 +29,7 @@ use services\email_services\SendEmailService;
 
 class UserController extends Controller
 {
-    public function registerPrivateSellerPage($countryId){
+    public function registerPrivateSellerPage($countryId,$priceId){
         $regions = Region::where('country_id', $countryId)->get();
         return view('auth.register-private-seller')->with(['regions' => $regions]);
     }

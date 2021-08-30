@@ -55,7 +55,7 @@
                             <div class="de-flex-col">
                                 <!-- logo begin -->
                                 <div id="logo">
-                                    <a>
+                                    <a href="{{url('/')}}">
                                         <img alt="" class="logo" src="{{url('')}}/images/logo-light.png" />
                                         <img alt="" class="logo-2" src="{{url('')}}/images/logo.png" />
                                     </a>

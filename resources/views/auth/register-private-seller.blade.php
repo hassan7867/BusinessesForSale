@@ -654,47 +654,175 @@
                                         </div>
 
                                         <div class="tab-pane" role="tabpanel" id="step3">
-                                            <h4 class="text-center">Step 3</h4>
+                                            <h4 class="text-center">Business Details</h4>
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Account Name *</label>
-                                                        <input class="form-control" type="text" name="name" placeholder="">
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Location</p>
+                                                        <textarea type="text" name="locationDetails" id="locationDetails" placeholder="Please describe the location of business"  class="form-control"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Premises</p>
+                                                        <textarea type="text" name="premises" id="premises" placeholder="Please describe the premises of business"  class="form-control"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Competition</p>
+                                                        <textarea type="text" name="competition" id="competition" placeholder="Please describe the competitors of business"  class="form-control"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Expansion Potential</p>
+                                                        <textarea type="text" name="expansion" id="expansion" placeholder="Please describe any oppurtunities for expansion of business"  class="form-control"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <span>Living Accomodation</span>    <input type="checkbox" name="livingAccomodation" id="livingAccomodation" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Check this box if accomodation is included.</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Living Accomodation Description</p>
+                                                        <textarea type="text" name="livingAccomodationDescription" id="livingAccomodationDescription" placeholder="Please describe living accomodation description of business"  class="form-control"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Size in square feet of property if applicable</p>
+                                                        <textarea type="text" name="sizeInSquareFeet" id="sizeInSquareFeet" placeholder=""  class="form-control"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Planning Consent</p>
+                                                        <textarea type="text" name="planningConsent" id="planningConsent" placeholder="Please share any details of any planning permission gained"  class="form-control"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Years Established</p>
+                                                        <input type="text" name="yearsEstablished" id="yearsEstablished" placeholder="List the number of years the business has been established"  class="form-control">
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Employees</p>
+                                                        <input type="text" name="employees" id="employees" placeholder="List the number of employees of the business"  class="form-control">
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Trading Hours</p>
+                                                        <textarea type="text" name="traddingHours" id="traddingHours" placeholder="List trading hours of business"  class="form-control"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Support and Training</p>
+                                                        <textarea type="text" name="supportAndTraining" id="supportAndTraining" placeholder="Describe any support or training provided by business"  class="form-control"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <span>Visa Ready</span>    <input type="checkbox" name="visaReady" id="visaReady" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Check this box if the business qualifies for an E-2 investor visa.</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Demo</label>
-                                                        <input class="form-control" type="text" name="name" placeholder="">
+
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Relocatable</p>
+                                                        <input type="radio" name="relocatable" id="relocatable" value="Yes" checked style="margin-left: 10px"> Yes
+                                                        <input type="radio" name="relocatable" id="relocatable" value="No" style="margin-left: 10px">Yes
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Inout</label>
-                                                        <input class="form-control" type="text" name="name" placeholder="">
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <span>Home Based</span>    <input type="checkbox" name="homeBased" id="homeBased" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px"> Check the box if business can be run from home</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Information</label>
-                                                        <div class="custom-file">
-                                                            <input type="file" class="custom-file-input" id="customFile">
-                                                            <label class="custom-file-label" for="customFile">Select file</label>
-                                                        </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <span>Franchise</span>    <input type="checkbox" name="franchise" id="franchise" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Check this box if the business is a franchise resale.</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Number *</label>
-                                                        <input class="form-control" type="text" name="name" placeholder="">
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Franchise Terms</p>
+                                                        <textarea type="text" name="franchiseTerms" id="franchiseTerms" placeholder=""  class="form-control"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <span>Business Closed or Asset Sale</span>    <input type="checkbox" name="businessClosed" id="businessClosed" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Check this box if the business is not operating and only assets are being sold.</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Input Number</label>
-                                                        <input class="form-control" type="text" name="name" placeholder="">
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <span>Distressed?</span>    <input type="checkbox" name="distressed" id="distressed" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Please tick this box if the business is a turnaround oppurtunity or a bankrupcy</span>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <span>Owner Financing Available?</span>    <input type="checkbox" name="ownerFinancing" id="ownerFinancing" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Please tick this box if you are willing to help finance the business sale</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Financing Available</p>
+                                                        <textarea type="text" name="financingAvailable" id="financingAvailable" placeholder="If applicable, describe any available financing option"  class="form-control"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Reason for selling</p>
+                                                        <textarea type="text" name="reasonForSelling" id="reasonForSelling" placeholder="Please state reasons for selling of business"  class="form-control"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <span>Furniture, Fixtures and Fitting</span>    <input type="checkbox" name="furnitureFixture" id="furnitureFixture" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Please tick this box if furniture, fixture and fitting included</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Value of Furniture, Fixtures and Fitting</p>
+                                                        <textarea type="text" name="valueOfFurnitureFixtures" id="valueOfFurnitureFixtures" placeholder="USD"  class="form-control"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <span>Inventory Stock</span>    <input type="checkbox" name="inventoryStock" id="inventoryStock" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Please tick this box if inventory stock included in asking price</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="margin-top: 20px">
+                                                        <p>Value of Inventory Stock</p>
+                                                        <textarea type="text" name="valueOfInventoryStock" id="valueOfInventoryStock" placeholder="USD"  class="form-control"></textarea>
+                                                    </div>
+
+                                                </div>
+
                                             </div>
                                             <ul class="list-inline pull-right">
                                                 <li><button type="button" class="default-btn prev-step">Back</button></li>
@@ -879,6 +1007,9 @@
             }
             if (currentStep === 2){
                 saveListingDetails();
+            }
+            if (currentStep === 3){
+                saveBusinessDetails();
             }
             // gotoNextStep();
 
@@ -1095,6 +1226,98 @@
         document.getElementById('loadergif').style.display = 'flex';
         $.ajax({
             url: `{{env('APP_URL')}}/save-listing-details`,
+            type: 'POST',
+            dataType: "JSON",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (result) {
+                document.getElementById('loadergif').style.display = 'none';
+
+                if (result.status === true) {
+                    gotoNextStep();
+
+                } else {
+                    swal({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: result.message,
+                    });
+                }
+            },
+            error: function (data) {
+                document.getElementById('loadergif').style.display = 'none';
+
+                swal({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "server Error",
+                });
+            }
+        });
+    }
+
+    function saveBusinessDetails(){
+
+        let locationDetails = document.getElementById('locationDetails').value;
+        let premises = document.getElementById('premises').value;
+        let competition = document.getElementById('competition').value;
+        let expansion = document.getElementById('expansion').value;
+        let livingAccomodation = document.getElementById('livingAccomodation').checked;
+        let livingAccomodationDescription = document.getElementById('livingAccomodationDescription').value;
+        let sizeInSquareFeet = document.getElementById('sizeInSquareFeet').value;
+        let planningConsent = document.getElementById('planningConsent').value;
+        let yearsEstablished = document.getElementById('yearsEstablished').checked;
+        let employees = document.getElementById('employees').value;
+        let traddingHours = document.getElementById('traddingHours').value;
+        let supportAndTraining = document.getElementById('supportAndTraining').value;
+        let visaReady = document.getElementById('visaReady').checked;
+        let relocatable = document.getElementById('relocatable').value;
+        let homeBased = document.getElementById('homeBased').checked;
+        let franchise = document.getElementById('franchise').checked;
+        let franchiseTerms = document.getElementById('franchiseTerms').value;
+        let businessClosed = document.getElementById('businessClosed').checked;
+        let distressed = document.getElementById('distressed').checked;
+        let ownerFinancing = document.getElementById('ownerFinancing').checked;
+        let financingAvailable = document.getElementById('financingAvailable').value;
+        let reasonForSelling = document.getElementById('reasonForSelling').value;
+        let furnitureFixture = document.getElementById('furnitureFixture').checked;
+        let valueOfFurnitureFixtures = document.getElementById('valueOfFurnitureFixtures').value;
+        let inventoryStock = document.getElementById('inventoryStock').checked;
+        let valueOfInventoryStock = document.getElementById('valueOfInventoryStock').value;
+
+        let formData = new FormData();
+        formData.append('locationDetails', locationDetails);
+        formData.append('premises', premises);
+        formData.append('competition',  competition);
+        formData.append('expansion',  expansion);
+        formData.append('livingAccomodation',  livingAccomodation);
+        formData.append('livingAccomodationDescription',  livingAccomodationDescription);
+        formData.append('sizeInSquareFeet',  sizeInSquareFeet);
+        formData.append('planningConsent',  planningConsent);
+        formData.append('yearsEstablished',  yearsEstablished);
+        formData.append('employees',  employees);
+        formData.append('traddingHours',  traddingHours);
+        formData.append('supportAndTraining',  supportAndTraining);
+        formData.append('visaReady',  visaReady);
+        formData.append('relocatable',  relocatable);
+        formData.append('homeBased',  homeBased);
+        formData.append('franchise',  franchise);
+        formData.append('franchiseTerms',  franchiseTerms);
+        formData.append('businessClosed',  businessClosed);
+        formData.append('distressed',  distressed);
+        formData.append('ownerFinancing',  ownerFinancing);
+        formData.append('financingAvailable',  financingAvailable);
+        formData.append('reasonForSelling',  reasonForSelling);
+        formData.append('furnitureFixture',  furnitureFixture);
+        formData.append('valueOfFurnitureFixtures',  valueOfFurnitureFixtures);
+        formData.append('inventoryStock',  inventoryStock);
+        formData.append('valueOfInventoryStock',  valueOfInventoryStock);
+        formData.append("_token", "{{ csrf_token() }}");
+        document.getElementById('loadergif').style.display = 'flex';
+        $.ajax({
+            url: `{{env('APP_URL')}}/save-business-details`,
             type: 'POST',
             dataType: "JSON",
             data: formData,

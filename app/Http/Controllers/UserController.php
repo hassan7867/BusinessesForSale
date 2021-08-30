@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BusinessDetail;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Listing;
@@ -40,6 +41,45 @@ class UserController extends Controller
             $user->save();
             Session::put('userId', $user->id);
             Session::put('userType', $user->user_type);
+            return json_encode(['status' => true, 'message' => "Details Saved Successfully"]);
+
+        } catch (\Exception $exception) {
+            return json_encode(['status' => false, 'message' => $exception->getMessage()]);
+        }
+    }
+
+    public function saveBusinessDetails(Request $request){
+        try {
+            $business = new BusinessDetail();
+            $business->listing_id = 1;
+            $business->user_id = 1;
+            $business->location_details = $request->locationDetails;
+            $business->premises = $request->premises;
+            $business->competition = $request->competition;
+            $business->expansion = $request->expansion;
+            $business->living_accomodation = $request->livingAccomodation;
+            $business->living_accomodation_description = $request->livingAccomodationDescription;
+            $business->size_in_square_feet = $request->sizeInSquareFeet;
+            $business->planning_consent = $request->planningConsent;
+            $business->years_established = $request->yearsEstablished;
+            $business->employees = $request->employees;
+            $business->tradding_hours = $request->traddingHours;
+            $business->support_and_training = $request->supportAndTraining;
+            $business->visa_ready = $request->visaReady;
+            $business->relocatable = $request->relocatable;
+            $business->home_based = $request->homeBased;
+            $business->franchise = $request->franchise;
+            $business->franchise_terms = $request->franchiseTerms;
+            $business->business_closed = $request->businessClosed;
+            $business->distressed = $request->distressed;
+            $business->owner_financing = $request->ownerFinancing;
+            $business->financing_available = $request->financingAvailable;
+            $business->reason_for_selling = $request->reasonForSelling;
+            $business->furniture_fixture = $request->furnitureFixture;
+            $business->value_of_furniture_fixtures = $request->valueOfFurnitureFixtures;
+            $business->inventory_stock = $request->inventoryStock;
+            $business->value_of_inventory_stock = $request->valueOfInventoryStock;
+            $business->save();
             return json_encode(['status' => true, 'message' => "Details Saved Successfully"]);
 
         } catch (\Exception $exception) {
@@ -90,6 +130,7 @@ class UserController extends Controller
             $listing->embeded_video = $request->embededVideo;
             $listing->user_id = 1;
             $listing->save();
+            Session::put('currentListingId', $listing->id);
             $listingCategories = json_decode($request->selectedCategoriesList, true);
             foreach ($listingCategories as $category){
                $categotyTable = new ListingCategory();

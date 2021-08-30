@@ -19,7 +19,8 @@ Route::get('/', function () {
 
 Route::get('sell-private-business/{countryId}',"\App\Http\Controllers\UserController@registerPrivateSellerPage");
 Route::post('save-basic-details',"\App\Http\Controllers\UserController@saveBasicDetails");
-Route::get('pricing-table',"\App\Http\Controllers\UserController@openPricingPage");
+Route::get('pricing-table/{countryId}',"\App\Http\Controllers\UserController@openPricingPage");
 Route::post('get-categories',"\App\Http\Controllers\UserController@getCategories");
 Route::post('get-cities',"\App\Http\Controllers\UserController@getCities");
 Route::post('save-listing-details',"\App\Http\Controllers\UserController@saveListingDetails");
+Route::get('list',"\App\Http\Controllers\FrontController@openList");

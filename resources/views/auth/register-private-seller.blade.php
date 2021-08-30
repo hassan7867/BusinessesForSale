@@ -831,133 +831,111 @@
                                             </ul>
                                         </div>
                                         <div class="tab-pane" role="tabpanel" id="step4">
-                                            <h4 class="text-center">Step 4</h4>
-                                            <div class="all-info-container">
-                                                <div class="list-content">
-                                                    <a href="#listone" data-toggle="collapse" aria-expanded="false" aria-controls="listone">Collapse 1 <i class="fa fa-chevron-down"></i></a>
-                                                    <div class="collapse" id="listone">
-                                                        <div class="list-box">
-                                                            <div class="row">
+                                            <h4 class="text-center">Review Your Order</h4>
+                                            <div class="container">
+                                                <h6>Why wait to contact interested buyer? Choose one of the advertising package below and contact all buyers immediately</h6>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div style="background: #f5f5f5;padding: 15px">
+                                                            <div class="d-flex flex-wrap">
+                                                                <div style="margin-top: 15px">
+                                                                    <input type="radio" name="subscription" id="6months" value="6months" style="margin-left: 10px" onchange="onRadioSubscriptionchange(this.value)">
 
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>First and Last Name *</label>
-                                                                        <input class="form-control" type="text"  name="name" placeholder="" disabled="disabled">
-                                                                    </div>
                                                                 </div>
-
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Phone Number *</label>
-                                                                        <input class="form-control" type="text" name="name" placeholder="" disabled="disabled">
-                                                                    </div>
+                                                                <div style="margin-left: 35px">
+                                                                     <span>
+                                                                <p style="font-weight: bold;font-size: 18px">6 Months</p>
+                                                                <p style="color: blue;font-size: 18px;font-weight: bold">$89.0</p>
+                                                            </span>
                                                                 </div>
-
                                                             </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div style="background: #f5f5f5;padding: 15px">
+                                                            <div class="d-flex flex-wrap">
+                                                                <div style="margin-top: 15px">
+                                                                    <input type="radio" name="subscription" id="3months" value="3months" style="margin-left: 10px" onchange="onRadioSubscriptionchange(this.value)">
+
+                                                                </div>
+                                                                <div style="margin-left: 35px">
+                                                                     <span>
+                                                                <p style="font-weight: bold;font-size: 18px">3 Months</p>
+                                                                <p style="color: blue;font-size: 18px;font-weight: bold">$69.0</p>
+                                                            </span>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div style="background: #f5f5f5;padding: 15px">
+                                                            <div class="d-flex flex-wrap">
+                                                                <div style="margin-top: 15px">
+                                                                    <input type="radio" name="subscription" id="1months" value="1months" style="margin-left: 10px" onchange="onRadioSubscriptionchange(this.value)">
+
+                                                                </div>
+                                                                <div style="margin-left: 35px">
+                                                                     <span>
+                                                                <p style="font-weight: bold;font-size: 18px">1 Months</p>
+                                                                <p style="color: blue;font-size: 18px;font-weight: bold">$49.0</p>
+                                                            </span>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div style="margin-top: 15px">
+                                                    <input type="radio" name="subscription" id="limitedTrial" value="limitedTrial" style="margin-left: 10px" checked onchange="onRadioSubscriptionchange(this.value)">
+                                                        <span><span style="font-weight: bold">No thanks</span> I want to continue listing my business on limited trial</span>
+                                                </div>
+
+                                                <div style=";margin-top: 25px;display: none" id="card-details">
+                                                    <input type="hidden" id="stripeToken" name="stripeToken">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <p style="font-weight: bold">Name on Card</p>
+                                                            <input type="text" name="nameOnCard" id="nameOnCard" class="form-control">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p style="font-weight: bold">Card Number</p>
+                                                            <input type="text" name="cardNumber" id="cardNumber" class="form-control">
+                                                        </div>
+
+                                                    </div>
+                                                    <div style="margin-top: 20px" class="row">
+                                                        <div class="col-md-4">
+                                                                <p style="font-weight: bold">CVV</p>
+                                                                <input type="text" name="cvv" id="cvv" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 20px" class="row">
+                                                        <div class="col-md-4">
+                                                            <p style="font-weight: bold">Expiry Month</p>
+                                                            <input type="text" name="exp_month" id="exp_month" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 20px" class="row">
+                                                        <div class="col-md-4">
+                                                            <p style="font-weight: bold">Expiry Year</p>
+                                                            <input type="text" name="exp_year" id="exp_year" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="list-content">
-                                                    <a href="#listtwo" data-toggle="collapse" aria-expanded="false" aria-controls="listtwo">Collapse 2 <i class="fa fa-chevron-down"></i></a>
-                                                    <div class="collapse" id="listtwo">
-                                                        <div class="list-box">
-                                                            <div class="row">
+                                                <div style="margin-top: 25px">
+                                                    <div>
+                                                        <input type="checkbox" name="mailingList" id="mailingList" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Yes. Sign me up for the mailing list</span>
 
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Address 1 *</label>
-                                                                        <input class="form-control" type="text" name="name" placeholder="" disabled="disabled">
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>City / Town *</label>
-                                                                        <input class="form-control" type="text" name="name" placeholder="" disabled="disabled">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Country *</label>
-                                                                        <select name="country2" class="form-control" id="country2" disabled="disabled">
-                                                                            <option value="NG" selected="selected">Nigeria</option>
-                                                                            <option value="NU">Niue</option>
-                                                                            <option value="NF">Norfolk Island</option>
-                                                                            <option value="KP">North Korea</option>
-                                                                            <option value="MP">Northern Mariana Islands</option>
-                                                                            <option value="NO">Norway</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Legal Form</label>
-                                                                        <select name="legalform2" class="form-control" id="legalform2" disabled="disabled">
-                                                                            <option value="" selected="selected">-Select an Answer-</option>
-                                                                            <option value="AG">Limited liability company</option>
-                                                                            <option value="GmbH">Public Company</option>
-                                                                            <option value="GbR">No minimum capital, unlimited liability of partners, non-busines</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Business Registration No.</label>
-                                                                        <input class="form-control" type="text" name="name" placeholder="" disabled="disabled">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Registered</label>
-                                                                        <select name="vat2" class="form-control" id="vat2" disabled="disabled">
-                                                                            <option value="" selected="selected">-Select an Answer-</option>
-                                                                            <option value="yes">Yes</option>
-                                                                            <option value="no">No</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Seller</label>
-                                                                        <input class="form-control" type="text" name="name" placeholder="" disabled="disabled">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label>Company Name *</label>
-                                                                        <input class="form-control" type="password" name="name" placeholder="" disabled="disabled">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="list-content">
-                                                    <a href="#listthree" data-toggle="collapse" aria-expanded="false" aria-controls="listthree">Collapse 3 <i class="fa fa-chevron-down"></i></a>
-                                                    <div class="collapse" id="listthree">
-                                                        <div class="list-box">
-                                                            <div class="row">
+                                                    <div style="margin-top: 10px">
+                                                        <input type="checkbox" name="termsAndConditions" id="termsAndConditions" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Yes. I agree to the <span style="color: blue;text-decoration: underline">terms and conditions</span></span>
 
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Name *</label>
-                                                                        <input class="form-control" type="text" name="name" placeholder="">
-                                                                    </div>
-                                                                </div>
-
-
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>Number *</label>
-                                                                        <input class="form-control" type="text" name="name" placeholder="">
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -980,6 +958,7 @@
     </div>
 
 
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 <script>
     // ------------step-wizard-------------
@@ -1002,16 +981,21 @@
             // var active = $('.wizard .nav-tabs li.active');
             // active.next().removeClass('disabled');
             // nextTab(active);
-            if (currentStep === 1){
-                saveBasicDetails();
+            // if (currentStep === 1){
+            //     saveBasicDetails();
+            // }
+            // if (currentStep === 2){
+            //     saveListingDetails();
+            // }
+            // if (currentStep === 3){
+            //     saveBusinessDetails();
+            // }
+            if (currentStep === 4){
+                saveSubscriptionDetails();
+            }else{
+                gotoNextStep();
             }
-            if (currentStep === 2){
-                saveListingDetails();
-            }
-            if (currentStep === 3){
-                saveBusinessDetails();
-            }
-            // gotoNextStep();
+
 
         });
         $(".prev-step").click(function (e) {
@@ -1226,6 +1210,138 @@
         document.getElementById('loadergif').style.display = 'flex';
         $.ajax({
             url: `{{env('APP_URL')}}/save-listing-details`,
+            type: 'POST',
+            dataType: "JSON",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (result) {
+                document.getElementById('loadergif').style.display = 'none';
+
+                if (result.status === true) {
+                    gotoNextStep();
+
+                } else {
+                    swal({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: result.message,
+                    });
+                }
+            },
+            error: function (data) {
+                document.getElementById('loadergif').style.display = 'none';
+
+                swal({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "server Error",
+                });
+            }
+        });
+    }
+
+    function onRadioSubscriptionchange(value){
+        if (value !== 'limitedTrial'){
+            document.getElementById('card-details').style.display = 'block';
+        }else{
+            document.getElementById('card-details').style.display = 'none';
+        }
+    }
+
+    function saveSubscriptionDetails(){
+
+        let limitedTrial = document.getElementById('limitedTrial').checked;
+        let months6 = document.getElementById('6months').checked;
+        let months3 = document.getElementById('3months').checked;
+        let months1 = document.getElementById('1months').checked;
+        let nameOnCard = document.getElementById('nameOnCard').value;
+        let cardNumber = document.getElementById('cardNumber').value;
+        let cvv = document.getElementById('cvv').value;
+        let exp_month = document.getElementById('exp_month').value;
+        let exp_year = document.getElementById('exp_year').value;
+        let mailingList = document.getElementById('mailingList').checked;
+        let termsAndConditions = document.getElementById('termsAndConditions').checked;
+        alert(subscription);
+        if (limitedTrial === false){
+            alert('limitedTrial');
+            if (nameOnCard === '' || nameOnCard === undefined){
+                showError("Name on Card is required");
+                return;
+            }
+            if (cardNumber === '' || cardNumber === undefined){
+                showError("Card Number is required");
+                return;
+            }
+            if (cvv === '' || cvv === undefined){
+                showError("CVV is required");
+                return;
+            }
+            if (exp_month === '' || exp_month === undefined){
+                showError("Exp month is required");
+                return;
+            }
+            if (exp_year === '' || exp_year === undefined){
+                showError("Exp year is required");
+                return;
+            }
+        }
+
+        if (termsAndConditions === false){
+            showError("You must accept terms and conditions");
+            return;
+        }
+
+        Stripe.setPublishableKey(`{{env('STRIPE_KEY')}}`);
+        Stripe.createToken({
+            number: cardNumber,
+            cvc: cvv,
+            exp_month: exp_month,
+            exp_year: exp_year
+        }, stripeResponseHandler);
+
+    }
+
+    function stripeResponseHandler(status, response){
+        var token = response['id'];
+        document.getElementById('stripeToken').value = token;
+        let nameOnCard = document.getElementById('nameOnCard').value;
+        let cardNumber = document.getElementById('cardNumber').value;
+        let cvv = document.getElementById('cvv').value;
+        let exp_month = document.getElementById('exp_month').value;
+        let exp_year = document.getElementById('exp_year').value;
+        let mailingList = document.getElementById('mailingList').checked;
+        let termsAndConditions = document.getElementById('termsAndConditions').checked;
+
+        let limitedTrial = document.getElementById('limitedTrial').checked;
+        let months6 = document.getElementById('6months').checked;
+        let months3 = document.getElementById('3months').checked;
+        let months1 = document.getElementById('1months').checked;
+        let subscription = 'limitedTrial';
+        if (limitedTrial === true){
+            subscription = 'limitedTrial';
+        }else if(months6 === true){
+            subscription = '6months';
+        }else if(months3 === true){
+            subscription = '3months';
+        }else if(months1 === true){
+            subscription = '1months';
+        }
+        let formData = new FormData();
+        formData.append('subscription', subscription);
+        formData.append('nameOnCard', nameOnCard);
+        formData.append('cardNumber',  cardNumber);
+        formData.append('cvv',  cvv);
+        formData.append('exp_month',  exp_month);
+        formData.append('exp_year',  exp_year);
+        formData.append('mailingList',  mailingList);
+        formData.append('termsAndConditions',  termsAndConditions);
+        formData.append('stripeToken',  token);
+        formData.append("_token", "{{ csrf_token() }}");
+        document.getElementById('loadergif').style.display = 'flex';
+        $.ajax({
+            url: `{{env('APP_URL')}}/save-subscription-details`,
             type: 'POST',
             dataType: "JSON",
             data: formData,

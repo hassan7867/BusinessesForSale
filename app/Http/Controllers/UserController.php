@@ -174,7 +174,7 @@ class UserController extends Controller
             $listing->embeded_video = $request->embededVideo;
             $listing->user_id = Session::get('userId');
             $listing->save();
-            Session::put('currentListingId', $listing->id);
+            Session::put('listingId', $listing->id);
             $listingCategories = json_decode($request->selectedCategoriesList, true);
             foreach ($listingCategories as $category){
                $categotyTable = new ListingCategory();

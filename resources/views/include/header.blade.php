@@ -65,9 +65,9 @@
                                 </div>
                                 <!-- logo close -->
                             </div>
-                            <div class="de-flex-col">
-                                <input id="quick_search" class="xs-hide" name="quick_search" placeholder="search item here..." type="text" />
-                            </div>
+                            {{--<div class="de-flex-col">--}}
+                                {{--<input id="quick_search" class="xs-hide" name="quick_search" placeholder="search item here..." type="text" />--}}
+                            {{--</div>--}}
                         </div>
                         <div class="de-flex-col header-col-mid">
                             <!-- mainmenu begin -->

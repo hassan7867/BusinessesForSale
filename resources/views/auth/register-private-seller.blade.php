@@ -360,7 +360,7 @@
 
     <div class="container" style="padding: 30px;margin-top: 100px">
         <div>
-            <div style="float: right"><span>Are you can existing member?</span> <button class="ml-2 btn-main" style="margin-left: 15px">LOGIN </button></div>
+            <div style="float: right"><span>Are you can existing member?</span> <a  href="{{url('user-login')}}" class="ml-2 btn-main" style="margin-left: 15px">LOGIN </a></div>
         </div>
         <div style="padding: 10px">
             <section class="signup-step-container" style="padding-top: 100px">
@@ -839,7 +839,7 @@
                                                         <div style="background: #f5f5f5;padding: 15px">
                                                             <div class="d-flex flex-wrap">
                                                                 <div style="margin-top: 15px">
-                                                                    <input type="radio" name="subscription" id="6months" value="6months" style="margin-left: 10px" onchange="onRadioSubscriptionchange(this.value)">
+                                                                    <input type="radio" {{$priceId == 89 ? 'checked' : ''}}  name="subscription" id="6months" value="6months" style="margin-left: 10px" onchange="onRadioSubscriptionchange(this.value)">
 
                                                                 </div>
                                                                 <div style="margin-left: 35px">
@@ -857,7 +857,7 @@
                                                         <div style="background: #f5f5f5;padding: 15px">
                                                             <div class="d-flex flex-wrap">
                                                                 <div style="margin-top: 15px">
-                                                                    <input type="radio" name="subscription" id="3months" value="3months" style="margin-left: 10px" onchange="onRadioSubscriptionchange(this.value)">
+                                                                    <input type="radio" {{$priceId == 69 ? 'checked' : ''}} name="subscription" id="3months" value="3months" style="margin-left: 10px" onchange="onRadioSubscriptionchange(this.value)">
 
                                                                 </div>
                                                                 <div style="margin-left: 35px">
@@ -875,7 +875,7 @@
                                                         <div style="background: #f5f5f5;padding: 15px">
                                                             <div class="d-flex flex-wrap">
                                                                 <div style="margin-top: 15px">
-                                                                    <input type="radio" name="subscription" id="1months" value="1months" style="margin-left: 10px" onchange="onRadioSubscriptionchange(this.value)">
+                                                                    <input {{$priceId == 49 ? 'checked' : ''}} type="radio" name="subscription" id="1months" value="1months" style="margin-left: 10px" onchange="onRadioSubscriptionchange(this.value)">
 
                                                                 </div>
                                                                 <div style="margin-left: 35px">
@@ -892,11 +892,11 @@
 
                                                 </div>
                                                 <div style="margin-top: 15px">
-                                                    <input type="radio" name="subscription" id="limitedTrial" value="limitedTrial" style="margin-left: 10px" checked onchange="onRadioSubscriptionchange(this.value)">
+                                                    <input {{$priceId == 0 ? 'checked' : ''}} type="radio" name="subscription" id="limitedTrial" value="limitedTrial" style="margin-left: 10px" onchange="onRadioSubscriptionchange(this.value)">
                                                         <span><span style="font-weight: bold">No thanks</span> I want to continue listing my business on limited trial</span>
                                                 </div>
 
-                                                <div style=";margin-top: 25px;display: none" id="card-details">
+                                                <div style=";margin-top: 25px; {{$priceId == 0 ? 'display:none' : ''}}" id="card-details">
                                                     <input type="hidden" id="stripeToken" name="stripeToken">
                                                     <div class="row">
                                                         <div class="col-md-6">
@@ -1025,7 +1025,7 @@
             if (currentStep === 5){
                 fianlizeWizard();
             }
-
+            // gotoNextStep();
             // if (currentStep === 5){
             //     fianlizeWizard();
             // }else{

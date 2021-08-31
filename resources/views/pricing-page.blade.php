@@ -15,7 +15,7 @@
                         <div class="spacer-single"></div>
                         <div class="spacer-10"></div>
                         <h3 class="wow fadeInUp" data-wow-delay=".75s" style="font-size: 30px">List your business in the
-                            USA
+                            {{$countryName}}
                             Create your business listing today</h3>
                         <p class="wow fadeInUp lead" data-wow-delay="1s">
                             We help more than 1,500 owners sell their businesses every month</p>
@@ -72,12 +72,12 @@
                             <p class="price">
                                 <span class="currency">$</span>
                                 <span class="m opt-1" style="font-size: 25px">49</span>
-                                <span class="month">p/mo</span>
+{{--                                <span class="month">p/mo</span>--}}
                             </p>
                         </div>
                         <div class="bottom">
                             <ul>
-                                <p style="color: black;padding: 20px;text-align: center">Just $49 USD per Month</p>
+                                <p style="color: black;padding: 20px;text-align: center">Just $49 USD</p>
                             </ul>
                         </div>
 
@@ -95,12 +95,12 @@
                             <p class="price">
                                 <span class="currency">$</span>
                                 <span class="m opt-1" style="font-size: 25px">69</span>
-                                <span class="month">p/mo</span>
+{{--                                <span class="month">p/mo</span>--}}
                             </p>
                         </div>
                         <div class="bottom">
                             <ul>
-                                <p style="color: black;padding: 20px;text-align: center">Just $69 USD per Month</p>
+                                <p style="color: black;padding: 20px;text-align: center">Just $69 USD</p>
                             </ul>
                         </div>
 
@@ -118,12 +118,12 @@
                             <p class="price">
                                 <span class="currency">$</span>
                                 <span class="m opt-1" style="font-size: 25px">89</span>
-                                <span class="month">p/mo</span>
+{{--                                <span class="month">p/mo</span>--}}
                             </p>
                         </div>
                         <div class="bottom">
                             <ul>
-                                <p style="color: black;padding: 20px;text-align: center">Just $89 USD per Month</p>
+                                <p style="color: black;padding: 20px;text-align: center">Just $89 USD</p>
                             </ul>
                         </div>
 
@@ -159,7 +159,7 @@
                             Set the right asking price for your business with <br>ValueRight - our online valuation
                             tool.</p>
                         <div class="spacer-10"></div>
-                        <a href="explore.html" class="btn-main wow fadeInUp lead" data-wow-delay="1.25s"
+                        <a href="#" class="btn-main wow fadeInUp lead" data-wow-delay="1.25s"
                            style="font-size: 18px;padding: 15px">Start Your Free Valuation</a>
                         <div class="mb-sm-30"></div>
                     </div>

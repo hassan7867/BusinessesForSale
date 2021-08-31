@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BusinessDetail;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Countries;
 use App\Models\Listing;
 use App\Models\ListingCategory;
 use App\Models\ListingDocuments;
@@ -29,9 +30,9 @@ use services\email_services\SendEmailService;
 
 class UserController extends Controller
 {
-    public function registerPrivateSellerPage($countryId,$priceId){
+    public function registerPrivateSellerPage($countryId, $priceId){
         $regions = Region::where('country_id', $countryId)->get();
-        return view('auth.register-private-seller')->with(['regions' => $regions]);
+        return view('auth.register-private-seller')->with(['regions' => $regions, 'priceId' => $priceId]);
     }
 
     public function saveBasicDetails(Request $request)
@@ -122,7 +123,37 @@ class UserController extends Controller
 
     public function openPricingPage($countryId)
     {
-        return view('pricing-page')->with(['countryId'=>$countryId]);
+        return view('pricing-page')->with(['countryId'=>$countryId, 'countryName' => Countries::where('id', $countryId)->first()['name']]);
+    }
+
+    public function userlogin(){
+        return view('auth.login');
+    }
+
+    public function userloginRequest(Request $request){
+        try {
+            if(!empty($request->email) && !empty($request->password)){
+                if (User::where('email', $request->email)->exists()){
+                    $user = User::where('email', $request->email)->first();
+                    if ($user->password == md5($request->password)){
+                        Session::put('userId', $user->id);
+                        return redirect('user-dashboard');
+                    }else{
+                        return redirect()->back()->withErrors(["Invalid email or password"]);
+                    }
+
+                }else{
+                    return redirect()->back()->withErrors(["Invalid email or password"]);
+                }
+            }else{
+                return redirect()->back()->withErrors(["Invalid email or password"]);
+            }
+            session()->flash('msg', 'Login successfully!');
+            return redirect('user-dashboard');
+
+        }catch (\Exception $exception){
+            return redirect()->back()->withErrors([$exception->getMessage()]);
+        }
     }
 
     public function saveListingDetails(Request $request){

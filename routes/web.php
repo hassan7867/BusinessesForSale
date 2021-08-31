@@ -16,7 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('optimize-app', function () {
+    \Illuminate\Support\Facades\Artisan::call('optimize');
+    return "done!";
+});
+Route::get('clear-env', function () {
+    \Illuminate\Support\Facades\Artisan::call('config:clear');
+    return "done!";
+});
 Route::get('sell-private-business/{countryId}/{priceId}',"\App\Http\Controllers\UserController@registerPrivateSellerPage");
 Route::post('save-basic-details',"\App\Http\Controllers\UserController@saveBasicDetails");
 Route::get('pricing-table/{countryId}',"\App\Http\Controllers\UserController@openPricingPage");
@@ -27,3 +34,11 @@ Route::get('list',"\App\Http\Controllers\FrontController@openList");
 Route::post('save-business-details',"\App\Http\Controllers\UserController@saveBusinessDetails");
 Route::post('save-subscription-details',"\App\Http\Controllers\UserController@saveSubscriptionDetails");
 Route::post('finalize-wizard',"\App\Http\Controllers\UserController@finalizeWizard");
+Route::get('user-login',"\App\Http\Controllers\UserController@userlogin");
+Route::post('login-user-request',"\App\Http\Controllers\UserController@userloginRequest");
+
+//user dashboard urls
+Route::get('user-dashboard',"\App\Http\Controllers\UserDashboardController@userDashboard");
+Route::get('user-logout',"\App\Http\Controllers\UserDashboardController@userLogout");
+Route::get('resources',"\App\Http\Controllers\UserDashboardController@resources");
+Route::get('user-profile',"\App\Http\Controllers\UserDashboardController@userProfile");

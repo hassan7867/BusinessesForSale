@@ -4,27 +4,25 @@
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-1">
                 <div class="widget">
-                    <h5>Marketplace</h5>
+                    <h5>Buying</h5>
                     <ul>
-                        <li><a href="#">All NFTs</a></li>
                         <li><a href="#">Art</a></li>
                         <li><a href="#">Music</a></li>
                         <li><a href="#">Domain Names</a></li>
                         <li><a href="#">Virtual World</a></li>
                         <li><a href="#">Collectibles</a></li>
+                        <li><a href="#">All Businesses</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-1">
                 <div class="widget">
-                    <h5>Resources</h5>
+                    <h5>Selling</h5>
                     <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Partners</a></li>
-                        <li><a href="#">Suggestions</a></li>
-                        <li><a href="#">Discord</a></li>
-                        <li><a href="#">Docs</a></li>
-                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="#">Private Business</a></li>
+                        <li><a href="#">Broker</a></li>
+                        <li><a href="#">Register</a></li>
+                        <li><a href="#">Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -45,7 +43,7 @@
                 <div class="widget">
                     <h5>Newsletter</h5>
                     <p>Signup for our newsletter to get the latest news in your inbox.</p>
-                    <form action="https://www.designesia.com/themes/gigaland/blank.php" class="row form-dark" id="form_subscribe" method="post" name="form_subscribe">
+                    <form action="#" class="row form-dark" id="form_subscribe" method="post" name="form_subscribe">
                         <div class="col text-center">
                             <input class="form-control" id="txt_subscribe" name="txt_subscribe" placeholder="enter your email" type="text" /> <a href="#" id="btn-subscribe"><i class="arrow_right bg-color-secondary"></i></a>
                             <div class="clearfix"></div>
@@ -63,8 +61,8 @@
                 <div class="col-md-12">
                     <div class="de-flex">
                         <div class="de-flex-col">
-                            <a href="index.html">
-                                <img alt="" class="f-logo" src="images/logo.png" /><span class="copy">&copy; Copyright 2021 - Gigaland by Designesia</span>
+                            <a href="#">
+                               <span class="copy">&copy; Copyright 2021 - {{env('APP_NAME')}}</span>
                             </a>
                         </div>
                         <div class="de-flex-col">

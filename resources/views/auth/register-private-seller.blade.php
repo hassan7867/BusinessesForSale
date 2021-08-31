@@ -357,11 +357,17 @@
     </style>
 {{--    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&amp;display=swap" rel="stylesheet">--}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    <input type="hidden" id="userSession" value="{{\Illuminate\Support\Facades\Session::has('userId') ?? ''}}">
     <div class="container" style="padding: 30px;margin-top: 100px">
-        <div>
-            <div style="float: right"><span>Are you can existing member?</span> <a  href="{{url('user-login')}}" class="ml-2 btn-main" style="margin-left: 15px">LOGIN </a></div>
-        </div>
+        @if(\Illuminate\Support\Facades\Session::has('userId'))
+            <div>
+                <div style="float: right"><span></span> <a  href="{{url('user-dashboard')}}" style="margin-left: 15px">MY ACCOUNT </a></div>
+            </div>
+        @else
+            <div>
+                <div style="float: right"><span>Are you can existing member?</span> <a  href="{{url('user-login')}}"  style="margin-left: 15px">LOGIN </a></div>
+            </div>
+        @endif
         <div style="padding: 10px">
             <section class="signup-step-container" style="padding-top: 100px">
                 <div class="container">
@@ -1004,6 +1010,11 @@
                 return false;
             }
         });
+
+        let sessionVal = document.getElementById('userSession').value;
+        if (sessionVal !== '' && sessionVal !== undefined &&sessionVal > 0){
+            gotoNextStep();
+        }
 
         $(".next-step").click(function (e) {
 

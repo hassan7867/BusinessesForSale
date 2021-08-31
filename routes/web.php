@@ -38,7 +38,8 @@ Route::get('user-login',"\App\Http\Controllers\UserController@userlogin");
 Route::post('login-user-request',"\App\Http\Controllers\UserController@userloginRequest");
 
 //user dashboard urls
-Route::get('user-dashboard',"\App\Http\Controllers\UserDashboardController@userDashboard");
-Route::get('user-logout',"\App\Http\Controllers\UserDashboardController@userLogout");
-Route::get('resources',"\App\Http\Controllers\UserDashboardController@resources");
-Route::get('user-profile',"\App\Http\Controllers\UserDashboardController@userProfile");
+Route::get('user-dashboard',"\App\Http\Controllers\UserDashboardController@userDashboard")->middleware('CheckSession');
+Route::get('user-logout',"\App\Http\Controllers\UserDashboardController@userLogout")->middleware('CheckSession');
+Route::get('resources',"\App\Http\Controllers\UserDashboardController@resources")->middleware('CheckSession');
+Route::get('user-profile',"\App\Http\Controllers\UserDashboardController@userProfile")->middleware('CheckSession');
+Route::post('change/password',"\App\Http\Controllers\UserDashboardController@changePassword");

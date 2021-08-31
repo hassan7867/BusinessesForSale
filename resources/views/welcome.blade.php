@@ -18,7 +18,7 @@
                             <div class="mb-sm-30"></div>
                         </div>
                         <div class="col-md-6 xs-hide">
-                            <img src="images/misc/nft.png" class="lazy img-fluid wow fadeIn" data-wow-delay="1.25s" alt="">
+                            <img src="{{url('')}}/undraw_Finance_re_gnv2.svg" class="lazy img-fluid wow fadeIn" data-wow-delay="1.25s" alt="">
                         </div>
                     </div>
                 </div>
@@ -241,6 +241,34 @@
                 </div>
             </div>
         </section>
+        <div class="modal" id="myModal">
+            <div class="modal-dialog modal-xl" >
+                <div class="modal-content" style="margin-top: 200px;">
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="row p-3">
+                            <div class="col-lg-6" style="border-right: dotted">
+                                <h4 class="text-center">Are you a <span style="color: #8364E2;font-size: 20px">Business Owner?</span></h4><br>
+                                <div class="text-center"><span style="color: black;font-size: 20px">Set up your Private Seller Account and create your listing today</span></div>
+                                <div class="mt-3 text-center"><a href="{{URL::to('list')}}" style="background: #8364E2;color: white;padding: 10px;border-radius: 5px;border: none;cursor: pointer">Get Started Here</a></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4 class="text-center">Are you a <span style="color: #4ebe3f;font-size: 20px">Business Broker?</span></h4><br>
+                                <div class="text-center"><span style="color: black;font-size: 20px">Set up your BrokerWeb Account and list multiple businesses</span></div>
+                                <div class="mt-3 text-center"><a style="background: #4ebe3f;color: white;padding: 10px;border-radius: 5px;border: none">Get Started Here</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
    <!-- content close -->
     <a href="#" id="back-to-top"></a>

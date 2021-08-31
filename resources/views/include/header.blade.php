@@ -71,10 +71,12 @@
                         </div>
                         <div class="de-flex-col header-col-mid">
                             <!-- mainmenu begin -->
+                            @if(\Request::is('/'))
                             <div class="menu_side_area">
                                 <a href="#" class="btn-main" data-toggle="modal" data-target="#myModal" style="padding: 15px!important;">Sell Your Business</a>
                                 <span id="menu-btn"></span>
                             </div>
+                            @endif
                             <ul id="mainmenu">
                                 <li>
                                     <a href="{{url('')}}">Home<span></span></a>
@@ -135,34 +137,6 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal" id="myModal" style="z-index: 9!important;">
-            <div class="modal-dialog modal-xl"  style="z-index: 9!important;">
-                <div class="modal-content" style="margin-top: 200px;z-index: 9!important;">
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <div class="row p-3">
-                            <div class="col-lg-6" style="border-right: dotted">
-                                <h4 class="text-center">Are you a <span style="color: #8364E2;font-size: 20px">Business Owner?</span></h4><br>
-                                <div class="text-center"><span style="color: black;font-size: 20px">Set up your Private Seller Account and create your listing today</span></div>
-                                <div class="mt-3 text-center"><a href="{{URL::to('list')}}" style="background: #8364E2;color: white;padding: 10px;border-radius: 5px;border: none;cursor: pointer">Get Started Here</a></div>
-                            </div>
-                            <div class="col-lg-6">
-                                <h4 class="text-center">Are you a <span style="color: #4ebe3f;font-size: 20px">Business Broker?</span></h4><br>
-                                <div class="text-center"><span style="color: black;font-size: 20px">Set up your BrokerWeb Account and list multiple businesses</span></div>
-                                <div class="mt-3 text-center"><a style="background: #4ebe3f;color: white;padding: 10px;border-radius: 5px;border: none">Get Started Here</a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-
                 </div>
             </div>
         </div>

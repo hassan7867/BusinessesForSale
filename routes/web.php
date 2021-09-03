@@ -43,3 +43,6 @@ Route::get('user-logout',"\App\Http\Controllers\UserDashboardController@userLogo
 Route::get('resources',"\App\Http\Controllers\UserDashboardController@resources")->middleware('CheckSession');
 Route::get('user-profile',"\App\Http\Controllers\UserDashboardController@userProfile")->middleware('CheckSession');
 Route::post('change/password',"\App\Http\Controllers\UserDashboardController@changePassword");
+
+//Admin Dashboard URLS
+Route::get('admin-dashboard',"\App\Http\Controllers\AdminController@adminDashboard");

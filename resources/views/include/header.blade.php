@@ -41,6 +41,8 @@
     <script src="{{url('')}}/js/jquery.lazy.plugins.min.js"></script>
     <script src="{{url('')}}/js/designesia.js"></script>
     <script src="{{url('')}}/js/popper.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 
 <body>
@@ -72,10 +74,10 @@
                         <div class="de-flex-col header-col-mid">
                             <!-- mainmenu begin -->
                             @if(\Request::is('/'))
-                            <div class="menu_side_area">
-                                <a href="#" class="btn-main" data-toggle="modal" data-target="#myModal" style="padding: 15px!important;">Sell Your Business</a>
-                                <span id="menu-btn"></span>
-                            </div>
+{{--                            <div class="menu_side_area">--}}
+{{--                                <a href="#" class="btn-main" data-toggle="modal" data-target="#myModal" style="padding: 15px!important;">Sell Your Business</a>--}}
+{{--                                <span id="menu-btn"></span>--}}
+{{--                            </div>--}}
                             @endif
                             <ul id="mainmenu">
                                 <li>
@@ -88,27 +90,30 @@
 {{--                                        <li><a href="index-4.html">Homepage 4</a></li>--}}
 {{--                                    </ul>--}}
                                 </li>
-                                <li>
-                                    <a href="#">Explore<span></span></a>
+{{--                                <li>--}}
+{{--                                    <a href="#">Explore<span></span></a>--}}
 {{--                                    <ul>--}}
 {{--                                        <li><a href="explore.html">Explore</a></li>--}}
 {{--                                        <li><a href="collection.html">Collections</a></li>--}}
 {{--                                        <li><a href="item-details.html">Item Details</a></li>--}}
 {{--                                    </ul>--}}
-                                </li>
+{{--                                </li>--}}
                                 <li>
                                     <a href="#">Buy a Business<span></span></a>
-{{--                                    <ul>--}}
-{{--                                        <li><a href="author.html">Author</a></li>--}}
-{{--                                        <li><a href="wallet.html">Wallet</a></li>--}}
-{{--                                        <li><a href="create.html">Create</a></li>--}}
-{{--                                        <li><a href="news.html">News</a></li>--}}
-{{--                                        <li><a href="gallery.html">Gallery</a></li>--}}
-{{--                                        <li><a href="login.html">Login</a></li>--}}
-{{--                                        <li><a href="login-2.html">Login 2</a></li>--}}
-{{--                                        <li><a href="register.html">Register</a></li>--}}
-{{--                                        <li><a href="contact.html">Contact Us</a></li>--}}
-{{--                                    </ul>--}}
+                                    <ul>
+                                        <li><a href="#">Business for sale</a></li>
+                                        <li><a href="#">Register as buyer</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Sell a Business<span></span></a>
+                                    <ul>
+                                        <li><a href="{{url('list')}}">Sell your Business</a></li>
+                                        <li><a href="#">How to sell your business</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Value a business<span></span></a>
                                 </li>
 {{--                                <li>--}}
 {{--                                    <a href="activity.html">Activity<span></span></a>--}}
@@ -117,7 +122,8 @@
                                    @if(\Illuminate\Support\Facades\Session::has('userId'))
                                         <a href="{{url('user-dashboard')}}">My Account<span></span></a>
                                     @else
-                                        <a href="{{url('user-login')}}">Login<span></span></a>
+                                        <a href="#" data-toggle="modal" data-target="#myModal1122" >Login<span></span></a>
+
                                     @endif
 {{--                                    <ul>--}}
 {{--                                        <li><a href="icons-elegant.html">Elegant Icons</a></li>--}}
@@ -134,12 +140,126 @@
 {{--                                        <li><a href="tooltips.html">Tooltips</a></li>--}}
 {{--                                    </ul>--}}
                                 </li>
+                                <li>
+                                    @if(\Illuminate\Support\Facades\Session::has('userId'))
+                                    @else
+                                        <a href="#" >Register<span></span></a>
+
+                                    @endif
+                                </li>
+                                <li>
+                                    <a class="btn btn-main" href="{{url('list')}}" style="color: white;margin-left: 20px;margin-top: 20px" >CREATE AN AD<span></span></a>
+
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="modal" id="myModal1122">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <div>
+                            <h5 class="modal-title" style="text-align: center">Welcome! Sign in:</h5>
+                            <p>
+                                Don't have an account yet? <a href="{{url('buyer-registration')}}">Register</a>
+                            </p>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                            <div class="row" style="margin-top: 20px">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Email Address *</label>
+                                        <input class="form-control" type="text" name="email" id="loginemail" placeholder="Email Address">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Password *</label>
+                                        <input class="form-control" type="password" name="password" id="loginpassword" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div id="loadergif" style="margin: 0 auto;max-width: 100px;display: none">
+                                    <img src="{{url('loader.gif')}}" style="height: 100px">
+                                </div>
+                                <div style="margin-top: 20px">
+                                    <button class="btn btn-main" onclick="loginUser()">Login</button>
+                                </div>
+
+                            </div>
+
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script>
+            function loginUser(){
+                let loginemail = document.getElementById('loginemail').value;
+                let loginpassword = document.getElementById('loginpassword').value;
+                if (loginemail === '' || loginemail === undefined){
+                    showError("Email is required");
+                    return;
+                }
+                if (loginpassword === '' || loginpassword === undefined){
+                    showError("Password is required");
+                    return;
+                }
+
+                let formData = new FormData();
+                formData.append('email', loginemail);
+                formData.append('password', loginpassword);
+                formData.append("_token", "{{ csrf_token() }}");
+
+                document.getElementById('loadergif').style.display = 'flex';
+                $.ajax({
+                    url: `{{env('APP_URL')}}/login-user-api`,
+                    type: 'POST',
+                    dataType: "JSON",
+                    data: formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function (result) {
+                        document.getElementById('loadergif').style.display = 'none';
+
+                        if (result.status === true) {
+                            window.location.href = `{{env('APP_URL')}}/user-dashboard`
+
+                        } else {
+                            swal({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: result.message,
+                            });
+                        }
+                    },
+                    error: function (data) {
+                        document.getElementById('loadergif').style.display = 'none';
+
+                        swal({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: "server Error",
+                        });
+                    }
+                });
+            }
+        </script>
     </header>
 
     <!-- header close -->

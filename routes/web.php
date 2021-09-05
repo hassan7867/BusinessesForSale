@@ -31,10 +31,10 @@ Route::post('get-categories',"\App\Http\Controllers\UserController@getCategories
 Route::post('get-cities',"\App\Http\Controllers\UserController@getCities");
 Route::post('save-listing-details',"\App\Http\Controllers\UserController@saveListingDetails");
 Route::get('list',"\App\Http\Controllers\FrontController@openList");
-Route::post('save-business-details',"\App\Http\Controllers\UserController@saveBusinessDetails");
 Route::post('save-subscription-details',"\App\Http\Controllers\UserController@saveSubscriptionDetails");
 Route::post('finalize-wizard',"\App\Http\Controllers\UserController@finalizeWizard");
 Route::get('user-login',"\App\Http\Controllers\UserController@userlogin");
+Route::post('login-user-api',"\App\Http\Controllers\UserController@loginUserApi");
 Route::post('login-user-request',"\App\Http\Controllers\UserController@userloginRequest");
 
 //user dashboard urls

@@ -103,9 +103,9 @@
             color:#555555;
         }
         .wizard li.active span.round-tab {
-            background: #8364E2;
+            background: #934A5F;
             color: #fff;
-            border-color: #8364E2;
+            border-color: #934A5F;
         }
         .wizard li.active span.round-tab i{
             color: #5bc0de;
@@ -177,7 +177,7 @@
             margin-top: 30px;
         }
         .next-step{
-            background-color: #8364E2;
+            background-color: #934A5F;
             color: white;
         }
         .skip-btn{
@@ -326,8 +326,8 @@
         /*    transform: rotate(-45deg);*/
         /*}*/
         /*input[type="checkbox"]:checked::before{*/
-        /*    background-color: #8364E2;*/
-        /*    border-color: #8364E2;*/
+        /*    background-color: #934A5F;*/
+        /*    border-color: #934A5F;*/
         /*}*/
 
 
@@ -354,9 +354,11 @@
             }
         }
 
+
+
+
     </style>
 {{--    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&amp;display=swap" rel="stylesheet">--}}
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <input type="hidden" id="userSession" value="{{\Illuminate\Support\Facades\Session::has('userId') ?? ''}}">
     <div class="container" style="padding: 30px;margin-top: 100px">
         @if(\Illuminate\Support\Facades\Session::has('userId'))
@@ -378,19 +380,19 @@
                                     <div class="connecting-line"></div>
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li role="presentation" class="active">
-                                            <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" aria-expanded="true"><span class="round-tab">1 </span> <i>Contact Details</i></a>
+                                            <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" aria-expanded="true"><span class="round-tab">1 </span> <i >Contact Details</i></a>
                                         </li>
                                         <li role="presentation" class="disabled">
-                                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" aria-expanded="false"><span class="round-tab">2</span> <i>Build Your Listing</i></a>
+                                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" aria-expanded="false"><span class="round-tab">2</span> <i>BUILD AD</i></a>
                                         </li>
                                         <li role="presentation" class="disabled">
-                                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab"><span class="round-tab">3</span> <i>Further Business Details</i></a>
+                                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab"><span class="round-tab">3</span> <i>Promotion</i></a>
                                         </li>
                                         <li role="presentation" class="disabled">
-                                            <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab"><span class="round-tab">4</span> <i>Review Your Order</i></a>
+                                            <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab"><span class="round-tab">4</span> <i>Payment</i></a>
                                         </li>
                                         <li role="presentation" class="disabled">
-                                            <a href="#step5" data-toggle="tab" aria-controls="step5" role="tab"><span class="round-tab">5</span> <i>Final Confirmation</i></a>
+                                            <a href="#step5" data-toggle="tab" aria-controls="step5" role="tab"><span class="round-tab">5</span> <i>Done</i></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -464,445 +466,365 @@
                                             </ul>
                                         </div>
                                         <div class="tab-pane" role="tabpanel" id="step2">
-                                            <h4 class="text-center">Build Your Listing</h4>
-                                            <div class="row" style="margin-top: 20px">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Listing Heading *</label>
-                                                        <input class="form-control" type="text" name="heading" id="heading" placeholder="Heading">
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-
-                                            <div style="margin-top: 20px">
-                                                <div>
-                                                    <div class="form-group">
-                                                        <label>Listing Summary *</label>
-                                                        <textarea class="form-control" type="text" style="width: 300px!important;height: 150px" name="summary" id="summary" placeholder="Summary"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row" style="margin-top: 20px">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label>Status of Business *</label>
+                                            <h4 class="text-center">Post an ad</h4>
+                                            <p style="margin-top: 10px;margin-bottom: 10px">
+                                                <a id="collapseId0" style="font-size: 18px"  data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                    What type of business are you selling?
+                                                </a>
+                                            </p>
+                                            <div class="collapse" id="collapseExample">
+                                                <div class="card card-body">
+                                                    <div class="form-group" style="margin-top: 10px;margin-bottom: 10px">
+                                                        <label style="font-weight: bold;color: black">Business Status*</label>
                                                         <br>
-                                                        <input type="radio" name="statusOfBusiness" id="statusOfBusiness" value="For Sale" checked style="margin-left: 10px"> For Sale
-                                                        <input type="radio" name="statusOfBusiness" id="statusOfBusiness" value="Under Offer" style="margin-left: 10px"> Under Offer
-                                                        <input type="radio" name="statusOfBusiness" id="statusOfBusiness" value="Sold (Subject to Contract)" style="margin-left: 10px"> Sold (Subject to Contract)
+                                                        <input type="radio" name="statusOfBusiness" id="statusOfBusinessforSale" value="For Sale" checked style="margin-left: 10px"> For Sale
+                                                        <input type="radio" name="statusOfBusiness" id="statusOfBusinessunderOffer" value="Under Offer" style="margin-left: 10px"> Under Offer
+                                                        <input type="radio" name="statusOfBusiness" id="statusOfBusinesssold" value="Sold (Subject to Contract)" style="margin-left: 10px"> Sold (Subject to Contract)
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <p style="font-weight: bold;color: black">Select Your Business Type * </p>
+                                                        <div class="row">
+                                                            <div class="col-md-4" id="headCategories">
+
+                                                            </div>
+                                                            <div class="col-md-4" id="subheadCategories">
+
+                                                            </div>
+                                                            <div class="col-md-4" id="subheadCategories2">
+
+                                                            </div>
+                                                        </div>
+                                                        <p  style="font-weight: bold;color: black">Selected Categories will show here</p>
+                                                        <div id="selected-categories">
+
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <div>
+                                                            <p  style="font-weight: bold;color: black">Location *</p>
+                                                            <select id="cities" class="form-control">
+                                                                <option value="">Select Location</option>
+                                                                @foreach($cities as $city)
+                                                                    <option value="{{$city->id}}">{{$city->name}}</option>
+                                                                @endforeach
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <input type="checkbox" name="dontListLocation" id="dontListLocation" style="margin-left: 10px;position: relative!important;" onclick="dontListLoc()"><span style=";margin-left: 5px">Don't list under a location</span>
+
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <input type="checkbox" name="showAsConfidentialSale" id="showAsConfidentialSale" style="margin-left: 10px;position: relative!important;" ><span style=";margin-left: 5px">Show as confidential sale</span>
+
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <p  style="font-weight: bold;color: black">Relocatable</p>
+                                                        <input type="radio" name="relocatable" id="relocatableYes"
+                                                               value="Yes" style="margin-left: 10px"> Yes
+                                                        <input type="radio" name="relocatable" id="relocatableNo"
+                                                               value="No" style="margin-left: 10px" checked> NO
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <div class="form-group">
+                                                            <label  style="font-weight: bold;color: black">Location Details *</label>
+                                                            <textarea class="form-control" type="text" style="width: 300px!important;height: 150px" name="locationDetails" id="locationDetails" placeholder="Location Details.."></textarea>
+                                                        </div>
+                                                    </div>
+                                                   <div style="margin: 0 auto;max-width: 250px;">
+                                                       <button type="button" class="btn btn-outline-dark" onclick="gotoNextCollapse(0)">NEXT</button>
+                                                   </div>
+                                                </div>
+                                            </div>
+                                            <p style="margin-top: 10px;margin-bottom: 10px">
+                                                <a id="collapseId1" style="font-size: 18px"  data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1">
+                                                    Choose a title for your advert and tell us more about your business
+                                                </a>
+                                            </p>
+                                            <div class="collapse" id="collapseExample1">
+                                                <div class="card card-body">
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <div class="form-group">
+                                                            <label  style="font-weight: bold;color: black">Advert Heading *</label>
+                                                            <input class="form-control" type="text" name="heading" id="heading" placeholder="Heading">
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <div class="form-group">
+                                                            <label  style="font-weight: bold;color: black">Business Summary *</label>
+                                                            <textarea class="form-control" type="text" style="width: 300px!important;height: 150px" name="summary" id="summary" placeholder="Summary"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin: 0 auto;max-width: 250px;">
+                                                        <button type="button" class="btn btn-outline-dark" onclick="gotoNextCollapse(1)">NEXT</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <p>Select Your Business Type * </p>
-                                            <div class="row">
-                                                <div class="col-md-4" id="headCategories">
-
-                                                </div>
-                                                <div class="col-md-4" id="subheadCategories">
-
-                                                </div>
-                                                <div class="col-md-4" id="subheadCategories2">
-
-                                                </div>
-                                            </div>
-                                            <p>Selected Categories</p>
-                                            <div id="selected-categories">
-
-                                            </div>
-
-                                            <div class='row'>
-                                                <div class="col-md-6">
-                                                    <p>Region *</p>
-                                                    <select id="region" class="form-control" onchange="getCities(this.value)">
-                                                        <option value="">Select Region</option>
-                                                        @foreach($regions as $region)
-                                                            <option value="{{$region->id}}">{{$region->name}}</option>
-                                                        @endforeach
-
-                                                    </select>
-
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>City/Town *</p>
-                                                    <select id="cities" class="form-control">
-                                                        <option value="">Select City/Town</option>
-
-
-                                                    </select>
-                                                </div>
-
-                                            </div>
-                                            <div class="row" style="margin-top: 25px">
-                                                <div class="col-md-3">
-                                                    <p>Property Status * </p>
-                                                </div>
-                                                <div class="col-md-9">
-                                                        <input type="radio" value="Real Property" name="propertyStatus" id="propertyStatus" style="margin-left: 10px"> Real Property
-                                                        <input type="radio" value="Lease" name="propertyStatus" id="propertyStatus" style="margin-left: 10px"> Lease
-                                                        <input type="radio" value="Both freehold and leasehold" name="propertyStatus" id="propertyStatus" style="margin-left: 10px"> Both freehold and leasehold
-                                                        <input type="radio" value="N/A" name="propertyStatus" id="propertyStatus" style="margin-left: 10px"> N/A
-                                                </div>
-                                            </div>
-                                            <div class="row" style="margin-top: 25px">
-                                                <div class="col-md-2">
-                                                    <p>Asking Price * </p>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <select id="askingprice" style="padding: 10px" class="form-control">
-                                                        <option value="">Select...</option>
-                                                        <option value="Under $100K">Under $100K</option>
-                                                        <option value="$100K-$250K">$100K-$250K</option>
-                                                        <option value="$250K-$500K">$250K-$500K</option>
-                                                        <option value="$500K-$1m">$500K-$1m</option>
-                                                        <option value="$1m-$5m">$1m-$5m</option>
-                                                        <option value="Over $5m">Over $5m</option>
-                                                        <option value="Undisclosed">Undisclosed</option>
-
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <input class="form-control" placeholder="OR speicfy the price in USD" type="text" value="" name="askingSpecificPrice" id="askingSpecificPrice" >
-                                                </div>
-                                            </div>
-                                            <div class="row" style="margin-top: 25px">
-                                                <div class="col-md-12">
-                                                    <span>Quick Sale</span>    <input type="checkbox" name="quickSale" id="quickSale" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Check this box if the asking price is negotiable for a quick sale.</span>
-
-                                                </div>
-                                            </div>
-                                            <div class="row" style="margin-top: 25px">
-                                                <div class="col-md-2">
-                                                    <p>Sales Revenue * </p>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <select id="salesRevenue" style="padding: 10px" class="form-control">
-                                                        <option value="">Select...</option>
-                                                        <option value="Under $100K">Under $100K</option>
-                                                        <option value="$100K-$250K">$100K-$250K</option>
-                                                        <option value="$250K-$500K">$250K-$500K</option>
-                                                        <option value="$500K-$1m">$500K-$1m</option>
-                                                        <option value="$1m-$5m">$1m-$5m</option>
-                                                        <option value="Over $5m">Over $5m</option>
-                                                        <option value="Undisclosed">Undisclosed</option>
-                                                        <option value="NotApplicable">NotApplicable</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <input class="form-control" placeholder="OR specify the sales Revenue in USD" type="text" value="" name="salesRevenueSpecific" id="salesRevenueSpecific" >
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <select id="salesRevenueTerm" style="padding: 10px" class="form-control">
-                                                        <option value="Annual">Annual</option>
-                                                        <option value="Quarterly">Quarterly</option>
-                                                        <option value="Weekly">Weekly</option>
-                                                    </select>
+                                            <p style="margin-top: 10px;margin-bottom: 10px">
+                                                <a id="collapseId2" style="font-size: 18px"  data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+                                                    What is the asking price?
+                                                </a>
+                                            </p>
+                                            <div class="collapse" id="collapseExample2">
+                                                <div class="card card-body">
+                                                    <div style="margin-top: 10px;margin-bottom: 10px" id="askingpricediv">
+                                                        <div class="form-group">
+                                                            <label  style="font-weight: bold;color: black">Asking Price Heading (USD) *</label>
+                                                            <input class="form-control" placeholder="Asking Price" type="text" value="" name="askingSpecificPrice" id="askingSpecificPrice" ></div>
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <div class="form-group">
+                                                            <label  style="font-weight: bold;color: black">Show price as *</label>
+                                                            <input type="radio" name="askingPriceAs" id="askingPriceAsaskingPrice" value="Asking Price" checked style="margin-left: 10px" onclick="document.getElementById('askingpricediv').style.display = 'block'"> Asking Price
+                                                            <input type="radio" name="askingPriceAs" id="askingPriceAsofferInvited" value="Offer Invited" style="margin-left: 10px" onclick="document.getElementById('askingpricediv').style.display = 'none'"> Offer Invited
+                                                            <input type="radio" name="askingPriceAs" id="askingPriceAspriceOnApplication" value="Price on Application (POA)" style="margin-left: 10px" onclick="document.getElementById('askingpricediv').style.display = 'none'"> Price on Application (POA)
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <div class="form-group">
+                                                            <label  style="font-weight: bold;color: black">Property Status *</label>
+                                                            <input type="radio" value="Free Hold" name="propertyStatus" id="propertyStatusFreeHold" style="margin-left: 10px"> Free Hold
+                                                            <input type="radio" value="Lease" name="propertyStatus" id="propertyStatusLease" style="margin-left: 10px"> Lease
+                                                            <input type="radio" value="Both freehold and leasehold" name="propertyStatus" id="propertyStatusBoth" style="margin-left: 10px"> Both
+                                                            <input type="radio" value="N/A" name="propertyStatus" id="propertyStatusNA" style="margin-left: 10px" checked> N/A
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <label  style="font-weight: bold;color: black">Turnover (USD) *</label>
+                                                        <div class="row" style="margin-top: 25px">
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" placeholder="Turn over" type="text" value="" name="turnOver" id="turnOver" >
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <select id="turnOverTerm" style="padding: 10px" class="form-control">
+                                                                    <option value="Annual" selected>Annual</option>
+                                                                    <option value="Monthly">Monthly</option>
+                                                                    <option value="Weekly">Weekly</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <label  style="font-weight: bold;color: black">NetProfit (USD) *</label>
+                                                        <div class="row" style="margin-top: 25px">
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" placeholder="Net Profit" type="text" value="" name="netProfit" id="netProfit" >
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <select id="netProfitTerm" style="padding: 10px" class="form-control">
+                                                                    <option value="Annual" selected>Annual</option>
+                                                                    <option value="Monthly">Monthly</option>
+                                                                    <option value="Weekly">Weekly</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin: 0 auto;max-width: 250px;">
+                                                        <button type="button" class="btn btn-outline-dark" onclick="gotoNextCollapse(2)">NEXT</button>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <div class="row" style="margin-top: 25px">
-                                                <div class="col-md-2">
-                                                    <p>Cash Flow * </p>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <select id="cashFlow" style="padding: 10px" class="form-control">
-                                                        <option value="">Select...</option>
-                                                        <option value="Under $100K">Under $100K</option>
-                                                        <option value="$100K-$250K">$100K-$250K</option>
-                                                        <option value="$250K-$500K">$250K-$500K</option>
-                                                        <option value="$500K-$1m">$500K-$1m</option>
-                                                        <option value="$1m-$5m">$1m-$5m</option>
-                                                        <option value="Over $5m">Over $5m</option>
-                                                        <option value="Undisclosed">Undisclosed</option>
-                                                        <option value="NotApplicable">NotApplicable</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <input class="form-control" placeholder="OR specify the cash flow in USD" type="text" value="" name="cashflowSpecific" id="cashflowSpecific" >
+                                            <p style="margin-top: 10px;margin-bottom: 10px">
+                                                <a id="collapseId3" style="font-size: 18px"  data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3">
+                                                    Additional Business Information
+                                                </a>
+                                            </p>
+                                            <div class="collapse" id="collapseExample3">
+                                                <div class="card card-body">
+                                                    <p style="color: cornflowerblue">
+                                                        You can provide further information on your business in this section. For example, any competitive considerations or business handover support following a successful sale.
+
+                                                    </p>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <div class="form-group">
+                                                            <label  style="font-weight: bold;color: black">Website </label>
+                                                            <input class="form-control" type="text" name="websiteAddress" id="websiteAddress" placeholder="https://">
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <div class="form-group">
+                                                            <label  style="font-weight: bold;color: black">Support & training</label>
+                                                            <textarea class="form-control" type="text" style="width: 300px!important;height: 150px" name="supportAndTraining" id="supportAndTraining" placeholder="Support And Training"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <div class="form-group">
+                                                            <label  style="font-weight: bold;color: black">Is accommodation included?</label>
+                                                            <input type="radio" name="accomodationIncluded" id="accomodationIncludedYes" value="Yes"  style="margin-left: 10px"> YES
+                                                            <input type="radio" name="accomodationIncluded" id="accomodationIncludedNo" value="No" style="margin-left: 10px" checked> No
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <div class="form-group">
+                                                            <label  style="font-weight: bold;color: black">Is this business homebased?</label>
+                                                            <input type="radio" name="homebased" id="homebasedYes" value="Yes"  style="margin-left: 10px"> YES
+                                                            <input type="radio" name="homebased" id="homebasedNo" value="No" style="margin-left: 10px" checked> No
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <div class="form-group">
+                                                            <label  style="font-weight: bold;color: black">Is this business In administrative/receivership</label>
+                                                            <input type="radio" name="administrative" id="administrativeYes" value="Yes"  style="margin-left: 10px"> YES
+                                                            <input type="radio" name="administrative" id="administrativedNo" value="No" style="margin-left: 10px" checked> No
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <div class="form-group">
+                                                            <label  style="font-weight: bold;color: black">Trading hours</label>
+                                                            <input type="text" name="tradingHours" id="tradingHours" value=""  class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <div class="form-group">
+                                                            <label  style="font-weight: bold;color: black">Number of Employees</label>
+                                                            <input type="text" name="numberOfEmployees" id="numberOfEmployees" value=""  class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin: 0 auto;max-width: 250px;">
+                                                        <button type="button" class="btn btn-outline-dark" onclick="gotoNextCollapse(3)">NEXT</button>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <div class="row" style="margin-top: 25px">
-                                                <div class="col-md-4">
-                                                    <p>Upload Photos </p>
-                                                </div>
-                                                <div class="col-md-8">
-                                                   <input type="file" name="photos" id="photos" accept="image/png, image/gif, image/jpeg" multiple>
-                                                    <p style="font-size: 12px">you can upload multiple photos by holding CTRL button</p>
-                                                </div>
-                                            </div>
+                                            <p style="margin-top: 10px;margin-bottom: 10px">
+                                                <a id="collapseId4" style="font-size: 18px"  data-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample4">
+                                                    Upload some photos videos and documents
+                                                </a>
+                                            </p>
+                                            <div class="collapse" id="collapseExample4">
+                                                <div class="card card-body">
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <div class="row" style="margin-top: 25px">
+                                                            <div class="col-md-4">
+                                                                <p style="font-weight: bold;color: black">Upload Photos </p>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <input type="file" name="photos" id="photos" accept="image/png, image/gif, image/jpeg" multiple>
+                                                                <p style="font-size: 12px">you can upload multiple photos by holding CTRL button</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <p style="font-weight: bold;color: black">Embed Video</p>
+                                                        <input type="text" name="embededVideo" id="embededVideo" placeholder="<iframe ..."  class="form-control">
+                                                    </div>
+                                                    <div style="margin-top: 10px;margin-bottom: 10px">
+                                                        <div class="row" style="margin-top: 25px">
+                                                            <div class="col-md-4">
+                                                                <p style="font-weight: bold;color: black">Upload Document </p>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <input type="file" name="documents" id="documents" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*" multiple>
+                                                                <p style="font-size: 12px">you can upload multiple document by holding CTRL button</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                                            <div class="row" style="margin-top: 25px">
-                                                <div class="col-md-4">
-                                                    <p>Upload Document </p>
+
                                                 </div>
-                                                <div class="col-md-8">
-                                                    <input type="file" name="documents" id="documents" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*" multiple>
-                                                    <p style="font-size: 12px">you can upload multiple document by holding CTRL button</p>
-                                                </div>
-                                            </div>
-                                            <div style="margin-top: 20px">
-                                                <p>Website Address</p>
-                                                <input type="text" name="websiteAddress" id="websiteAddress" placeholder="https://" class="form-control">
-                                            </div>
-                                            <div style="margin-top: 20px">
-                                                <p>Embed Video</p>
-                                                <input type="text" name="embededVideo" id="embededVideo" placeholder="<iframe ..."  class="form-control">
                                             </div>
 
                                             <ul class="list-inline pull-right">
-                                                <li><button type="button" class="default-btn prev-step">Back</button></li>
-                                                <li><button type="button" class="default-btn next-step skip-btn">Skip</button></li>
+                                                <li><button type="button" class="default-btn prev-step" style="display:none">Back</button></li>
+                                                <li><button type="button" class="default-btn next-step skip-btn" style="display:none">Skip</button></li>
                                                 <li><button type="button" class="default-btn next-step">Continue</button></li>
                                             </ul>
                                         </div>
 
                                         <div class="tab-pane" role="tabpanel" id="step3">
-                                            <h4 class="text-center">Business Details</h4>
+                                            <h4 class="text-center">Promotion</h4>
+                                            <p style="text-align: center">You have selected our {{$package->duration ?? ''}} plan in {{$package->price}} USD</p>
+                                            <h3>Add Promotion to get more buyers viewing your business</h3>
                                             <div class="row">
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Location</p>
-                                                        <textarea type="text" name="locationDetails" id="locationDetails" placeholder="Please describe the location of business"  class="form-control"></textarea>
-                                                    </div>
-
+                                                <div class="col-md-3">
+                                                    <input type="checkbox" name="promote" id="promote" onclick="promotionClick()">
                                                 </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Premises</p>
-                                                        <textarea type="text" name="premises" id="premises" placeholder="Please describe the premises of business"  class="form-control"></textarea>
-                                                    </div>
-
+                                                <div class="col-md-9">
+                                                    <p style="color: #0a58ca">Display your business on the home page USD 85</p>
+                                                    <p>
+                                                        Your business will appear on the Home page for 7 days. Inclusion on the gallery can boost your business buyer
+                                                        views as much as 87%
+                                                    </p>
                                                 </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Competition</p>
-                                                        <textarea type="text" name="competition" id="competition" placeholder="Please describe the competitors of business"  class="form-control"></textarea>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Expansion Potential</p>
-                                                        <textarea type="text" name="expansion" id="expansion" placeholder="Please describe any oppurtunities for expansion of business"  class="form-control"></textarea>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <span>Living Accomodation</span>    <input type="checkbox" name="livingAccomodation" id="livingAccomodation" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Check this box if accomodation is included.</span>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Living Accomodation Description</p>
-                                                        <textarea type="text" name="livingAccomodationDescription" id="livingAccomodationDescription" placeholder="Please describe living accomodation description of business"  class="form-control"></textarea>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Size in square feet of property if applicable</p>
-                                                        <textarea type="text" name="sizeInSquareFeet" id="sizeInSquareFeet" placeholder=""  class="form-control"></textarea>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Planning Consent</p>
-                                                        <textarea type="text" name="planningConsent" id="planningConsent" placeholder="Please share any details of any planning permission gained"  class="form-control"></textarea>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Years Established</p>
-                                                        <input type="text" name="yearsEstablished" id="yearsEstablished" placeholder="List the number of years the business has been established"  class="form-control">
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Employees</p>
-                                                        <input type="text" name="employees" id="employees" placeholder="List the number of employees of the business"  class="form-control">
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Trading Hours</p>
-                                                        <textarea type="text" name="traddingHours" id="traddingHours" placeholder="List trading hours of business"  class="form-control"></textarea>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Support and Training</p>
-                                                        <textarea type="text" name="supportAndTraining" id="supportAndTraining" placeholder="Describe any support or training provided by business"  class="form-control"></textarea>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <span>Visa Ready</span>    <input type="checkbox" name="visaReady" id="visaReady" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Check this box if the business qualifies for an E-2 investor visa.</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Relocatable</p>
-                                                        <input type="radio" name="relocatable" id="relocatable" value="Yes" checked style="margin-left: 10px"> Yes
-                                                        <input type="radio" name="relocatable" id="relocatable" value="No" style="margin-left: 10px">Yes
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <span>Home Based</span>    <input type="checkbox" name="homeBased" id="homeBased" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px"> Check the box if business can be run from home</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <span>Franchise</span>    <input type="checkbox" name="franchise" id="franchise" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Check this box if the business is a franchise resale.</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Franchise Terms</p>
-                                                        <textarea type="text" name="franchiseTerms" id="franchiseTerms" placeholder=""  class="form-control"></textarea>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <span>Business Closed or Asset Sale</span>    <input type="checkbox" name="businessClosed" id="businessClosed" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Check this box if the business is not operating and only assets are being sold.</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <span>Distressed?</span>    <input type="checkbox" name="distressed" id="distressed" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Please tick this box if the business is a turnaround oppurtunity or a bankrupcy</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <span>Owner Financing Available?</span>    <input type="checkbox" name="ownerFinancing" id="ownerFinancing" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Please tick this box if you are willing to help finance the business sale</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Financing Available</p>
-                                                        <textarea type="text" name="financingAvailable" id="financingAvailable" placeholder="If applicable, describe any available financing option"  class="form-control"></textarea>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Reason for selling</p>
-                                                        <textarea type="text" name="reasonForSelling" id="reasonForSelling" placeholder="Please state reasons for selling of business"  class="form-control"></textarea>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <span>Furniture, Fixtures and Fitting</span>    <input type="checkbox" name="furnitureFixture" id="furnitureFixture" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Please tick this box if furniture, fixture and fitting included</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Value of Furniture, Fixtures and Fitting</p>
-                                                        <textarea type="text" name="valueOfFurnitureFixtures" id="valueOfFurnitureFixtures" placeholder="USD"  class="form-control"></textarea>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <span>Inventory Stock</span>    <input type="checkbox" name="inventoryStock" id="inventoryStock" style="margin-left: 10px;position: relative!important;"><span style=";margin-left: 5px">Please tick this box if inventory stock included in asking price</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div style="margin-top: 20px">
-                                                        <p>Value of Inventory Stock</p>
-                                                        <textarea type="text" name="valueOfInventoryStock" id="valueOfInventoryStock" placeholder="USD"  class="form-control"></textarea>
-                                                    </div>
-
-                                                </div>
-
                                             </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    @if($package->featured_promotion_worth == 0)
+                                                        <input type="checkbox" name="featured" id="featured" onclick="featuredPromotionClick()">
+                                                    @else
+                                                        <input type="checkbox" name="featured" checked id="featured" disabled>
+                                                    @endif
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p style="color: #0a58ca">Featured your business from USD 45</p>
+                                                    @if($package->featured_promotion_worth == 0)
+                                                        <p>
+                                                            Featured business is not included on your current selected plan.
+                                                        </p>
+                                                    @else
+                                                        <p>
+                                                            Featured business is already included on your current selected plan.
+                                                        </p>
+                                                    @endif
+
+                                                </div>
+                                            </div>
+                                           <div class="container">
+                                               <table class="table table-bordered">
+                                                   <thead>
+                                                        <tr>
+                                                            <th>Product</th>
+                                                            <th>Price</th>
+                                                        </tr>
+                                                   </thead>
+                                                   <tbody id="totalCostPromotion">
+                                                        <tr>
+                                                            <td>{{$package->duration}} plan for advertising</td>
+                                                            <td>{{$package->price}} USD</td>
+                                                        </tr>
+                                                   </tbody>
+                                                   <tbody>
+                                                        <tr>
+                                                            <td>Total</td>
+                                                            <td id="total-after-promotion">{{$package->price}} USD</td>
+                                                        </tr>
+                                                   </tbody>
+                                               </table>
+                                           </div>
                                             <ul class="list-inline pull-right">
-                                                <li><button type="button" class="default-btn prev-step">Back</button></li>
-                                                <li><button type="button" class="default-btn next-step skip-btn">Skip</button></li>
+                                                <li><button type="button" class="default-btn prev-step" style="display:none">Back</button></li>
+                                                <li><button type="button" class="default-btn next-step skip-btn" style="display:none">Skip</button></li>
                                                 <li><button type="button" class="default-btn next-step">Continue</button></li>
                                             </ul>
                                         </div>
                                         <div class="tab-pane" role="tabpanel" id="step4">
-                                            <h4 class="text-center">Review Your Order</h4>
+                                            <h4 class="text-center">Payment</h4>
                                             <div class="container">
-                                                <h6>Why wait to contact interested buyer? Choose one of the advertising package below and contact all buyers immediately</h6>
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <div style="background: #f5f5f5;padding: 15px">
-                                                            <div class="d-flex flex-wrap">
-                                                                <div style="margin-top: 15px">
-                                                                    <input type="radio" {{$priceId == 89 ? 'checked' : ''}}  name="subscription" id="6months" value="6months" style="margin-left: 10px" onchange="onRadioSubscriptionchange(this.value)">
-
-                                                                </div>
-                                                                <div style="margin-left: 35px">
-                                                                     <span>
-                                                                <p style="font-weight: bold;font-size: 18px">6 Months</p>
-                                                                <p style="color: blue;font-size: 18px;font-weight: bold">$89.0</p>
-                                                            </span>
-                                                                </div>
-                                                            </div>
-
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div style="background: #f5f5f5;padding: 15px">
-                                                            <div class="d-flex flex-wrap">
-                                                                <div style="margin-top: 15px">
-                                                                    <input type="radio" {{$priceId == 69 ? 'checked' : ''}} name="subscription" id="3months" value="3months" style="margin-left: 10px" onchange="onRadioSubscriptionchange(this.value)">
-
-                                                                </div>
-                                                                <div style="margin-left: 35px">
-                                                                     <span>
-                                                                <p style="font-weight: bold;font-size: 18px">3 Months</p>
-                                                                <p style="color: blue;font-size: 18px;font-weight: bold">$69.0</p>
-                                                            </span>
-                                                                </div>
-                                                            </div>
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Product</th>
+                                                        <th>Price</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id="totalCostPromotion1">
+                                                    <tr>
+                                                        <td>{{$package->duration}} plan for advertising</td>
+                                                        <td>{{$package->price}} USD</td>
+                                                    </tr>
+                                                    </tbody>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>Total</td>
+                                                        <td id="total-after-promotion1">{{$package->price}} USD</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
 
 
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div style="background: #f5f5f5;padding: 15px">
-                                                            <div class="d-flex flex-wrap">
-                                                                <div style="margin-top: 15px">
-                                                                    <input {{$priceId == 49 ? 'checked' : ''}} type="radio" name="subscription" id="1months" value="1months" style="margin-left: 10px" onchange="onRadioSubscriptionchange(this.value)">
-
-                                                                </div>
-                                                                <div style="margin-left: 35px">
-                                                                     <span>
-                                                                <p style="font-weight: bold;font-size: 18px">1 Months</p>
-                                                                <p style="color: blue;font-size: 18px;font-weight: bold">$49.0</p>
-                                                            </span>
-                                                                </div>
-                                                            </div>
-
-
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div style="margin-top: 15px">
-                                                    <input {{$priceId == 0 ? 'checked' : ''}} type="radio" name="subscription" id="limitedTrial" value="limitedTrial" style="margin-left: 10px" onchange="onRadioSubscriptionchange(this.value)">
-                                                        <span><span style="font-weight: bold">No thanks</span> I want to continue listing my business on limited trial</span>
-                                                </div>
-
-                                                <div style=";margin-top: 25px; {{$priceId == 0 ? 'display:none' : ''}}" id="card-details">
+                                                <div style=";margin-top: 25px;" id="card-details">
                                                     <input type="hidden" id="stripeToken" name="stripeToken">
                                                     <div class="row">
                                                         <div class="col-md-6">
@@ -947,37 +869,8 @@
                                             </div>
 
                                             <ul class="list-inline pull-right">
-                                                <li><button type="button" class="default-btn prev-step">Back</button></li>
+                                                <li><button type="button" class="default-btn prev-step" style="display:none">Back</button></li>
                                                 <li><button type="button" class="default-btn next-step">Continue</button></li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane" role="tabpanel" id="step5">
-                                            <h4 class="text-center">Final Confirmation</h4>
-                                            <div class="container">
-                                                    <p>Thank you <span id="customerName"></span></p>
-                                                    <p>Your business for sale listing has been created and is now being reviewed by our customer services team. Please allow
-                                                    at least one working day for it to be processed and go live on the site.
-                                                    </p>
-                                                <p>
-                                                    <span style="font-weight: bold">Your listing ID is : <span id="listingIdspan"></span></span><span> (Please refer this number for making inquiries)</span>
-                                                </p>
-                                                <p>
-                                                    <span style="font-weight: bold">Your username is : </span><span id="usernamespan"></span>
-                                                </p>
-                                                <p>
-                                                    We wish you the best of luck in finding a buyer and we will do all we can to help you sell your business quickly and easily.
-                                                </p>
-                                                <p>
-                                                    if you have any questions <span style="color: blue">contact us</span>
-                                                </p>
-                                                <p>
-                                                    We will send you email confirming these details
-                                                </p>
-                                            </div>
-
-                                            <ul class="list-inline pull-right">
-                                                <li><button type="button" class="default-btn prev-step">Back</button></li>
-                                                <li><button type="button" class="default-btn next-step">Finish</button></li>
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
@@ -992,7 +885,8 @@
         </div>
     </div>
 
-
+    <input type="hidden" id="total-package-price" value="{{$package->price ?? 0}}">
+    <input type="hidden" id="total-package-id" value="{{$package->id ?? 0}}">
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 <script>
@@ -1013,8 +907,10 @@
 
         let sessionVal = document.getElementById('userSession').value;
         if (sessionVal !== '' && sessionVal !== undefined &&sessionVal > 0){
+            currentStep = 1;
             gotoNextStep();
         }
+
 
         $(".next-step").click(function (e) {
 
@@ -1024,16 +920,18 @@
             if (currentStep === 1){
                 saveBasicDetails();
             }
-            if (currentStep === 2){
+            else if (currentStep === 2){
                 saveListingDetails();
+                // gotoNextStep();
             }
-            if (currentStep === 3){
+            else if (currentStep === 3){
                 saveBusinessDetails();
+                // gotoNextStep();
             }
-            if (currentStep === 4){
+            else if (currentStep === 4){
                 saveSubscriptionDetails();
             }
-            if (currentStep === 5){
+            else if (currentStep === 5){
                 fianlizeWizard();
             }
             // gotoNextStep();
@@ -1052,7 +950,14 @@
             prevTab(active);
 
         });
+
+        document.getElementById('collapseId0').click();
+        totalAfterPromotion = parseInt(document.getElementById('total-package-price').value);
     });
+
+    function gotoNextCollapse(val){
+        document.getElementById('collapseId' + (parseInt(val) + 1) ).click();
+    }
 
     function nextTab(elem) {
         $(elem).next().find('a[data-toggle="tab"]').click();
@@ -1063,6 +968,110 @@
     }
     function prevTab(elem) {
         $(elem).prev().find('a[data-toggle="tab"]').click();
+    }
+
+    let locListed = true;
+    function dontListLoc(){
+        if (locListed === true){
+            document.getElementById('cities').setAttribute('disabled', true);
+            locListed = false;
+        }else{
+            document.getElementById('cities').removeAttribute('disabled');
+            locListed = true;
+        }
+    }
+
+    let sevenDaysPromotion = 0;
+    let featuredPromotion = 0;
+    let totalAfterPromotion = 0;
+
+    function promotionClick(){
+        if (document.getElementById('promote').checked){
+            sevenDaysPromotion = 85;
+            let tr = document.createElement('tr');
+            tr.setAttribute('id', 'seven-day-tr');
+            let td1 = document.createElement('td');
+            let td2 = document.createElement('td');
+            td1.innerText = 'Seven days promotion';
+            td2.innerText = sevenDaysPromotion + ' USD';
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            document.getElementById('totalCostPromotion').appendChild(tr);
+
+        }else{
+            sevenDaysPromotion = 0;
+            document.getElementById('seven-day-tr').remove();
+        }
+        totalAfterPromotion = 0;
+        totalAfterPromotion = parseInt(document.getElementById('total-package-price').value);
+        totalAfterPromotion  = parseInt(totalAfterPromotion) + parseInt(sevenDaysPromotion) + parseInt(featuredPromotion);
+        document.getElementById('total-after-promotion').innerHTML = totalAfterPromotion + ' USD'
+
+    }
+
+    function featuredPromotionClick(){
+        if (document.getElementById('featured').checked){
+            featuredPromotion = 45;
+            let tr = document.createElement('tr');
+            tr.setAttribute('id', 'featured-tr');
+            let td1 = document.createElement('td');
+            let td2 = document.createElement('td');
+            td1.innerText = 'Featured promotion';
+            td2.innerText = featuredPromotion + ' USD';
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            document.getElementById('totalCostPromotion').appendChild(tr);
+        }else{
+            featuredPromotion = 0;
+            document.getElementById('featured-tr').remove();
+        }
+        totalAfterPromotion = 0;
+        totalAfterPromotion = parseInt(document.getElementById('total-package-price').value);
+        totalAfterPromotion  = parseInt(totalAfterPromotion) + parseInt(sevenDaysPromotion) + parseInt(featuredPromotion)
+        document.getElementById('total-after-promotion').innerHTML = totalAfterPromotion + ' USD'
+
+    }
+
+
+    function saveBusinessDetails(){
+        sevenDaysPromotion = 0;
+        if (document.getElementById('promote').checked){
+            sevenDaysPromotion = 85;
+            let tr = document.createElement('tr');
+            tr.setAttribute('id', 'seven-day-tr1');
+            let td1 = document.createElement('td');
+            let td2 = document.createElement('td');
+            td1.innerText = 'Seven days promotion';
+            td2.innerText = sevenDaysPromotion + ' USD';
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            document.getElementById('totalCostPromotion1').appendChild(tr);
+
+        }
+        featuredPromotion = 0;
+        if (document.getElementById('featured').checked){
+            featuredPromotion = 45;
+            let tr = document.createElement('tr');
+            tr.setAttribute('id', 'featured-tr1');
+            let td1 = document.createElement('td');
+            let td2 = document.createElement('td');
+            td1.innerText = 'Featured promotion';
+            td2.innerText = featuredPromotion + ' USD';
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            document.getElementById('totalCostPromotion1').appendChild(tr);
+        }
+
+        totalAfterPromotion = 0;
+        totalAfterPromotion = parseInt(document.getElementById('total-package-price').value);
+        totalAfterPromotion  = parseInt(totalAfterPromotion) + parseInt(sevenDaysPromotion) + parseInt(featuredPromotion)
+        document.getElementById('total-after-promotion1').innerHTML = totalAfterPromotion + ' USD';
+        if(totalAfterPromotion === 0){
+            document.getElementById('card-details').style.display = 'none';
+        }else{
+            document.getElementById('card-details').style.display = 'block';
+        }
+        gotoNextStep();
     }
 
 
@@ -1162,92 +1171,174 @@
 
     function saveListingDetails(){
 
+        let forSale = document.getElementById('statusOfBusinessforSale').checked;
+        let underOffer = document.getElementById('statusOfBusinessunderOffer').checked;
+        let sold = document.getElementById('statusOfBusinesssold').checked;
+        let cities = document.getElementById('cities').value;
+        let dontListLocation = document.getElementById('dontListLocation').value;
+        let showAsConfidentialSale = document.getElementById('showAsConfidentialSale').value;
+        let locationDetails = document.getElementById('locationDetails').value;
         let heading = document.getElementById('heading').value;
         let summary = document.getElementById('summary').value;
-        let statusOfBusiness = document.getElementById('statusOfBusiness').value;
-        let region = document.getElementById('region').value;
-        let cities = document.getElementById('cities').value;
-        let propertyStatus = document.getElementById('propertyStatus').value;
-        let askingprice = document.getElementById('askingprice').value;
         let askingSpecificPrice = document.getElementById('askingSpecificPrice').value;
-        let quickSale = document.getElementById('quickSale').checked;
-        let salesRevenue = document.getElementById('salesRevenue').value;
-        let salesRevenueSpecific = document.getElementById('salesRevenueSpecific').value;
-        let salesRevenueTerm = document.getElementById('salesRevenueTerm').value;
-        let cashFlow = document.getElementById('cashFlow').value;
-        let cashflowSpecific = document.getElementById('cashflowSpecific').value;
+        let askingPriceAsaskingPrice = document.getElementById('askingPriceAsaskingPrice').checked;
+        let askingPriceAsofferInvited = document.getElementById('askingPriceAsofferInvited').checked;
+        let askingPriceAspriceOnApplication = document.getElementById('askingPriceAspriceOnApplication').checked;
+
+
+        let propertyStatusFreeHold = document.getElementById('propertyStatusFreeHold').checked;
+        let propertyStatusLease = document.getElementById('propertyStatusLease').checked;
+        let propertyStatusBoth = document.getElementById('propertyStatusBoth').checked;
+        let propertyStatusNA = document.getElementById('propertyStatusNA').checked;
+
+        let turnOver = document.getElementById('turnOver').value;
+        let turnOverTerm = document.getElementById('turnOverTerm').value;
+
+        let netProfit = document.getElementById('netProfit').value;
+        let netProfitTerm = document.getElementById('netProfitTerm').value;
+        let websiteAddress = document.getElementById('websiteAddress').value;
+        let supportAndTraining = document.getElementById('supportAndTraining').value;
+
+        let accomodationIncludedYes = document.getElementById('accomodationIncludedYes').checked;
+        let accomodationIncludedNo = document.getElementById('accomodationIncludedNo').checked;
+
+        let homebasedNo = document.getElementById('homebasedNo').checked;
+        let homebasedYes = document.getElementById('homebasedYes').checked;
+
+        let administrativeYes = document.getElementById('administrativeYes').checked;
+        let administrativedNo = document.getElementById('administrativedNo').checked;
+
+        let relocatableYes = document.getElementById('relocatableYes').checked;
+        let relocatableNo = document.getElementById('relocatableNo').checked;
+
+        let tradingHours = document.getElementById('tradingHours').value;
+        let numberOfEmployees = document.getElementById('numberOfEmployees').value;
         let photos = document.getElementById('photos').files;
         let documents = document.getElementById('documents').files;
-        let websiteAddress = document.getElementById('websiteAddress').files;
-        let embededVideo = document.getElementById('embededVideo').files;
+        let embededVideo = document.getElementById('embededVideo').value;
 
-        if (heading === '' || heading === undefined){
-            showError("Listing Heading is required");
-            return;
+        let statusOfBusiness = 'For Sale';
+
+        if (forSale === true){
+            statusOfBusiness = document.getElementById('statusOfBusinessforSale').value;
+        }else  if (underOffer === true){
+            statusOfBusiness = document.getElementById('statusOfBusinessunderOffer').value;
+        }else  if (sold === true){
+            statusOfBusiness = document.getElementById('statusOfBusinesssold').value;
         }
-        else if (summary === '' || summary === undefined){
-            showError("Listing Summary is required");
-            return;
+        let askingPriceAs = 'Asking Price';
+        if (askingPriceAsaskingPrice === true){
+            askingPriceAs = document.getElementById('askingPriceAsaskingPrice').value;
+        }else  if (askingPriceAsofferInvited === true){
+            askingPriceAs = document.getElementById('askingPriceAsofferInvited').value;
+        }else  if (askingPriceAspriceOnApplication === true){
+            askingPriceAs = document.getElementById('askingPriceAspriceOnApplication').value;
         }
-        else if (statusOfBusiness === '' || statusOfBusiness === undefined){
-            showError("Select Status of business");
-            return;
+        let propertyStatus = 'N/A';
+        if (propertyStatusFreeHold === true){
+            propertyStatus = document.getElementById('propertyStatusFreeHold').value;
+        }else  if (propertyStatusLease === true){
+            propertyStatus = document.getElementById('propertyStatusLease').value;
+        }else  if (propertyStatusBoth === true){
+            propertyStatus = document.getElementById('propertyStatusBoth').value;
+        }else  if (propertyStatusNA === true){
+            propertyStatus = document.getElementById('propertyStatusNA').value;
         }
-        else if (selectedCategoriesList.length === 0){
+        let accomodationIncluded = 'No';
+        if (accomodationIncludedYes === true){
+            accomodationIncluded = document.getElementById('accomodationIncludedYes').value;
+        }else  if (accomodationIncludedNo === true){
+            accomodationIncluded = document.getElementById('accomodationIncludedNo').value;
+        }
+        let homebased = 'No';
+        if (homebasedYes === true){
+            homebased = document.getElementById('homebasedYes').value;
+        }else  if (homebasedNo === true){
+            homebased = document.getElementById('homebasedNo').value;
+        }
+        let administrative = 'No';
+        if (administrativeYes === true){
+            administrative = document.getElementById('administrativeYes').value;
+        }else  if (administrativedNo === true){
+            administrative = document.getElementById('administrativedNo').value;
+        }
+
+        let relocatable = 'No';
+        if (relocatableYes === true){
+            relocatable = document.getElementById('relocatableYes').value;
+        }else  if (relocatableNo === true){
+            relocatable = document.getElementById('relocatableNo').value;
+        }
+
+
+        if (selectedCategoriesList.length === 0){
             showError("Category not selected");
             return;
         }
-        else if (region === '' || region === undefined){
-            showError("Region is required");
-            return;
-        }
         else if (cities === '' || cities === undefined){
-            showError("City/Town is required");
+            showError("Location is required");
             return;
         }
-        if (askingprice === '' && askingSpecificPrice === ''){
+        else if (locationDetails === '' || locationDetails === undefined){
+            showError("Location Details are required");
+            return;
+        }
+        else if (heading === '' || heading === undefined){
+            showError("Advert Heading is required");
+            return;
+        }
+        else if (summary === '' || summary === undefined){
+            showError("Business Summary/Description is required");
+            return;
+        }
+        else if (askingPriceAsaskingPrice === true && askingSpecificPrice === ''){
             showError("Asking Price is required");
             return;
         }
-        else if (askingprice === '' && askingSpecificPrice === ''){
-            showError("Asking Price is required");
+        else if (turnOver === ''){
+            showError("Turnover is required");
             return;
         }
-        else if (salesRevenue === '' && salesRevenueSpecific === ''){
-            showError("Sales Revenue is required");
+        else if (turnOverTerm === ''){
+            showError("Turnover Term is required");
             return;
         }
-        else if (cashFlow === '' && cashflowSpecific === ''){
-            showError("Cash Flow is required");
+        else if (netProfit === ''){
+            showError("Net Profit is required");
+            return;
+        }
+        else if (netProfitTerm === ''){
+            showError("Net Profit Term is required");
             return;
         }
 
-        if (askingprice === ''){
-            askingprice = askingSpecificPrice;
-        }
-        if (salesRevenue === ''){
-            salesRevenue = salesRevenueSpecific;
-        }
-        if (cashFlow === ''){
-            cashFlow = cashflowSpecific;
-        }
+        let askingprice = askingSpecificPrice;
 
         let formData = new FormData();
         formData.append('heading', heading);
         formData.append('summary', summary);
         formData.append('statusOfBusiness',  statusOfBusiness);
         formData.append('selectedCategoriesList',  JSON.stringify(selectedCategoriesList));
-        formData.append('region',  region);
         formData.append('cities',  cities);
-        formData.append('propertyStatus',  propertyStatus);
+        formData.append('dontListLocation',  dontListLocation);
+        formData.append('showAsConfidentialSale',  showAsConfidentialSale);
+        formData.append('relocatable',  relocatable);
+        formData.append('locationDetails',  locationDetails);
         formData.append('askingPrice',  askingprice);
-        formData.append('salesRevenue',  salesRevenue);
-        formData.append('cashFlow',  cashFlow);
-
+        formData.append('askingPriceAs',  askingPriceAs);
+        formData.append('propertyStatus',  propertyStatus);
+        formData.append('turnOver',  turnOver);
+        formData.append('turnOverTerm',  turnOverTerm);
+        formData.append('netProfit',  netProfit);
+        formData.append('netProfitTerm',  netProfitTerm);
         formData.append('websiteAddress',  websiteAddress);
+        formData.append('supportAndTraining',  supportAndTraining);
+        formData.append('accomodationIncluded',  accomodationIncluded);
+        formData.append('homebased',  homebased);
+        formData.append('administrative',  administrative);
+        formData.append('tradingHours',  tradingHours);
+        formData.append('numberOfEmployees',  numberOfEmployees);
         formData.append('embededVideo',  embededVideo);
-        formData.append('quickSale',  quickSale);
-        formData.append('salesRevenueTerm',  salesRevenueTerm);
         for (let i=0;i<photos.length;i++){
             formData.append('photos[]',  photos[i]);
         }
@@ -1337,10 +1428,8 @@
 
     function saveSubscriptionDetails(){
 
-        let limitedTrial = document.getElementById('limitedTrial').checked;
-        let months6 = document.getElementById('6months').checked;
-        let months3 = document.getElementById('3months').checked;
-        let months1 = document.getElementById('1months').checked;
+        let packageId = document.getElementById('total-package-id').value;
+        let packagePrice = document.getElementById('total-package-price').value;
         let nameOnCard = document.getElementById('nameOnCard').value;
         let cardNumber = document.getElementById('cardNumber').value;
         let cvv = document.getElementById('cvv').value;
@@ -1348,7 +1437,7 @@
         let exp_year = document.getElementById('exp_year').value;
         let mailingList = document.getElementById('mailingList').checked;
         let termsAndConditions = document.getElementById('termsAndConditions').checked;
-        if (limitedTrial === false){
+        if (parseInt(packagePrice) !== 0){
             if (nameOnCard === '' || nameOnCard === undefined){
                 showError("Name on Card is required");
                 return;
@@ -1397,22 +1486,10 @@
         let mailingList = document.getElementById('mailingList').checked;
         let termsAndConditions = document.getElementById('termsAndConditions').checked;
 
-        let limitedTrial = document.getElementById('limitedTrial').checked;
-        let months6 = document.getElementById('6months').checked;
-        let months3 = document.getElementById('3months').checked;
-        let months1 = document.getElementById('1months').checked;
-        let subscription = 'limitedTrial';
-        if (limitedTrial === true){
-            subscription = 'limitedTrial';
-        }else if(months6 === true){
-            subscription = '6months';
-        }else if(months3 === true){
-            subscription = '3months';
-        }else if(months1 === true){
-            subscription = '1months';
-        }
+        let packageId = document.getElementById('total-package-id').value;
+        let packagePrice = document.getElementById('total-package-price').value;
         let formData = new FormData();
-        formData.append('subscription', subscription);
+        formData.append('packageId', packageId);
         formData.append('nameOnCard', nameOnCard);
         formData.append('cardNumber',  cardNumber);
         formData.append('cvv',  cvv);
@@ -1420,6 +1497,9 @@
         formData.append('exp_year',  exp_year);
         formData.append('mailingList',  mailingList);
         formData.append('termsAndConditions',  termsAndConditions);
+        formData.append('totalAfterPromotion',  totalAfterPromotion);
+        formData.append('sevenDaysPromotion',  sevenDaysPromotion);
+        formData.append('featuredPromotion',  featuredPromotion);
         formData.append('stripeToken',  token);
         formData.append("_token", "{{ csrf_token() }}");
         document.getElementById('loadergif').style.display = 'flex';
@@ -1434,10 +1514,11 @@
             success: function (result) {
                 document.getElementById('loadergif').style.display = 'none';
                 if (result.status === true) {
-                    document.getElementById('customerName').innerText = result.data.user.first_name + ' ' + result.data.user.last_name;
-                    document.getElementById('listingIdspan').innerText = result.data.listingId;
-                    document.getElementById('usernamespan').innerText = result.data.user.email;
-                    gotoNextStep();
+                    // document.getElementById('customerName').innerText = result.data.user.first_name + ' ' + result.data.user.last_name;
+                    // document.getElementById('listingIdspan').innerText = result.data.listingId;
+                    // document.getElementById('usernamespan').innerText = result.data.user.email;
+                    // gotoNextStep();
+                    window.location.href = `{{env('APP_URL')}}/user-dashboard`
 
                 } else {
                     swal({
@@ -1459,97 +1540,6 @@
         });
     }
 
-    function saveBusinessDetails(){
-
-        let locationDetails = document.getElementById('locationDetails').value;
-        let premises = document.getElementById('premises').value;
-        let competition = document.getElementById('competition').value;
-        let expansion = document.getElementById('expansion').value;
-        let livingAccomodation = document.getElementById('livingAccomodation').checked;
-        let livingAccomodationDescription = document.getElementById('livingAccomodationDescription').value;
-        let sizeInSquareFeet = document.getElementById('sizeInSquareFeet').value;
-        let planningConsent = document.getElementById('planningConsent').value;
-        let yearsEstablished = document.getElementById('yearsEstablished').checked;
-        let employees = document.getElementById('employees').value;
-        let traddingHours = document.getElementById('traddingHours').value;
-        let supportAndTraining = document.getElementById('supportAndTraining').value;
-        let visaReady = document.getElementById('visaReady').checked;
-        let relocatable = document.getElementById('relocatable').value;
-        let homeBased = document.getElementById('homeBased').checked;
-        let franchise = document.getElementById('franchise').checked;
-        let franchiseTerms = document.getElementById('franchiseTerms').value;
-        let businessClosed = document.getElementById('businessClosed').checked;
-        let distressed = document.getElementById('distressed').checked;
-        let ownerFinancing = document.getElementById('ownerFinancing').checked;
-        let financingAvailable = document.getElementById('financingAvailable').value;
-        let reasonForSelling = document.getElementById('reasonForSelling').value;
-        let furnitureFixture = document.getElementById('furnitureFixture').checked;
-        let valueOfFurnitureFixtures = document.getElementById('valueOfFurnitureFixtures').value;
-        let inventoryStock = document.getElementById('inventoryStock').checked;
-        let valueOfInventoryStock = document.getElementById('valueOfInventoryStock').value;
-
-        let formData = new FormData();
-        formData.append('locationDetails', locationDetails);
-        formData.append('premises', premises);
-        formData.append('competition',  competition);
-        formData.append('expansion',  expansion);
-        formData.append('livingAccomodation',  livingAccomodation);
-        formData.append('livingAccomodationDescription',  livingAccomodationDescription);
-        formData.append('sizeInSquareFeet',  sizeInSquareFeet);
-        formData.append('planningConsent',  planningConsent);
-        formData.append('yearsEstablished',  yearsEstablished);
-        formData.append('employees',  employees);
-        formData.append('traddingHours',  traddingHours);
-        formData.append('supportAndTraining',  supportAndTraining);
-        formData.append('visaReady',  visaReady);
-        formData.append('relocatable',  relocatable);
-        formData.append('homeBased',  homeBased);
-        formData.append('franchise',  franchise);
-        formData.append('franchiseTerms',  franchiseTerms);
-        formData.append('businessClosed',  businessClosed);
-        formData.append('distressed',  distressed);
-        formData.append('ownerFinancing',  ownerFinancing);
-        formData.append('financingAvailable',  financingAvailable);
-        formData.append('reasonForSelling',  reasonForSelling);
-        formData.append('furnitureFixture',  furnitureFixture);
-        formData.append('valueOfFurnitureFixtures',  valueOfFurnitureFixtures);
-        formData.append('inventoryStock',  inventoryStock);
-        formData.append('valueOfInventoryStock',  valueOfInventoryStock);
-        formData.append("_token", "{{ csrf_token() }}");
-        document.getElementById('loadergif').style.display = 'flex';
-        $.ajax({
-            url: `{{env('APP_URL')}}/save-business-details`,
-            type: 'POST',
-            dataType: "JSON",
-            data: formData,
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function (result) {
-                document.getElementById('loadergif').style.display = 'none';
-
-                if (result.status === true) {
-                    gotoNextStep();
-
-                } else {
-                    swal({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: result.message,
-                    });
-                }
-            },
-            error: function (data) {
-                document.getElementById('loadergif').style.display = 'none';
-
-                swal({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: "server Error",
-                });
-            }
-        });
-    }
 
     function getCategories(parentId){
         let formData = new FormData();
@@ -1573,7 +1563,7 @@
                     for (let i=0;i<result.data.length;i++){
                         let p = document.createElement('p');
                         p.style.padding = '10px';
-                        p.style.background = 'lightgray';
+                        p.style.background = '#d3d3d36e';
                         p.style.color = 'black';
                         p.style.cursor = 'pointer';
                         p.style.borderBottom = '1px solid black';
@@ -1631,7 +1621,7 @@
                     for (let i=0;i<result.data.length;i++){
                         let p = document.createElement('p');
                         p.style.padding = '10px';
-                        p.style.background = 'lightgray';
+                        p.style.background = '#d3d3d36e';
                         p.style.color = 'black';
                         p.style.cursor = 'pointer';
                         p.style.borderBottom = '1px solid black';
@@ -1689,7 +1679,7 @@
                     for (let i=0;i<result.data.length;i++){
                         let p = document.createElement('p');
                         p.style.padding = '10px';
-                        p.style.background = 'lightgray';
+                        p.style.background = '#d3d3d36e';
                         p.style.color = 'black';
                         p.style.cursor = 'pointer';
                         p.style.borderBottom = '1px solid black';
@@ -1743,7 +1733,7 @@
         let p = document.createElement('p');
         p.setAttribute('id', 'list-number' + category.id);
         p.style.padding = '10px';
-        p.style.background = 'lightgray';
+        p.style.background = '#d3d3d36e';
         p.style.color = 'black';
         p.style.marginBottom = '5px';
         let span = document.createElement('span');

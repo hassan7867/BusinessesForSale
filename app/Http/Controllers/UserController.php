@@ -13,6 +13,7 @@ use App\Models\ListingPhotos;
 use App\Models\Region;
 use App\Models\Settings;
 use App\Models\Subscription;
+use App\Models\SubscriptionPackage;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -32,7 +33,9 @@ class UserController extends Controller
 {
     public function registerPrivateSellerPage($countryId, $priceId){
         $regions = Region::where('country_id', $countryId)->get();
-        return view('auth.register-private-seller')->with(['regions' => $regions, 'priceId' => $priceId]);
+        $cities = City::all();
+        $package = SubscriptionPackage::where('id', $priceId)->first();
+        return view('auth.register-private-seller')->with(['regions' => $regions, 'priceId' => $priceId, 'cities' => $cities, 'package' => $package]);
     }
 
     public function saveBasicDetails(Request $request)
@@ -55,45 +58,6 @@ class UserController extends Controller
             $user->save();
             Session::put('userId', $user->id);
             Session::put('userType', $user->user_type);
-            return json_encode(['status' => true, 'message' => "Details Saved Successfully"]);
-
-        } catch (\Exception $exception) {
-            return json_encode(['status' => false, 'message' => $exception->getMessage()]);
-        }
-    }
-
-    public function saveBusinessDetails(Request $request){
-        try {
-            $business = new BusinessDetail();
-            $business->listing_id = Session::get('listingId');
-            $business->user_id = Session::get('userId');
-            $business->location_details = $request->locationDetails;
-            $business->premises = $request->premises;
-            $business->competition = $request->competition;
-            $business->expansion = $request->expansion;
-            $business->living_accomodation = $request->livingAccomodation;
-            $business->living_accomodation_description = $request->livingAccomodationDescription;
-            $business->size_in_square_feet = $request->sizeInSquareFeet;
-            $business->planning_consent = $request->planningConsent;
-            $business->years_established = $request->yearsEstablished;
-            $business->employees = $request->employees;
-            $business->tradding_hours = $request->traddingHours;
-            $business->support_and_training = $request->supportAndTraining;
-            $business->visa_ready = $request->visaReady;
-            $business->relocatable = $request->relocatable;
-            $business->home_based = $request->homeBased;
-            $business->franchise = $request->franchise;
-            $business->franchise_terms = $request->franchiseTerms;
-            $business->business_closed = $request->businessClosed;
-            $business->distressed = $request->distressed;
-            $business->owner_financing = $request->ownerFinancing;
-            $business->financing_available = $request->financingAvailable;
-            $business->reason_for_selling = $request->reasonForSelling;
-            $business->furniture_fixture = $request->furnitureFixture;
-            $business->value_of_furniture_fixtures = $request->valueOfFurnitureFixtures;
-            $business->inventory_stock = $request->inventoryStock;
-            $business->value_of_inventory_stock = $request->valueOfInventoryStock;
-            $business->save();
             return json_encode(['status' => true, 'message' => "Details Saved Successfully"]);
 
         } catch (\Exception $exception) {
@@ -156,21 +120,57 @@ class UserController extends Controller
         }
     }
 
+    public function loginUserApi(Request $request){
+        try {
+            if(!empty($request->email) && !empty($request->password)){
+                if (User::where('email', $request->email)->exists()){
+                    $user = User::where('email', $request->email)->first();
+                    if ($user->password == md5($request->password)){
+                        Session::put('userId', $user->id);
+                        return json_encode(['status' => true, 'message' => "Success"]);
+                    }else{
+                        return json_encode(['status' => false, 'message' =>"Invalid email or password"]);
+                    }
+
+                }else{
+                    return json_encode(['status' => false, 'message' => "Invalid email or password"]);
+                }
+            }else{
+                return json_encode(['status' => false, 'message' => "Invalid email or password"]);
+            }
+
+
+        }catch (\Exception $exception){
+            return json_encode(['status' => false, 'message' => $exception->getMessage()]);
+        }
+    }
+
     public function saveListingDetails(Request $request){
         try {
             $listing  = new Listing();
             $listing->heading = $request->heading;
             $listing->summary = $request->summary;
             $listing->status_of_business = $request->statusOfBusiness;
-            $listing->region_id = $request->region;
+            $listing->show_as_confidential_sale = $request->showAsConfidentialSale;
+            $listing->dont_list_location = $request->dontListLocation;
+            $listing->relocatable = $request->relocatable;
+            $listing->location_details = $request->locationDetails;
+//            $listing->region_id = $request->region;
             $listing->city_id = $request->cities;
             $listing->property_status = $request->propertyStatus;
             $listing->asking_price = $request->askingPrice;
-            $listing->quick_sale = $request->quickSale;
-            $listing->sales_revenue = $request->salesRevenue;
-            $listing->sales_revenue_term = $request->salesRevenueTerm;
-            $listing->cash_flow = $request->cashFlow;
+            $listing->asking_price_as = $request->askingPriceAs;
+            $listing->turn_over = $request->turnOver;
+            $listing->turn_over_term = $request->turnOverTerm;
+            $listing->net_profit = $request->netProfit;
+            $listing->net_profit_term = $request->netProfitTerm;
             $listing->website_address = $request->websiteAddress;
+            $listing->support_and_training = $request->supportAndTraining;
+            $listing->accomodation_included = $request->accomodationIncluded;
+            $listing->home_based = $request->homebased;
+            $listing->administrative = $request->administrative;
+            $listing->trading_hours = $request->tradingHours;
+            $listing->number_of_employees = $request->numberOfEmployees;
             $listing->embeded_video = $request->embededVideo;
             $listing->user_id = Session::get('userId');
             $listing->save();
@@ -221,18 +221,9 @@ class UserController extends Controller
             $userId = Session::get('userId');
             $subscription = new Subscription();
             $subscription->user_id = $userId;
-            $subscription->subscription = $request->subscription;
-            if ($request->subscription != 'limitedTrial'){
-                $amount = 0;
-                if ($request->subscription == '6months'){
-                    $amount = 89;
-                }
-                else if ($request->subscription == '3months'){
-                    $amount = 69;
-                }
-                else if ($request->subscription == '1months'){
-                    $amount = 49;
-                }
+            $subscription->subscription = $request->packageId;
+            $amount = (int)$request->totalAfterPromotion;
+            if ($amount > 0){
                 Stripe::setApiKey(env('STRIPE_SECRET'));
                 Charge::create([
                     "amount" => $amount * 100,
@@ -241,10 +232,39 @@ class UserController extends Controller
                     "description" => "This payment is for subscription"
                 ]);
                 $subscription->amount = $amount;
+
+                if ((int)$request->sevenDaysPromotion != 0){
+                    $subscription->is_promoted = 'Yes';
+                    $subscription->promotion_start = date('Y-m-d');
+                }else{
+                    $subscription->is_promoted = 'No';
+                    $subscription->promotion_start = '';
+                }
+
+                if ((int)$request->featuredPromotion != 0){
+                    $subscription->is_featured = 'Yes';
+                }else{
+                    $subscription->is_featured = 'No';
+                }
+
                 $subscription->save();
 
             }else{
                 $subscription->amount = 0;
+                if ((int)$request->sevenDaysPromotion != 0){
+                    $subscription->is_promoted = 'Yes';
+                    $subscription->promotion_start = date('Y-m-d');
+                }else{
+                    $subscription->is_promoted = 'No';
+                    $subscription->promotion_start = '';
+                }
+
+                if ((int)$request->featuredPromotion != 0){
+                    $subscription->is_featured = 'Yes';
+                }else{
+                    $subscription->is_featured = 'No';
+                }
+
                 $subscription->save();
             }
 
@@ -254,6 +274,20 @@ class UserController extends Controller
             $settings->terms_and_conditions = $request->termsAndConditions;
             $settings->save();
             $user = User::where('id', $userId)->first();
+
+            $user = User::where('id', Session::get('userId'))->first();
+            $listing = Listing::where('id', Session::get('listingId'))->first();
+            $subscription = Subscription::where('user_id', $user->id)->latest()->first();
+            $package = SubscriptionPackage::where('id', $subscription->subscription)->first();
+            $subject = new SendEmailService(new EmailSubject("Your ". env("APP_NAME") ." Listing"));
+            $mailTo = new EmailAddress($user->email);
+            $message = new InvitationMessageBody();
+            $emailBody = $message->invitationMessageBody($listing->heading, $listing->id, $package->duration);
+            $body = new EmailBody($emailBody);
+            $emailMessage = new EmailMessage($subject->getEmailSubject(), $mailTo, $body);
+            $sendEmail = new EmailSender(new PhpMail(new MailConf(env("MAIL_HOST"), env("MAIL_USERNAME"), env("MAIL_PASSWORD"))));
+            $result = $sendEmail->send($emailMessage);
+
             return json_encode(['status' => true, 'data' => ['listingId' => Session::get('listingId'), 'user' => $user]]);
 
         } catch (\Exception $exception) {
@@ -266,10 +300,11 @@ class UserController extends Controller
             $user = User::where('id', Session::get('userId'))->first();
             $listing = Listing::where('id', Session::get('listingId'))->first();
             $subscription = Subscription::where('user_id', $user->id)->latest()->first();
+            $package = SubscriptionPackage::where('id', $subscription->subscription)->first();
             $subject = new SendEmailService(new EmailSubject("Your ". env("APP_NAME") ." Listing"));
             $mailTo = new EmailAddress($user->email);
             $message = new InvitationMessageBody();
-            $emailBody = $message->invitationMessageBody($listing->heading, $listing->id, $subscription->subscription);
+            $emailBody = $message->invitationMessageBody($listing->heading, $listing->id, $package->duration);
             $body = new EmailBody($emailBody);
             $emailMessage = new EmailMessage($subject->getEmailSubject(), $mailTo, $body);
             $sendEmail = new EmailSender(new PhpMail(new MailConf(env("MAIL_HOST"), env("MAIL_USERNAME"), env("MAIL_PASSWORD"))));

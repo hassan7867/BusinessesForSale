@@ -94,10 +94,10 @@ $(document).ready(function() {
         prefix: '',
         suffix: ''
     };
-    new CountUp("widget_countup1", 0, 3250, 0, 5.0, options).start();
-    new CountUp("widget_countup2", 0, 1140, 0, 5.0, options).start();
-    new CountUp("widget_countup3", 0, 85, 0, 7.0, options).start();
-    new CountUp("widget_countup4", 0, 8, 0, 9.0, options).start();
+    // new CountUp("widget_countup1", 0, 3250, 0, 5.0, options).start();
+    // new CountUp("widget_countup2", 0, 1140, 0, 5.0, options).start();
+    // new CountUp("widget_countup3", 0, 85, 0, 7.0, options).start();
+    // new CountUp("widget_countup4", 0, 8, 0, 9.0, options).start();
 
 
 //=================================main chart================================

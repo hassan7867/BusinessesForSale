@@ -45,4 +45,8 @@ Route::get('user-profile',"\App\Http\Controllers\UserDashboardController@userPro
 Route::post('change/password',"\App\Http\Controllers\UserDashboardController@changePassword");
 
 //Admin Dashboard URLS
-Route::get('admin-dashboard',"\App\Http\Controllers\AdminController@adminDashboard");
+Route::get('admin-dashboard',"\App\Http\Controllers\AdminController@adminDashboard")->middleware('checkAdmin');
+Route::get('admin-login',"\App\Http\Controllers\AdminController@loginPage");
+Route::post('/admin-authenticate', 'App\Http\Controllers\AdminController@adminLogin');
+Route::get('/logout-admin', 'App\Http\Controllers\AdminController@logoutAdmin');
+Route::get('/all-businesses', 'App\Http\Controllers\AdminController@allBusinessesPage');

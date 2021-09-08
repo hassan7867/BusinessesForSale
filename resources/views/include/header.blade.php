@@ -43,30 +43,151 @@
     <script src="{{url('')}}/js/popper.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    <style>
+        .navbar-side {
+            height: 100%;
+            max-width: 40rem;
+            font-size: 1.1rem;
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 0;
+            list-style: none;
+            background-color: #29A599;
+            overflow-y: scroll;
+            z-index: 1000;
+        }
+
+        @media (min-width: 320px) {
+            .navbar-side {
+                width: 80%;
+            }
+        }
+
+        .navbar-side-item {
+            margin-bottom: .2rem;
+            height: 3rem;
+            font-weight: 300;
+        }
+
+        .navbar-side-item {
+            padding: 1.5rem 0 2.5rem 0;
+        }
+
+        @media (min-width: 320px) and (max-width: 484px) {
+
+            .navbar-side {
+                width: 85%;
+            }
+
+            .navbar-side-item {
+                padding: 1.5rem 0 2.5rem 0;
+            }
+
+
+            .navbar-side-item a {
+                font-size: 1rem;
+            }
+
+        }
+
+
+        .navbar-side-item:hover {
+            background-color: rgba(95, 95, 95, 0.46);
+        }
+
+        .navbar-side-item a {
+            display: inline-block;
+        }
+
+        .side-link {
+            padding-left: 1.7rem;
+            padding-right: 1.2rem;
+            color: #fff;
+        }
+
+        .side-link:active,
+        .side-link:hover {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .navbar-side {
+            -webkit-transform: translateX(100%);
+            -ms-transform: translateX(100%);
+            transform: translateX(100%);
+            -webkit-transition: 400ms ease;
+            transition: 400ms ease;
+        }
+
+        .reveal {
+            -webkit-transform: translateX(0%);
+            -ms-transform: translateX(0%);
+            transform: translateX(0%);
+            -webkit-transition: 400ms ease;
+            transition: 400ms ease;
+        }
+
+        .overlayclasscustom {
+            position: fixed;
+            display: none;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            cursor: pointer;
+            background-color: #5f5f5f;
+            opacity: .6;
+            z-index: 990;
+        }
+
+
+        .respnavbarclass{
+            display: none;
+        }
+        .respnavbarclass2{
+            display: none;
+        }
+
+        @media screen and (max-width: 700px) {
+            .respnavbarclass{
+                display: block;
+            }
+            .respnavbarclass2{
+                display: inline;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
 <div id="wrapper">
     <!-- header begin -->
-    <header class="transparent header-light scroll-light">
+    <header class="transparent header-light scroll-light" style="background: #f7f7f7">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="de-flex sm-pt10">
                         <div class="de-flex-col">
                             <div class="de-flex-col">
+{{--                                <div style="float: left;display: inline">--}}
+                                    <i class="navbar-toggler fa fa-list respnavbarclass2" id="navbarSideButton" type="button" style="float: left;color: black;font-size: 25px;margin-top: 10px"></i>
+{{--                                </div>--}}
                                 <!-- logo begin -->
-                                <div id="logo" style="padding: 10px;padding-top: 20px">
+                                <div id="logo" style="display: inline">
 {{--                                    <a href="{{url('')}}">--}}
 {{--                                        <h3 style="color: black">{{env('APP_NAME')}}</h3>--}}
 {{--                                    </a>--}}
                                     <a href="{{url('/')}}">
-                                        <img alt="" class="logo" src="{{url('')}}/logo.png" style="height: 80px" />
-                                        <img alt="" class="logo-2" src="{{url('')}}/logo.png" style="height: 80px" />
+                                        <img alt="" class="logo" src="{{url('')}}/logo.png" style="height: 50px" />
+                                        <img alt="" class="logo-2" src="{{url('')}}/logo.png" style="height: 50px" />
                                     </a>
+
                                 </div>
                                 <!-- logo close -->
                             </div>
+
                             {{--<div class="de-flex-col">--}}
                                 {{--<input id="quick_search" class="xs-hide" name="quick_search" placeholder="search item here..." type="text" />--}}
                             {{--</div>--}}
@@ -157,6 +278,77 @@
                 </div>
             </div>
         </div>
+
+        <section class="container respnavbarclass">
+            <nav class="navbar navbar-light navbar-static bg-faded" role="navigation" >
+
+                <ul class="navbar-side" id="navbarSide" style="background: #57648C">
+                    <li class="navbar-side-item" style="background: #934A5F">
+                        <a href="{{url('')}}" class="side-link" style="color: white">Business.Roaddo.com</a>
+                    </li>
+                    <li class="navbar-side-item">
+                        <a href="{{url('')}}" class="side-link" style="text-decoration: underline">Home</a>
+                    </li>
+                    <li class="navbar-side-item">
+                        <a class="side-link" data-toggle="collapse" href="#collapseExample41" role="button" aria-expanded="false" aria-controls="collapseExample41" style="text-decoration: underline">Buy a business <i class="fa fa-chevron-down"></i></a>
+
+                    </li>
+                    <div class="collapse" id="collapseExample41">
+                        <div class="card card-body">
+                            <ul style="list-style: none">
+                                <li style="color: white;padding: 12px">
+                                    <a href="#" style="text-decoration: underline">Business for sale</a>
+                                </li>
+                                <li style="color: white;padding: 12px">
+                                    <a href="#" style="text-decoration: underline">Register as buyer</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <li class="navbar-side-item">
+                        <a class="side-link" data-toggle="collapse" href="#collapseExample42" role="button" aria-expanded="false" aria-controls="collapseExample42" style="text-decoration: underline">Sell a business <i class="fa fa-chevron-down"></i></a>
+
+                    </li>
+                    <div class="collapse" id="collapseExample42">
+                        <div class="card card-body">
+                            <ul style="list-style: none">
+                                <li style="color: white;padding: 12px">
+                                    <a href="{{url('list')}}" style="text-decoration: underline">Sell your business</a>
+                                </li>
+                                <li style="color: white;padding: 12px">
+                                    <a href="#" style="text-decoration: underline">How to sell your business</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <li class="navbar-side-item">
+                        <a href="#" class="side-link" style="text-decoration: underline">Value a business</a>
+                    </li>
+
+                    @if(\Illuminate\Support\Facades\Session::has('userId'))
+                        <li class="navbar-side-item">
+                            <a href="{{url('user-dashboard')}}" class="side-link" style="text-decoration: underline">My Account</a>
+                        </li>
+                    @else
+                        <li class="navbar-side-item">
+                            <a href="#" data-toggle="modal" data-target="#myModal1122" class="side-link" style="text-decoration: underline">Login</a>
+                        </li>
+                    @endif
+                    @if(\Illuminate\Support\Facades\Session::has('userId'))
+                    @else
+                        <li class="navbar-side-item">
+                            <a href="#" class="side-link" style="text-decoration: underline">Register</a>
+                        </li>
+                    @endif
+
+                    <li class="navbar-side-item">
+                        <a href="{{url('list')}}" class="side-link" style="text-decoration: underline">Create AN AD</a>
+                    </li>
+                </ul>
+
+                <div class="overlayclasscustom" id="overlayclasscustomdiv"></div>
+            </nav>
+        </section>
 
         <div class="modal" id="myModal1122">
             <div class="modal-dialog">
@@ -259,6 +451,21 @@
                     }
                 });
             }
+
+
+            $(document).ready(function(){
+                // document.getElementById('overlayclasscustomdiv').style.display = 'none';
+            });
+
+            $('#navbarSideButton').on('click', function() {
+                $('#navbarSide').addClass('reveal');
+                $('.overlayclasscustom').show();
+            });
+
+            $('.overlayclasscustom').on('click', function(){
+                $('#navbarSide').removeClass('reveal');
+                $('.overlayclasscustom').hide();
+            });
         </script>
     </header>
 

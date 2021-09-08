@@ -355,7 +355,12 @@
         }
 
 
-
+        @media screen and (max-width: 700px) {
+           .respcontaineralong{
+               padding-left: 0px;
+               padding-right: 0px;
+           }
+        }
 
     </style>
 {{--    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&amp;display=swap" rel="stylesheet">--}}
@@ -372,7 +377,7 @@
         @endif
         <div style="padding: 10px">
             <section class="signup-step-container" style="padding-top: 100px">
-                <div class="container">
+                <div class="container respcontaineralong">
                     <div class="row d-flex justify-content-center">
                         <div class="col-md-8">
                             <div class="wizard">
@@ -399,9 +404,9 @@
 
                                 <form role="form" action="index.html" class="login-box">
                                     <div class="tab-content" id="main_form">
-                                        <div id="loadergif" style="margin: 0 auto;max-width: 100px;display: none">
-                                            <img src="{{url('loader.gif')}}" style="height: 100px">
-                                        </div>
+{{--                                        <div id="loadergif" style="margin: 0 auto;max-width: 100px;display: none">--}}
+{{--                                            <img src="{{url('loader.gif')}}" style="height: 100px">--}}
+{{--                                        </div>--}}
                                         <div class="tab-pane active" role="tabpanel" id="step1">
                                             <h4 class="text-center">Register with {{env('APP_NAME')}}</h4>
                                             <div class="row" style="margin-top: 50px">
@@ -529,7 +534,7 @@
                                                     <div style="margin-top: 10px;margin-bottom: 10px">
                                                         <div class="form-group">
                                                             <label  style="font-weight: bold;color: black">Location Details *</label>
-                                                            <textarea class="form-control" type="text" style="width: 300px!important;height: 150px" name="locationDetails" id="locationDetails" placeholder="Location Details.."></textarea>
+                                                            <textarea class="form-control" type="text" style=";height: 150px" name="locationDetails" id="locationDetails" placeholder="Location Details.."></textarea>
                                                         </div>
                                                     </div>
                                                    <div style="margin: 0 auto;max-width: 250px;">
@@ -553,7 +558,7 @@
                                                     <div style="margin-top: 10px;margin-bottom: 10px">
                                                         <div class="form-group">
                                                             <label  style="font-weight: bold;color: black">Business Summary *</label>
-                                                            <textarea class="form-control" type="text" style="width: 300px!important;height: 150px" name="summary" id="summary" placeholder="Summary"></textarea>
+                                                            <textarea class="form-control" type="text" style=";height: 150px" name="summary" id="summary" placeholder="Summary"></textarea>
                                                         </div>
                                                     </div>
                                                     <div style="margin: 0 auto;max-width: 250px;">
@@ -593,10 +598,10 @@
                                                     <div style="margin-top: 10px;margin-bottom: 10px">
                                                         <label  style="font-weight: bold;color: black">Turnover (USD) *</label>
                                                         <div class="row" style="margin-top: 25px">
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-6" style="margin-top: 5px">
                                                                 <input class="form-control" placeholder="Turn over" type="text" value="" name="turnOver" id="turnOver" >
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-6" style="margin-top: 5px">
                                                                 <select id="turnOverTerm" style="padding: 10px" class="form-control">
                                                                     <option value="Annual" selected>Annual</option>
                                                                     <option value="Monthly">Monthly</option>
@@ -608,10 +613,10 @@
                                                     <div style="margin-top: 10px;margin-bottom: 10px">
                                                         <label  style="font-weight: bold;color: black">NetProfit (USD) *</label>
                                                         <div class="row" style="margin-top: 25px">
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-6" style="margin-top: 5px">
                                                                 <input class="form-control" placeholder="Net Profit" type="text" value="" name="netProfit" id="netProfit" >
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-6" style="margin-top: 5px">
                                                                 <select id="netProfitTerm" style="padding: 10px" class="form-control">
                                                                     <option value="Annual" selected>Annual</option>
                                                                     <option value="Monthly">Monthly</option>
@@ -646,7 +651,7 @@
                                                     <div style="margin-top: 10px;margin-bottom: 10px">
                                                         <div class="form-group">
                                                             <label  style="font-weight: bold;color: black">Support & training</label>
-                                                            <textarea class="form-control" type="text" style="width: 300px!important;height: 150px" name="supportAndTraining" id="supportAndTraining" placeholder="Support And Training"></textarea>
+                                                            <textarea class="form-control" type="text" style="height: 150px" name="supportAndTraining" id="supportAndTraining" placeholder="Support And Training"></textarea>
                                                         </div>
                                                     </div>
                                                     <div style="margin-top: 10px;margin-bottom: 10px">
@@ -872,6 +877,10 @@
                                                 <li><button type="button" class="default-btn prev-step" style="display:none">Back</button></li>
                                                 <li><button type="button" class="default-btn next-step">Continue</button></li>
                                             </ul>
+                                        </div>
+                                        <div style="margin: 0 auto;max-width: 250px;opacity: 0" id="loadergif">
+                                            <h2 style="color: green">saving you data...</h2>
+{{--                                            <img src="{{url('loader.gif')}}" style="height: 100px">--}}
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -1134,7 +1143,7 @@
 
 
         formData.append("_token", "{{ csrf_token() }}");
-        document.getElementById('loadergif').style.display = 'flex';
+        document.getElementById('loadergif').style.display = 'block';
         $.ajax({
             url: `{{env('APP_URL')}}/save-basic-details`,
             type: 'POST',
@@ -1346,7 +1355,7 @@
             formData.append('documents[]',  documents[i]);
         }
         formData.append("_token", "{{ csrf_token() }}");
-        document.getElementById('loadergif').style.display = 'flex';
+        document.getElementById('loadergif').style.display = 'block';
         $.ajax({
             url: `{{env('APP_URL')}}/save-listing-details`,
             type: 'POST',
@@ -1392,7 +1401,7 @@
     function fianlizeWizard(){
         let formData = new FormData();
         formData.append("_token", "{{ csrf_token() }}");
-        document.getElementById('loadergif').style.display = 'flex';
+        document.getElementById('loadergif').style.display = 'block';
         $.ajax({
             url: `{{env('APP_URL')}}/finalize-wizard`,
             type: 'POST',
@@ -1502,7 +1511,7 @@
         formData.append('featuredPromotion',  featuredPromotion);
         formData.append('stripeToken',  token);
         formData.append("_token", "{{ csrf_token() }}");
-        document.getElementById('loadergif').style.display = 'flex';
+        document.getElementById('loadergif').style.display = 'block';
         $.ajax({
             url: `{{env('APP_URL')}}/save-subscription-details`,
             type: 'POST',

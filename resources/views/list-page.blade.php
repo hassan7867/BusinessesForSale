@@ -24,24 +24,25 @@
                         </div>
                     <div class="small-border" style="width: 100%!important;color: rgba(128,128,128,0.33)!important;"></div>
                 </div>
-                <div class="row pb-5">
-                    <div class="col-lg-2">
-                    </div>
-                    <div class="col-lg-3" style="margin-left: 60px">
-                        <p style="color: black;font-size: 14px">Find out more. Please select your country:</p>
-                    </div>
-                    <div class="col-lg-3" style="margin-left: -40px">
-                        <select id="select-country" class="form-control" name="sellist1">
-                            <option value="">Select Country</option>
-                            @foreach($countries as $country)
-                            <option value="{{$country->id}}">{{$country->name}}</option>
+                <div style="margin: 0 auto;max-width: 600px">
+                    <div class="row pb-5">
+                        <div class="col-lg-12" style="margin-top: 10px">
+                            <p style="color: black;font-size: 14px">Find out more. Please select your country:</p>
+                        </div>
+                        <div class="col-lg-12" style="margin-top: 10px">
+                            <select id="select-country" class="form-control" name="sellist1">
+                                <option value="">Select Country</option>
+                                @foreach($countries as $country)
+                                    <option value="{{$country->id}}">{{$country->name}}</option>
                                 @endforeach
-                        </select>
-                    </div>
-                    <div class="col-lg-3">
-                    <button onclick="openPricingPage()" style="background: #403f83;color: white;padding: 5px;border: none;width: 100px;border-radius: 5px">GO</button>
+                            </select>
+                        </div>
+                        <div class="col-lg-12" style="margin-top: 10px">
+                            <button onclick="openPricingPage()" style="background: #403f83;color: white;padding: 5px;border: none;width: 100px;border-radius: 5px">GO</button>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </section>
     </div>

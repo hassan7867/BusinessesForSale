@@ -22,8 +22,17 @@
         .selectedlistinnera:hover{
             color: white;
         }
+        @media screen and (max-width: 700px) {
+            .respmargininuserdashborad{
+                margin-top: 50px!important;
+            }
+        }
+
+        .respmargininuserdashborad{
+            margin-top: 150px;
+        }
     </style>
-    <div class="container" style="margin-top: 150px;margin-bottom: 100px">
+    <div class="container respmargininuserdashborad" style=";margin-bottom: 100px">
         <div class="row">
             <div class="col-md-3">
 {{--                <p>--}}

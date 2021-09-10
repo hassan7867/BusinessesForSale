@@ -404,7 +404,7 @@
 
                                 <form role="form" action="index.html" class="login-box">
                                     <div class="tab-content" id="main_form">
-{{--                                        <div id="loadergif" style="margin: 0 auto;max-width: 100px;display: none">--}}
+{{--                                        <div id="loadergifcustom" style="margin: 0 auto;max-width: 100px;display: none">--}}
 {{--                                            <img src="{{url('loader.gif')}}" style="height: 100px">--}}
 {{--                                        </div>--}}
                                         <div class="tab-pane active" role="tabpanel" id="step1">
@@ -878,9 +878,9 @@
                                                 <li><button type="button" class="default-btn next-step">Continue</button></li>
                                             </ul>
                                         </div>
-                                        <div style="margin: 0 auto;max-width: 250px;opacity: 0" id="loadergif">
-                                            <h2 style="color: green">saving you data...</h2>
-{{--                                            <img src="{{url('loader.gif')}}" style="height: 100px">--}}
+                                        <div style="margin: 0 auto;max-width: 250px;display: none" id="loadergifcustom">
+{{--                                            <h2 style="color: green">saving you data...</h2>--}}
+                                            <img src="{{url('loader.gif')}}" style="height: 100px">
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -902,6 +902,8 @@
     // ------------step-wizard-------------
     let currentStep  = 1;
     $(document).ready(function () {
+
+
         $('.nav-tabs > li a[title]').tooltip();
 
         //Wizard
@@ -1143,7 +1145,7 @@
 
 
         formData.append("_token", "{{ csrf_token() }}");
-        document.getElementById('loadergif').style.display = 'block';
+        document.getElementById('loadergifcustom').style.display = 'block';
         $.ajax({
             url: `{{env('APP_URL')}}/save-basic-details`,
             type: 'POST',
@@ -1153,7 +1155,7 @@
             cache: false,
             processData: false,
             success: function (result) {
-                document.getElementById('loadergif').style.display = 'none';
+                document.getElementById('loadergifcustom').style.display = 'none';
 
                 if (result.status === true) {
                     gotoNextStep();
@@ -1167,7 +1169,7 @@
                 }
             },
             error: function (data) {
-                document.getElementById('loadergif').style.display = 'none';
+                document.getElementById('loadergifcustom').style.display = 'none';
 
                 swal({
                     icon: 'error',
@@ -1355,7 +1357,7 @@
             formData.append('documents[]',  documents[i]);
         }
         formData.append("_token", "{{ csrf_token() }}");
-        document.getElementById('loadergif').style.display = 'block';
+        document.getElementById('loadergifcustom').style.display = 'block';
         $.ajax({
             url: `{{env('APP_URL')}}/save-listing-details`,
             type: 'POST',
@@ -1365,7 +1367,7 @@
             cache: false,
             processData: false,
             success: function (result) {
-                document.getElementById('loadergif').style.display = 'none';
+                document.getElementById('loadergifcustom').style.display = 'none';
 
                 if (result.status === true) {
                     gotoNextStep();
@@ -1379,7 +1381,7 @@
                 }
             },
             error: function (data) {
-                document.getElementById('loadergif').style.display = 'none';
+                document.getElementById('loadergifcustom').style.display = 'none';
 
                 swal({
                     icon: 'error',
@@ -1401,7 +1403,7 @@
     function fianlizeWizard(){
         let formData = new FormData();
         formData.append("_token", "{{ csrf_token() }}");
-        document.getElementById('loadergif').style.display = 'block';
+        document.getElementById('loadergifcustom').style.display = 'block';
         $.ajax({
             url: `{{env('APP_URL')}}/finalize-wizard`,
             type: 'POST',
@@ -1411,7 +1413,7 @@
             cache: false,
             processData: false,
             success: function (result) {
-                document.getElementById('loadergif').style.display = 'none';
+                document.getElementById('loadergifcustom').style.display = 'none';
                 if (result.status === true) {
                    window.location.href = `{{env('APP_URL')}}/user-dashboard`
 
@@ -1424,7 +1426,7 @@
                 }
             },
             error: function (data) {
-                document.getElementById('loadergif').style.display = 'none';
+                document.getElementById('loadergifcustom').style.display = 'none';
 
                 swal({
                     icon: 'error',
@@ -1511,7 +1513,7 @@
         formData.append('featuredPromotion',  featuredPromotion);
         formData.append('stripeToken',  token);
         formData.append("_token", "{{ csrf_token() }}");
-        document.getElementById('loadergif').style.display = 'block';
+        document.getElementById('loadergifcustom').style.display = 'block';
         $.ajax({
             url: `{{env('APP_URL')}}/save-subscription-details`,
             type: 'POST',
@@ -1521,7 +1523,7 @@
             cache: false,
             processData: false,
             success: function (result) {
-                document.getElementById('loadergif').style.display = 'none';
+                document.getElementById('loadergifcustom').style.display = 'none';
                 if (result.status === true) {
                     // document.getElementById('customerName').innerText = result.data.user.first_name + ' ' + result.data.user.last_name;
                     // document.getElementById('listingIdspan').innerText = result.data.listingId;
@@ -1538,7 +1540,7 @@
                 }
             },
             error: function (data) {
-                document.getElementById('loadergif').style.display = 'none';
+                document.getElementById('loadergifcustom').style.display = 'none';
 
                 swal({
                     icon: 'error',

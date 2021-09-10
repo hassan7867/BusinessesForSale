@@ -1,35 +1,99 @@
 @extends('layout/layout')
 @section('content')
 <!-- content begin -->
+<style>
+    .customsearchinputfield{
+        padding: 15px;
+        width: 250px;
+        display: inline!important;
+        height: 60px!important;
+        border-radius: 0px!important;
+    }
+    .cutomsearchbtnclass{
+        height: 60px!important;
+        border-radius: 0px!important;
+    }
+    .margintopresp{
+        margin-top: 80px;
+    }
+
+    .mainsecmarginresp{
+        margin-top: 90px;
+    }
+    .fontsizeresp{
+        font-size: 35px;
+    }
+    @media screen and (max-width: 700px) {
+        .customsearchinputfield{
+            border-radius: 10px!important;
+            margin-top: 10px;
+        }
+        .cutomsearchbtnclass{
+            border-radius: 10px!important;
+            margin-top: 10px;
+        }
+        .margintopresp{
+            margin-top: 18px!important;
+        }
+        .mainsecmarginresp{
+            margin-top: 0px;
+        }
+        .fontsizeresp{
+            font-size: 25px;
+        }
+    }
+
+
+</style>
     <div class="no-bottom no-top" id="content">
         <div id="top"></div>
-        <section id="section-hero" aria-label="section" class="no-top no-bottom vh-100" data-bgimage="url(images/background/bg-shape-1.jpg) bottom">
-            <div class="v-center">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <div class="spacer-single"></div>
-                            <div class="spacer-10"></div>
-                            <h1 class="wow fadeInUp" data-wow-delay=".75s">The world's largest marketplace in UK for Business Sale Purchase</h1>
+        <section id="section-hero" aria-label="section" class="no-top no-bottom vh-100 mainsecmarginresp" data-bgimage="url(bgbg.jpg) bottom" style="background-image: url('bgbg.jpg')!important;height: 500px!important;">
+            <div >
+                <div class="container" >
+                    <div class="row align-items-center" >
+                        <div class="col-md-12 margintopresp" >
+{{--                            <div class="spacer-single"></div>--}}
+{{--                            <div class="spacer-10"></div>--}}
+                            <h1 class="wow fadeInUp fontsizeresp" data-wow-delay=".75s" style="color: white;text-align: center;">The world's largest marketplace for Business Sale Purchase</h1>
+                            <div style="margin: 0 auto;max-width: 700px;margin-top: 20px;padding: 25px!important;background: #ffffffa1">
+                                <div>
+                                    <div class="d-flex flex-wrap">
+                                        <div>
+                                            <input class="form-control customsearchinputfield" type="text" placeholder="e.g Restaurant, IT companies..." style="border-bottom-left-radius: 10px!important;border-top-left-radius: 10px!important;">
+                                        </div>
+                                        <div>
+                                            <input class="form-control customsearchinputfield" type="text" placeholder="e.g London, Birmingham..." >
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-main cutomsearchbtnclass" style="border-bottom-right-radius: 10px!important;border-top-right-radius: 10px!important;">SEARCH</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div style="margin: 0 auto;max-width: 200px;margin-top: 10px">
+                                <a style="color: white;text-decoration: underline;cursor: pointer">Advanced search <i class="fa fa-filter" style="margin-left: 10px"></i></a>
+                            </div>
 {{--                            <p class="wow fadeInUp lead" data-wow-delay="1s">--}}
 {{--                                Unit of data stored on a digital ledger, called a blockchain, that certifies a digital asset to be unique and therefore not interchangeable</p>--}}
-                            <div class="spacer-10"></div>
-                            <a href="#" class="btn-main wow fadeInUp lead" data-wow-delay="1.25s">Explore</a>
-                            <div class="mb-sm-30"></div>
+{{--                            <div class="spacer-10"></div>--}}
+{{--                            <a href="#" class="btn-main wow fadeInUp lead" data-wow-delay="1.25s">Explore</a>--}}
+{{--                            <div class="mb-sm-30"></div>--}}
                         </div>
-                        <div class="col-md-6 xs-hide">
-                            <img src="{{url('')}}/undraw_Finance_re_gnv2.svg" class="lazy img-fluid wow fadeIn" data-wow-delay="1.25s" alt="">
-                        </div>
+{{--                        <div class="col-md-6 xs-hide">--}}
+{{--                            <img src="{{url('')}}/undraw_Finance_re_gnv2.svg" class="lazy img-fluid wow fadeIn" data-wow-delay="1.25s" alt="">--}}
+{{--                        </div>--}}
                     </div>
                 </div>
             </div>
         </section>
-        <section id="section-category" class="no-top">
+        <section id="section-category" class="no-top" style="margin-top: 50px">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center">
-                            <h1>Popular Business Categories</h1>
+                            <h2>Popular Business Categories</h2>
                             <div class="small-border bg-color-2"></div>
                         </div>
                     </div>
@@ -113,7 +177,7 @@
             </div>
         </section>
 
-        <section id="section-collections" class="no-bottom">
+        <section id="section-collections" class="no-bottom" style="padding-top: 10px">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -164,7 +228,7 @@
 
 
 
-        <section id="section-popular" class="pb-5">
+        <section id="section-popular" class="pb-5" style="padding-top: 20px">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">

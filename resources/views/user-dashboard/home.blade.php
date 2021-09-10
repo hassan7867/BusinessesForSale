@@ -1,10 +1,10 @@
 @extends('user-dashboard.layout')
 @section('dashboard-content')
-    <div class="container">
+    <div class="container" style="margin-top: 25px">
         <h3 style="text-align: center">Private Seller Account</h3>
         <p>Below is the list of your listings</p>
         <div style="float: right;margin-bottom: 10px">
-            <a class="btn btn-success" href="{{url('sell-private-business')}}/1/0">ADD NEW LISTING</a>
+            <a class="btn btn-success" href="{{url('list')}}">ADD NEW LISTING</a>
         </div>
         <table class="table table-bordered">
             <thead>

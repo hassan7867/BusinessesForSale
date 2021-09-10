@@ -2,7 +2,7 @@
 @section('dashboard-content')
 
     {{--<section class="full-height relative no-top no-bottom vertical-center" data-bgimage="url(images/background/subheader.jpg) top" data-stellar-background-ratio=".5">--}}
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: 25px">
         <div class="row">
             <div class="col-lg-12 wow fadeIn" data-wow-delay=".5s">
                 <div class="box-rounded padding40" data-bgcolor="#ffffff">

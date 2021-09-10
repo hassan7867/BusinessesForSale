@@ -17,7 +17,7 @@
                     <div class="col-lg-6 col-sm-4">
                         <h4 class="nav_top_align">
                             <i class="fa fa-user"></i>
-                            All Businesses
+                            All Businesses Owners
                         </h4>
                     </div>
                     <div class="col-lg-6 col-sm-8 col-12">
@@ -51,49 +51,45 @@
                                     <tr role="row">
                                         <th class="sorting_asc wid-20" tabindex="0" rowspan="1" colspan="1">#
                                         </th>
-                                        <th class="sorting_asc wid-20" tabindex="0" rowspan="1" colspan="1">Heading
+                                        <th class="sorting_asc wid-20" tabindex="0" rowspan="1" colspan="1">Title
                                         </th>
-                                        <th class="sorting wid-25" tabindex="0" rowspan="1" colspan="1">Summary</th>
-                                        <th class="sorting wid-10" tabindex="0" rowspan="1" colspan="1">Location
-                                            Details
+                                        <th class="sorting wid-25" tabindex="0" rowspan="1" colspan="1">First Name</th>
+                                        <th class="sorting wid-10" tabindex="0" rowspan="1" colspan="1">Last Name
                                         </th>
-                                        <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Asking Price
+                                        <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Telephone #
                                         </th>
-                                        <th class="sorting wid-15" tabindex="0" rowspan="1" colspan="1">Turn Over</th>
-                                        <th class="sorting wid-15" tabindex="0" rowspan="1" colspan="1">Net Profit</th>
+                                        <th class="sorting wid-15" tabindex="0" rowspan="1" colspan="1">Email</th>
+                                        <th class="sorting wid-15" tabindex="0" rowspan="1" colspan="1">Package / Trial</th>
                                         <th class="sorting wid-10" tabindex="0" rowspan="1" colspan="1">Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($allBusinessListing as $key => $listing)
+                                    @foreach($allBusinessOwners as $key => $owners)
                                         <tr role="row" class="even">
                                             <td class="sorting_1">{{$key+1}}</td>
-                                            <td class="sorting_1">{{$listing->heading}}</td>
-                                            <td>{{$listing->summary}}
+                                            <td class="sorting_1">{{$owners->title}}</td>
+                                            <td>{{$owners->first_name}}
                                             </td>
-                                            <td>{{$listing->location_details}}
+                                            <td>{{$owners->last_name}}
                                             </td>
-                                            <td>{{$listing->asking_price}}
+                                            <td>{{$owners->telephone}}
                                             </td>
-                                            <td>{{$listing->turn_over}}
+                                            <td>{{$owners->email}}
                                             </td>
-                                            <td>{{$listing->net_profit}}
+                                            <td>{{$owners->userSubscriptionPackage}}
                                             </td>
-                                            @if($listing->status == 'pending')
-                                            <td> &nbsp;
-                                                <a
-                                                        class="edit" data-toggle="tooltip" data-placement="top"
-                                                        title="Decline"
-                                                        href="{{url('reject-business')}}/{{$listing->id}}"><i class="fa fa-times text-danger"></i></a>&nbsp;
-                                                &nbsp;<a class="delete hidden-xs hidden-sm" data-toggle="tooltip"
-                                                         data-placement="top" title="Approve" href="{{url('approve-business')}}/{{$listing->id}}"><i
-                                                            class="fa fa-check text-success"></i></a></td>
-                                            @elseif($listing->status == 'approved')
-                                                <td style="color: green">
-                                                    Approved
-                                                </td>   @elseif($listing->status == 'rejected')
-                                                <td style="color: green">
-                                                    Rejected
+                                            @if($owners->is_blocked == '0')
+                                                <td> &nbsp;
+                                                    <a
+                                                            class="edit" data-toggle="tooltip" data-placement="top"
+                                                            title="Decline"
+                                                            href="{{url('block-accounts')}}/{{$owners->id}}"><button class="btn btn-danger">Block Account</button></a>&nbsp;</td>
+                                            @elseif($owners->is_blocked == '1')
+                                                <td>
+                                                    <a
+                                                            class="edit" data-toggle="tooltip" data-placement="top"
+                                                            title="Decline"
+                                                            href="{{url('unblock-accounts')}}/{{$owners->id}}"><button class="btn btn-primary">UnBlock Account</button></a>
                                                 </td>
                                             @endif
                                         </tr>

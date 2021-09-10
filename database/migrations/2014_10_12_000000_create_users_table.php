@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('user_type');
+            $table->string('is_blocked')->default('0');
             $table->timestamps();
         });
     }

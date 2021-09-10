@@ -371,9 +371,33 @@ z-index: 999999">
                         </a>
                     </li>
                     <li class="dropdown_menu">
-                        <a href="javascript:;">
+                        <a href="{{url('all-businesses-owners')}}">
                             <i class="fa fa-sitemap"></i>
                             <span class="link-title menu_hide">&nbsp; All Businesses Owners</span>
+                        </a>
+                    </li>
+                    <li class="dropdown_menu">
+                        <a href="{{url('manage-countries')}}">
+                            <i class="fa fa-sitemap"></i>
+                            <span class="link-title menu_hide">&nbsp; Manage Countries</span>
+                        </a>
+                    </li>
+                    <li class="dropdown_menu">
+                        <a href="{{url('manage-region')}}">
+                            <i class="fa fa-sitemap"></i>
+                            <span class="link-title menu_hide">&nbsp; Manage Region</span>
+                        </a>
+                    </li>
+                    <li class="dropdown_menu">
+                        <a href="{{url('manage-city')}}">
+                            <i class="fa fa-sitemap"></i>
+                            <span class="link-title menu_hide">&nbsp; Manage City/Town</span>
+                        </a>
+                    </li>
+                    <li class="dropdown_menu">
+                        <a href="{{url('manage-categories')}}">
+                            <i class="fa fa-retweet"></i>
+                            <span class="link-title menu_hide">&nbsp; Manage Categories</span>
                         </a>
                     </li>
                 </ul>

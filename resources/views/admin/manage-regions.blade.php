@@ -17,7 +17,7 @@
                     <div class="col-lg-6 col-sm-4">
                         <h4 class="nav_top_align">
                             <i class="fa fa-user"></i>
-                            All Businesses
+                            All Regions
                         </h4>
                     </div>
                     <div class="col-lg-6 col-sm-8 col-12">
@@ -40,10 +40,13 @@
             <div class="inner bg-container">
                 <div class="card">
                     <div class="card-header bg-white">
-                        All Businesses
+                        Regions
                     </div>
                     <div class="card-body m-t-35" id="user_body">
-                        <div>
+                        <a href="{{url('add-region')}}">
+                            <button class="btn btn-primary">Add Region</button>
+                        </a>
+                        <div class="mt-2">
                             <div>
                                 <table class="table  table-striped table-bordered table-hover dataTable no-footer"
                                        id="editable_table" role="grid">
@@ -51,51 +54,24 @@
                                     <tr role="row">
                                         <th class="sorting_asc wid-20" tabindex="0" rowspan="1" colspan="1">#
                                         </th>
-                                        <th class="sorting_asc wid-20" tabindex="0" rowspan="1" colspan="1">Heading
-                                        </th>
-                                        <th class="sorting wid-25" tabindex="0" rowspan="1" colspan="1">Summary</th>
-                                        <th class="sorting wid-10" tabindex="0" rowspan="1" colspan="1">Location
-                                            Details
-                                        </th>
-                                        <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Asking Price
-                                        </th>
-                                        <th class="sorting wid-15" tabindex="0" rowspan="1" colspan="1">Turn Over</th>
-                                        <th class="sorting wid-15" tabindex="0" rowspan="1" colspan="1">Net Profit</th>
-                                        <th class="sorting wid-10" tabindex="0" rowspan="1" colspan="1">Actions</th>
+                                        <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Region</th>
+                                        <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Country</th>
+                                        <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($allBusinessListing as $key => $listing)
+                                    @foreach($regions as $key => $region)
                                         <tr role="row" class="even">
                                             <td class="sorting_1">{{$key+1}}</td>
-                                            <td class="sorting_1">{{$listing->heading}}</td>
-                                            <td>{{$listing->summary}}
+                                            <td>{{$region->name}}
                                             </td>
-                                            <td>{{$listing->location_details}}
+                                            <td>{{$region->country}}
                                             </td>
-                                            <td>{{$listing->asking_price}}
-                                            </td>
-                                            <td>{{$listing->turn_over}}
-                                            </td>
-                                            <td>{{$listing->net_profit}}
-                                            </td>
-                                            @if($listing->status == 'pending')
                                             <td> &nbsp;
                                                 <a
                                                         class="edit" data-toggle="tooltip" data-placement="top"
-                                                        title="Decline"
-                                                        href="{{url('reject-business')}}/{{$listing->id}}"><i class="fa fa-times text-danger"></i></a>&nbsp;
-                                                &nbsp;<a class="delete hidden-xs hidden-sm" data-toggle="tooltip"
-                                                         data-placement="top" title="Approve" href="{{url('approve-business')}}/{{$listing->id}}"><i
-                                                            class="fa fa-check text-success"></i></a></td>
-                                            @elseif($listing->status == 'approved')
-                                                <td style="color: green">
-                                                    Approved
-                                                </td>   @elseif($listing->status == 'rejected')
-                                                <td style="color: green">
-                                                    Rejected
-                                                </td>
-                                            @endif
+                                                        title="Delete"
+                                                        href="{{url('delete-region')}}/{{$region->id}}"><i class="fa fa-times text-danger"></i></a>&nbsp;</td>
                                         </tr>
                                     @endforeach
                                     </tbody>

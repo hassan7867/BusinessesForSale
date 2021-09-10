@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-    <title>Businesses For Sale: No 1 in UK for Business Sale</title>
+    <title>Business Roaddo | Business Sale purchase marketplace</title>
     <link rel="icon" href="{{url('icon.png')}}" type="image/gif" sizes="16x16">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />

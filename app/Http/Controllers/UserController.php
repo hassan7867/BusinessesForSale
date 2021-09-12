@@ -34,8 +34,9 @@ class UserController extends Controller
     public function registerPrivateSellerPage($countryId, $priceId){
         $regions = Region::where('country_id', $countryId)->get();
         $cities = City::all();
+        $selectedCountry = Countries::where('id', $countryId)->first();
         $package = SubscriptionPackage::where('id', $priceId)->first();
-        return view('auth.register-private-seller')->with(['regions' => $regions, 'priceId' => $priceId, 'cities' => $cities, 'package' => $package]);
+        return view('auth.register-private-seller')->with(['regions' => $regions, 'priceId' => $priceId, 'cities' => $cities, 'package' => $package, 'selectedCountry' => $selectedCountry]);
     }
 
     public function saveBasicDetails(Request $request)
@@ -87,7 +88,7 @@ class UserController extends Controller
 
     public function openPricingPage($countryId)
     {
-        return view('pricing-page')->with(['countryId'=>$countryId, 'countryName' => Countries::where('id', $countryId)->first()['name']]);
+        return view('pricing-page')->with(['countryId'=>$countryId, 'countryName' => Countries::where('id', $countryId)->first()['name'], 'country' => Countries::where('id', $countryId)->first()]);
     }
 
     public function userlogin(){
@@ -222,6 +223,7 @@ class UserController extends Controller
             $subscription = new Subscription();
             $subscription->user_id = $userId;
             $subscription->subscription = $request->packageId;
+//            $amount = round((int)$request->totalAfterPromotion / $request->from_usd,2);
             $amount = (int)$request->totalAfterPromotion;
             if ($amount > 0){
                 Stripe::setApiKey(env('STRIPE_SECRET'));

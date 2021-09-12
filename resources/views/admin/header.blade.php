@@ -39,7 +39,7 @@ z-index: 999999">
 
         <nav class="navbar navbar-static-top">
             <div class="container-fluid m-0">
-                <a class="navbar-brand" href="index-2.html">
+                <a class="navbar-brand" href="{{url('admin-dashboard')}}">
                     <h4><img src="{{url('')}}/admin/img/logo1.ico" class="admin_img" alt="logo">Admin Panel</h4>
                 </a>
                 <div class="menu mr-sm-auto">
@@ -321,18 +321,18 @@ z-index: 999999">
                                 <span class="fa fa-sort-down white_bg"></span>
                             </button>
                             <div class="dropdown-menu admire_admin">
-                                <a class="dropdown-item title" href="#">
-                                    Admire Admin</a>
-                                <a class="dropdown-item" href="edit_user.html"><i class="fa fa-cogs"></i>
-                                    Account Settings</a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fa fa-user"></i>
-                                    User Status
-                                </a>
-                                <a class="dropdown-item" href="mail_inbox.html"><i class="fa fa-envelope"></i>
-                                    Inbox</a>
-                                <a class="dropdown-item" href="lockscreen.html"><i class="fa fa-lock"></i>
-                                    Lock Screen</a>
+{{--                                <a class="dropdown-item title" href="#">--}}
+{{--                                    Admire Admin</a>--}}
+{{--                                <a class="dropdown-item" href="edit_user.html"><i class="fa fa-cogs"></i>--}}
+{{--                                    Account Settings</a>--}}
+{{--                                <a class="dropdown-item" href="#">--}}
+{{--                                    <i class="fa fa-user"></i>--}}
+{{--                                    User Status--}}
+{{--                                </a>--}}
+{{--                                <a class="dropdown-item" href="mail_inbox.html"><i class="fa fa-envelope"></i>--}}
+{{--                                    Inbox</a>--}}
+{{--                                <a class="dropdown-item" href="lockscreen.html"><i class="fa fa-lock"></i>--}}
+{{--                                    Lock Screen</a>--}}
                                 <a class="dropdown-item" href="{{ url('logout-admin') }}"><i class="fa fa-sign-out"></i>
                                     Log Out</a>
                             </div>
@@ -355,7 +355,7 @@ z-index: 999999">
                             <span class="fa fa-user"></span>
                         </div>
                         <div class="user-wrapper">
-                            <a class="user-link" href="#">
+                            <a class="user-link" href="{{url('admin-dashboard')}}">
                                 <img class="media-object img-thumbnail user-img rounded-circle admin_img3" alt="User Picture" src="{{url('')}}/admin/img/admin.jpg">
                                 <p class="user-info menu_hide">Welcome Admin</p>
                             </a>

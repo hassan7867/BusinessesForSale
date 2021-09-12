@@ -125,11 +125,47 @@ class AdminController extends Controller
         try{
             $country = new Countries();
             $country->name = $request->country;
+            $country->country_code = $request->country_code;
+            $country->currency = $request->currency;
+            $country->iso_code = $request->iso_code;
+            $country->symbol = $request->symbol;
+            $country->from_usd = $request->from_usd;
             $country->save();
-            return json_encode(['status'=>true]);
+            session()->flash('msg', 'Country added!');
+            return redirect('manage-countries');
         }
         catch (\Exception $exception){
-            return json_encode(['status'=>false,'message'=>$exception->getMessage()]);
+            return redirect()->back()->withErrors([$exception->getMessage()]);
+        }
+    }
+
+    public function editCountry($id)
+    {
+        try{
+            $country = Countries::where('id', $id)->first();
+            return view('admin.edit-countries')->with(['country' => $country]);
+        }
+        catch (\Exception $exception){
+            return redirect()->back()->withErrors([$exception->getMessage()]);
+        }
+    }
+
+    public function updateCountry(Request $request)
+    {
+        try{
+            $country = Countries::where('id', $request->countryId)->first();
+            $country->name = $request->country;
+            $country->country_code = $request->country_code;
+            $country->currency = $request->currency;
+            $country->iso_code = $request->iso_code;
+            $country->symbol = $request->symbol;
+            $country->from_usd = $request->from_usd;
+            $country->update();
+            session()->flash('msg', 'Country updated!');
+            return redirect('manage-countries');
+        }
+        catch (\Exception $exception){
+            return redirect()->back()->withErrors([$exception->getMessage()]);
         }
     }
 

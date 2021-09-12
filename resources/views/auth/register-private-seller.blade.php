@@ -740,14 +740,14 @@
 
                                         <div class="tab-pane" role="tabpanel" id="step3">
                                             <h4 class="text-center">Promotion</h4>
-                                            <p style="text-align: center">You have selected our {{$package->duration ?? ''}} plan in {{$package->price}} USD</p>
+                                            <p style="text-align: center">You have selected our {{$package->duration ?? ''}} plan in {{round($package->price * $selectedCountry->from_usd,2)}} {{$selectedCountry->currency}}</p>
                                             <h3>Add Promotion to get more buyers viewing your business</h3>
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <input type="checkbox" name="promote" id="promote" onclick="promotionClick()">
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <p style="color: #0a58ca">Display your business on the home page USD 85</p>
+                                                    <p style="color: #0a58ca">Display your business on the home page {{$selectedCountry->currency}} {{round(85 * $selectedCountry->from_usd,2)}}</p>
                                                     <p>
                                                         Your business will appear on the Home page for 7 days. Inclusion on the gallery can boost your business buyer
                                                         views as much as 87%
@@ -763,7 +763,7 @@
                                                     @endif
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <p style="color: #0a58ca">Featured your business from USD 45</p>
+                                                    <p style="color: #0a58ca">Featured your business from {{$selectedCountry->currency}} {{round(45 * $selectedCountry->from_usd,2)}}</p>
                                                     @if($package->featured_promotion_worth == 0)
                                                         <p>
                                                             Featured business is not included on your current selected plan.
@@ -787,13 +787,13 @@
                                                    <tbody id="totalCostPromotion">
                                                         <tr>
                                                             <td>{{$package->duration}} plan for advertising</td>
-                                                            <td>{{$package->price}} USD</td>
+                                                            <td>{{round($package->price * $selectedCountry->from_usd,2)}} {{$selectedCountry->currency}}</td>
                                                         </tr>
                                                    </tbody>
                                                    <tbody>
                                                         <tr>
                                                             <td>Total</td>
-                                                            <td id="total-after-promotion">{{$package->price}} USD</td>
+                                                            <td id="total-after-promotion">{{round($package->price * $selectedCountry->from_usd,2)}} {{$selectedCountry->currency}}</td>
                                                         </tr>
                                                    </tbody>
                                                </table>
@@ -817,13 +817,13 @@
                                                     <tbody id="totalCostPromotion1">
                                                     <tr>
                                                         <td>{{$package->duration}} plan for advertising</td>
-                                                        <td>{{$package->price}} USD</td>
+                                                        <td>{{round($package->price * $selectedCountry->from_usd,2)}} {{$selectedCountry->currency}}</td>
                                                     </tr>
                                                     </tbody>
                                                     <tbody>
                                                     <tr>
                                                         <td>Total</td>
-                                                        <td id="total-after-promotion1">{{$package->price}} USD</td>
+                                                        <td id="total-after-promotion1">{{round($package->price * $selectedCountry->from_usd,2)}} {{$selectedCountry->currency}}</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -998,13 +998,13 @@
 
     function promotionClick(){
         if (document.getElementById('promote').checked){
-            sevenDaysPromotion = 85;
+            sevenDaysPromotion = `{{round(85 * $selectedCountry->from_usd,2)}}`;
             let tr = document.createElement('tr');
             tr.setAttribute('id', 'seven-day-tr');
             let td1 = document.createElement('td');
             let td2 = document.createElement('td');
             td1.innerText = 'Seven days promotion';
-            td2.innerText = sevenDaysPromotion + ' USD';
+            td2.innerText = sevenDaysPromotion + ' ' +  `{{$selectedCountry->currency}}`;
             tr.appendChild(td1);
             tr.appendChild(td2);
             document.getElementById('totalCostPromotion').appendChild(tr);
@@ -1016,19 +1016,19 @@
         totalAfterPromotion = 0;
         totalAfterPromotion = parseInt(document.getElementById('total-package-price').value);
         totalAfterPromotion  = parseInt(totalAfterPromotion) + parseInt(sevenDaysPromotion) + parseInt(featuredPromotion);
-        document.getElementById('total-after-promotion').innerHTML = totalAfterPromotion + ' USD'
+        document.getElementById('total-after-promotion').innerHTML = totalAfterPromotion + ' ' + `{{$selectedCountry->currency}}`;
 
     }
 
     function featuredPromotionClick(){
         if (document.getElementById('featured').checked){
-            featuredPromotion = 45;
+            featuredPromotion = `{{round(45 * $selectedCountry->from_usd,2)}}`;
             let tr = document.createElement('tr');
             tr.setAttribute('id', 'featured-tr');
             let td1 = document.createElement('td');
             let td2 = document.createElement('td');
             td1.innerText = 'Featured promotion';
-            td2.innerText = featuredPromotion + ' USD';
+            td2.innerText = featuredPromotion + ' ' + `{{$selectedCountry->currency}}`;
             tr.appendChild(td1);
             tr.appendChild(td2);
             document.getElementById('totalCostPromotion').appendChild(tr);
@@ -1039,7 +1039,7 @@
         totalAfterPromotion = 0;
         totalAfterPromotion = parseInt(document.getElementById('total-package-price').value);
         totalAfterPromotion  = parseInt(totalAfterPromotion) + parseInt(sevenDaysPromotion) + parseInt(featuredPromotion)
-        document.getElementById('total-after-promotion').innerHTML = totalAfterPromotion + ' USD'
+        document.getElementById('total-after-promotion').innerHTML = totalAfterPromotion + ' ' + `{{$selectedCountry->currency}}`;
 
     }
 
@@ -1047,13 +1047,13 @@
     function saveBusinessDetails(){
         sevenDaysPromotion = 0;
         if (document.getElementById('promote').checked){
-            sevenDaysPromotion = 85;
+            sevenDaysPromotion = `{{round(85 * $selectedCountry->from_usd,2)}}`;
             let tr = document.createElement('tr');
             tr.setAttribute('id', 'seven-day-tr1');
             let td1 = document.createElement('td');
             let td2 = document.createElement('td');
             td1.innerText = 'Seven days promotion';
-            td2.innerText = sevenDaysPromotion + ' USD';
+            td2.innerText = sevenDaysPromotion + ' ' + `{{$selectedCountry->currency}}`;
             tr.appendChild(td1);
             tr.appendChild(td2);
             document.getElementById('totalCostPromotion1').appendChild(tr);
@@ -1061,13 +1061,13 @@
         }
         featuredPromotion = 0;
         if (document.getElementById('featured').checked){
-            featuredPromotion = 45;
+            featuredPromotion = `{{round(45 * $selectedCountry->from_usd,2)}}`;
             let tr = document.createElement('tr');
             tr.setAttribute('id', 'featured-tr1');
             let td1 = document.createElement('td');
             let td2 = document.createElement('td');
             td1.innerText = 'Featured promotion';
-            td2.innerText = featuredPromotion + ' USD';
+            td2.innerText = featuredPromotion + ' ' + `{{$selectedCountry->currency}}`;
             tr.appendChild(td1);
             tr.appendChild(td2);
             document.getElementById('totalCostPromotion1').appendChild(tr);
@@ -1076,7 +1076,7 @@
         totalAfterPromotion = 0;
         totalAfterPromotion = parseInt(document.getElementById('total-package-price').value);
         totalAfterPromotion  = parseInt(totalAfterPromotion) + parseInt(sevenDaysPromotion) + parseInt(featuredPromotion)
-        document.getElementById('total-after-promotion1').innerHTML = totalAfterPromotion + ' USD';
+        document.getElementById('total-after-promotion1').innerHTML = totalAfterPromotion + ' ' + `{{$selectedCountry->currency}}`;
         if(totalAfterPromotion === 0){
             document.getElementById('card-details').style.display = 'none';
         }else{
@@ -1448,7 +1448,7 @@
         let exp_year = document.getElementById('exp_year').value;
         let mailingList = document.getElementById('mailingList').checked;
         let termsAndConditions = document.getElementById('termsAndConditions').checked;
-        if (parseInt(packagePrice) !== 0){
+        if (parseInt(totalAfterPromotion) > 0){
             if (nameOnCard === '' || nameOnCard === undefined){
                 showError("Name on Card is required");
                 return;
@@ -1476,7 +1476,8 @@
             return;
         }
 
-        Stripe.setPublishableKey(`{{env('STRIPE_KEY')}}`);
+        Stripe.setPublishableKey('pk_test_ljZBoP5O05YmH7h5iwYXlsO200xkCBVaoz');
+
         Stripe.createToken({
             number: cardNumber,
             cvc: cvv,
@@ -1488,6 +1489,13 @@
 
     function stripeResponseHandler(status, response){
         var token = response['id'];
+        if (parseInt(totalAfterPromotion) > 0){
+            if (token === undefined || token === ''){
+                showError('Invalid card details. please try again or use another card');
+                return;
+            }
+        }
+
         document.getElementById('stripeToken').value = token;
         let nameOnCard = document.getElementById('nameOnCard').value;
         let cardNumber = document.getElementById('cardNumber').value;
@@ -1511,6 +1519,7 @@
         formData.append('totalAfterPromotion',  totalAfterPromotion);
         formData.append('sevenDaysPromotion',  sevenDaysPromotion);
         formData.append('featuredPromotion',  featuredPromotion);
+        formData.append('from_usd',  `{{$selectedCountry->from_usd}}`);
         formData.append('stripeToken',  token);
         formData.append("_token", "{{ csrf_token() }}");
         document.getElementById('loadergifcustom').style.display = 'block';

@@ -67,7 +67,9 @@ Route::get('/add-country', 'App\Http\Controllers\AdminController@addNewCountry')
 Route::get('/add-region', 'App\Http\Controllers\AdminController@addNewRegion');
 Route::get('/add-city', 'App\Http\Controllers\AdminController@addNewCity');
 Route::get('/add-category', 'App\Http\Controllers\AdminController@addNewCategory');
+Route::get('/edit-country/{id}', 'App\Http\Controllers\AdminController@editCountry');
 Route::post('/save-country', 'App\Http\Controllers\AdminController@saveCountry');
 Route::post('/save-region', 'App\Http\Controllers\AdminController@saveRegion');
 Route::post('/save-city', 'App\Http\Controllers\AdminController@saveCity');
 Route::post('/save-category', 'App\Http\Controllers\AdminController@saveCategory');
+Route::post('/update-country', 'App\Http\Controllers\AdminController@updateCountry');

@@ -65,24 +65,7 @@
                                         <div class="previous_font">Sales per month</div>
                                     </div>
                                 </div>
-                                <div class="back">
-                                    <div class="front">
-                                    <div class="bg-white b_r_5 section_border">
-                                        <div class="p-t-l-r-15">
-                                            <div class="float-right m-t-5 text-success">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </div>
-                                            <div id="widget_countup22">{{$totalBusiness}}</div>
-                                            <div>Sales</div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <span id="salesspark-chart" class="spark_line"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                         <div class="col-12 col-sm-6 col-xl-3 media_max_1199">
                             <div id="top_widget3">

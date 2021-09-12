@@ -16,6 +16,11 @@ class CreateCountriesTable extends Migration
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('country_code');
+            $table->string('currency');
+            $table->string('iso_code');
+            $table->string('symbol');
+            $table->string('from_usd')->default(1);
             $table->timestamps();
         });
     }

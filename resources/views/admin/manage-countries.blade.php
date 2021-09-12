@@ -20,19 +20,6 @@
                             All Countries
                         </h4>
                     </div>
-                    <div class="col-lg-6 col-sm-8 col-12">
-                        <ol class="breadcrumb float-right  nav_breadcrumb_top_align">
-                            <li class="breadcrumb-item">
-                                <a href="index1.html">
-                                    <i class="fa fa-home" data-pack="default" data-tags=""></i> Dashboard
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="#">Users</a>
-                            </li>
-                            <li class="active breadcrumb-item">User Grid</li>
-                        </ol>
-                    </div>
                 </div>
             </div>
         </header>
@@ -54,7 +41,12 @@
                                     <tr role="row">
                                         <th class="sorting_asc wid-20" tabindex="0" rowspan="1" colspan="1">#
                                         </th>
-                                        <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Countries</th>
+                                        <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Country</th>
+                                        <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Country Code</th>
+                                        <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Currency</th>
+                                        <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">ISO Code</th>
+                                        <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Symbol</th>
+                                        <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">USD Rate</th>
                                         <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Actions</th>
                                     </tr>
                                     </thead>
@@ -62,13 +54,24 @@
                                     @foreach($allCountries as $key => $country)
                                         <tr role="row" class="even">
                                             <td class="sorting_1">{{$key+1}}</td>
-                                            <td>{{$country->name}}
-                                            </td>
+                                            <td>{{$country->name}}</td>
+                                            <td>{{$country->country_code}}</td>
+                                            <td>{{$country->currency}}</td>
+                                            <td>{{$country->iso_code}}</td>
+                                            <td>{{$country->symbol}}</td>
+                                            <td>{{$country->from_usd}}</td>
                                                 <td> &nbsp;
                                                     <a
                                                             class="edit" data-toggle="tooltip" data-placement="top"
                                                             title="Delete"
-                                                            href="{{url('delete-country')}}/{{$country->id}}"><i class="fa fa-times text-danger"></i></a>&nbsp;</td>
+                                                            href="{{url('delete-country')}}/{{$country->id}}"><i class="fa fa-times text-danger"></i></a>
+
+
+                                                    <a
+                                                        class="edit" data-toggle="tooltip" data-placement="top"
+                                                        title="Edit"
+                                                        href="{{url('edit-country')}}/{{$country->id}}" style="margin-left: 10px"><i class="fa fa-edit text-success"></i></a>
+                                                    &nbsp;</td>
                                         </tr>
                                     @endforeach
                                     </tbody>

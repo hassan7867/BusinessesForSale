@@ -20,19 +20,7 @@
                             All Categories
                         </h4>
                     </div>
-                    <div class="col-lg-6 col-sm-8 col-12">
-                        <ol class="breadcrumb float-right  nav_breadcrumb_top_align">
-                            <li class="breadcrumb-item">
-                                <a href="index1.html">
-                                    <i class="fa fa-home" data-pack="default" data-tags=""></i> Dashboard
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="#">Users</a>
-                            </li>
-                            <li class="active breadcrumb-item">User Grid</li>
-                        </ol>
-                    </div>
+
                 </div>
             </div>
         </header>

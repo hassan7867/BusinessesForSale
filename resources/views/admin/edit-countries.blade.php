@@ -17,7 +17,7 @@
                     <div class="col-lg-6 col-sm-4">
                         <h4 class="nav_top_align">
                             <i class="fa fa-user"></i>
-                            Add Country
+                            Edit Country
                         </h4>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
             <div class="inner bg-container">
                 <div class="card">
                     <div class="card-header bg-white">
-                        Add New Country
+                        Edit Country
                     </div>
                     <div class="card-body m-t-35" id="user_body">
                         <div>
@@ -35,43 +35,44 @@
                                 <div class="outer">
                                     <div class="inner bg-container">
                                         <div class="card">
-                                            <form method="post" action="{{url('save-country')}}">
+                                            <form method="post" action="{{url('update-country')}}">
                                                 @csrf
                                                 <div class="card-body m-t-35">
                                                     <div class="form-horizontal login_validator">
                                                         <div class="row">
                                                             <div class="col-12" style="margin: 0 auto;max-width: 600px">
+                                                                <input type="hidden" name="countryId" value="{{$country->id}}">
 
                                                                 <div style="margin-top: 10px">
                                                                     <label style="font-weight: bold">Country Name</label>
-                                                                    <input type="text" placeholder="" name="country" id="country" class="form-control" required>
+                                                                    <input type="text" placeholder="" value="{{$country->name}}" name="country" id="country" class="form-control" required>
                                                                 </div>
 
                                                                 <div style="margin-top: 10px">
                                                                     <label style="font-weight: bold">Country Code</label>
-                                                                    <input type="text" placeholder="" name="country_code" id="country" class="form-control" required>
+                                                                    <input type="text" placeholder="" name="country_code"  value="{{$country->country_code}}" id="country" class="form-control" required>
                                                                 </div>
                                                                 <div style="margin-top: 10px">
                                                                     <label style="font-weight: bold">Currency</label>
-                                                                    <input type="text" placeholder="" name="currency" id="country" class="form-control" required>
+                                                                    <input type="text" placeholder="" name="currency" id="country" value="{{$country->currency}}" class="form-control" required>
                                                                 </div>
                                                                 <div style="margin-top: 10px">
                                                                     <label style="font-weight: bold">ISO CODE</label>
-                                                                    <input type="text" placeholder="" name="iso_code" id="country" class="form-control" required>
+                                                                    <input type="text" placeholder="" name="iso_code" id="country" value="{{$country->iso_code}}" class="form-control" required>
                                                                 </div>
                                                                 <div style="margin-top: 10px">
                                                                     <label style="font-weight: bold">Symbol</label>
-                                                                    <input type="text" placeholder="" name="symbol" id="country" class="form-control" required>
+                                                                    <input type="text" placeholder="" name="symbol" id="country" value="{{$country->symbol}}" class="form-control" required>
                                                                 </div>
                                                                 <div style="margin-top: 10px">
                                                                     <label style="font-weight: bold">USD Rate</label>
-                                                                    <input type="text" placeholder="" name="from_usd" id="country" class="form-control" required>
+                                                                    <input type="text" placeholder="" name="from_usd" id="country" value="{{$country->from_usd}}" class="form-control" required>
                                                                 </div>
 
                                                                 <div class="form-group row" style="margin-top: 20px">
                                                                     <div class="col-lg-9 ml-auto">
                                                                         <button class="btn btn-primary" type="submit">
-                                                                            Save
+                                                                            Update
                                                                         </button>
                                                                         <a class="btn btn-warning"
                                                                            href="{{url('manage-countries')}}"

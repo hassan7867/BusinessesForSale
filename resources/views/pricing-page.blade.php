@@ -46,8 +46,8 @@
                         </div>
                         <div class="mid text-light bg-color" style="height: 50px;padding: 15px;background: #934A5F">
                             <p class="price">
-                                <span class="currency">$</span>
-                                <span class="m opt-1" style="font-size: 25px;">{{$package->price}}</span>
+                                <span class="currency">{{$country->symbol}}</span>
+                                <span class="m opt-1" style="font-size: 25px;">{{round($package->price * $country->from_usd,2)}}</span>
                             </p>
                         </div>
 

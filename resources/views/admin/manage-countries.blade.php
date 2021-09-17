@@ -46,6 +46,7 @@
                                         <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Currency</th>
                                         <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">ISO Code</th>
                                         <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Symbol</th>
+                                        <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Url Code</th>
                                         <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">USD Rate</th>
                                         <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Actions</th>
                                     </tr>
@@ -59,6 +60,7 @@
                                             <td>{{$country->currency}}</td>
                                             <td>{{$country->iso_code}}</td>
                                             <td>{{$country->symbol}}</td>
+                                            <td>{{$country->url_code}}</td>
                                             <td>{{$country->from_usd}}</td>
                                                 <td> &nbsp;
                                                     <a

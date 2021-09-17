@@ -229,7 +229,7 @@
                                 <li>
                                     <a href="#">Sell a Business<span></span></a>
                                     <ul>
-                                        <li><a href="{{url('list')}}">Sell your Business</a></li>
+                                        <li><a href="{{url(\Illuminate\Support\Facades\Session::get('url_code') .'/pricing-table')}}">Sell your Business</a></li>
                                         <li><a href="#">How to sell your business</a></li>
                                     </ul>
                                 </li>
@@ -269,7 +269,7 @@
                                     @endif
                                 </li>
                                 <li>
-                                    <a class="btn btn-main" href="{{url('list')}}" style="color: white;margin-left: 20px;margin-top: 20px" >CREATE AN AD<span></span></a>
+                                    <a class="btn btn-main" href="{{url(\Illuminate\Support\Facades\Session::get('url_code') .'/pricing-table')}}" style="color: white;margin-left: 20px;margin-top: 20px" >CREATE AN AD<span></span></a>
 
                                 </li>
                             </ul>

@@ -129,6 +129,7 @@ class AdminController extends Controller
             $country->currency = $request->currency;
             $country->iso_code = $request->iso_code;
             $country->symbol = $request->symbol;
+            $country->url_code = $request->url_code;
             $country->from_usd = $request->from_usd;
             $country->save();
             session()->flash('msg', 'Country added!');
@@ -159,6 +160,7 @@ class AdminController extends Controller
             $country->currency = $request->currency;
             $country->iso_code = $request->iso_code;
             $country->symbol = $request->symbol;
+            $country->url_code = $request->url_code;
             $country->from_usd = $request->from_usd;
             $country->update();
             session()->flash('msg', 'Country updated!');

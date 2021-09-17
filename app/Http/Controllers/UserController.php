@@ -31,7 +31,38 @@ use services\email_services\SendEmailService;
 
 class UserController extends Controller
 {
+    public function welcome($urlCode = null){
+        if (Session::has('url_code')){
+            if (empty($urlCode)){
+                return redirect('' . '/' . Session::get('url_code'));
+            }
+//            return redirect('' . '/' . Session::get('url_code'));
+            return view('welcome');
+        }else{
+//            dd('here you go!');
+//            return;
+            $getCountries = Countries::all();
+            return view('list-page')->with(['countries'=>$getCountries]);
+        }
+//        if (empty($urlCode)){
+//            return "ok";
+//            return redirect('' . '/' . Session::get('url_code'));
+//        }
+//        if (Session::has('url_code')){
+//            return view('welcome');
+//        }else{
+//            return redirect('select-your-country');
+//        }
+    }
+
+
+    public function openList(){
+        $getCountries = Countries::all();
+        return view('list-page')->with(['countries'=>$getCountries]);
+    }
+
     public function registerPrivateSellerPage($countryId, $priceId){
+        $countryId = Countries::where('url_code', $countryId)->first()['id'];
         $regions = Region::where('country_id', $countryId)->get();
         $cities = City::all();
         $selectedCountry = Countries::where('id', $countryId)->first();
@@ -88,7 +119,8 @@ class UserController extends Controller
 
     public function openPricingPage($countryId)
     {
-        return view('pricing-page')->with(['countryId'=>$countryId, 'countryName' => Countries::where('id', $countryId)->first()['name'], 'country' => Countries::where('id', $countryId)->first()]);
+        $country = Countries::where('url_code', $countryId)->first();
+        return view('pricing-page')->with(['countryId'=>$country->id, 'countryName' => $country->name, 'country' => $country]);
     }
 
     public function userlogin(){

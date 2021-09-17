@@ -65,6 +65,10 @@
                                                                     <input type="text" placeholder="" name="symbol" id="country" value="{{$country->symbol}}" class="form-control" required>
                                                                 </div>
                                                                 <div style="margin-top: 10px">
+                                                                    <label style="font-weight: bold">URL Code</label>
+                                                                    <input type="text" placeholder="E.g: ng for nigeria" name="url_code" value="{{$country->url_code}}" id="url_code" class="form-control" required>
+                                                                </div>
+                                                                <div style="margin-top: 10px">
                                                                     <label style="font-weight: bold">USD Rate</label>
                                                                     <input type="text" placeholder="" name="from_usd" id="country" value="{{$country->from_usd}}" class="form-control" required>
                                                                 </div>

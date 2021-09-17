@@ -64,6 +64,10 @@
                                                                     <input type="text" placeholder="" name="symbol" id="country" class="form-control" required>
                                                                 </div>
                                                                 <div style="margin-top: 10px">
+                                                                    <label style="font-weight: bold">URL Code</label>
+                                                                    <input type="text" placeholder="E.g: ng for nigeria" name="url_code" id="url_code" class="form-control" required>
+                                                                </div>
+                                                                <div style="margin-top: 10px">
                                                                     <label style="font-weight: bold">USD Rate</label>
                                                                     <input type="text" placeholder="" name="from_usd" id="country" class="form-control" required>
                                                                 </div>

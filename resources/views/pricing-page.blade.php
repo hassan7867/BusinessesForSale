@@ -8,7 +8,7 @@
 
     <section id="section-hero" aria-label="section" class="no-top no-bottom "
              data-bgimage="url(images/background/bg-shape-1.jpg) bottom" style="margin-top: 50px">
-        <p id="country-id" style="display: none">{{$countryId}}</p>
+        <p id="country-id" style="display: none">{{$country->url_code}}</p>
         <input id="session-id" style="display: none" value="{{\Illuminate\Support\Facades\Session::get('userId')}}">
         <br>
         <br>
@@ -322,7 +322,7 @@
             numberVal = number;
             if (document.getElementById('session-id').value !== ''){
                 countryId = document.getElementById('country-id').innerText
-                window.location.href = `{{env('APP_URL')}}/sell-private-business/${countryId}/${numberVal}`
+                window.location.href = `{{env('APP_URL')}}/${countryId}/sell-private-business/${numberVal}`
             }
 
         }
@@ -385,7 +385,7 @@
 
                     if (result.status === true) {
                         countryId = document.getElementById('country-id').innerText
-                        window.location.href = `{{env('APP_URL')}}/sell-private-business/${countryId}/${numberVal}`
+                        window.location.href = `{{env('APP_URL')}}/${countryId}/sell-private-business/${numberVal}`
                     } else {
                         swal({
                             icon: 'error',

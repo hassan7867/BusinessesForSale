@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/{url_code?}', "\App\Http\Controllers\UserController@welcome");
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('selectcountry', "\App\Http\Controllers\UserController@openList");
+Route::post('select-country-submission', "\App\Http\Controllers\FrontController@selectCountrySubmission");
 Route::get('optimize-app', function () {
     \Illuminate\Support\Facades\Artisan::call('optimize');
     return "done!";
@@ -24,9 +24,12 @@ Route::get('clear-env', function () {
     \Illuminate\Support\Facades\Artisan::call('config:clear');
     return "done!";
 });
-Route::get('sell-private-business/{countryId}/{priceId}', "\App\Http\Controllers\UserController@registerPrivateSellerPage");
+Route::group(['prefix' => '{url_code}'], function () {
+    Route::get('pricing-table', "\App\Http\Controllers\UserController@openPricingPage");
+    Route::get('sell-private-business/{priceId}', "\App\Http\Controllers\UserController@registerPrivateSellerPage");
+});
+
 Route::post('save-basic-details', "\App\Http\Controllers\UserController@saveBasicDetails");
-Route::get('pricing-table/{countryId}', "\App\Http\Controllers\UserController@openPricingPage");
 Route::post('get-categories', "\App\Http\Controllers\UserController@getCategories");
 Route::post('get-cities', "\App\Http\Controllers\UserController@getCities");
 Route::post('save-listing-details', "\App\Http\Controllers\UserController@saveListingDetails");

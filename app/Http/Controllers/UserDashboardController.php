@@ -22,7 +22,7 @@ class UserDashboardController extends Controller
 
     public function userLogout()
     {
-        Session::flush();
+        Session::forget('userId');
         return redirect('');
     }
 

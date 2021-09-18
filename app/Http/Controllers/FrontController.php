@@ -18,6 +18,6 @@ class FrontController extends Controller
             return redirect()->back();
         }
         Session::put('url_code', $request->sellist1);
-        return redirect('' . '/' . $request->sellist1);
+        return redirect('' . '?lng=' . $request->sellist1);
     }
 }

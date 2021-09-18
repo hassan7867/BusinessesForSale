@@ -4,7 +4,7 @@
         <h3 style="text-align: center">Private Seller Account</h3>
         <p>Below is the list of your listings</p>
         <div style="float: right;margin-bottom: 10px">
-            <a class="btn btn-success" href="{{url('list')}}">ADD NEW LISTING</a>
+            <a class="btn btn-success" href="{{url(\Illuminate\Support\Facades\Session::get('url_code') .'/pricing-table')}}">ADD NEW LISTING</a>
         </div>
         <table class="table table-bordered">
             <thead>

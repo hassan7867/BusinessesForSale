@@ -31,10 +31,10 @@ use services\email_services\SendEmailService;
 
 class UserController extends Controller
 {
-    public function welcome($urlCode = null){
+    public function welcome(Request $request){
         if (Session::has('url_code')){
-            if (empty($urlCode)){
-                return redirect('' . '/' . Session::get('url_code'));
+            if (empty($request->lng)){
+                return redirect('' .'?lng=' . Session::get('url_code'));
             }
 //            return redirect('' . '/' . Session::get('url_code'));
             return view('welcome');
@@ -121,6 +121,47 @@ class UserController extends Controller
     {
         $country = Countries::where('url_code', $countryId)->first();
         return view('pricing-page')->with(['countryId'=>$country->id, 'countryName' => $country->name, 'country' => $country]);
+    }
+
+    public function buyBusiness(){
+        $categories = Category::where('has_subcategory', 0)->get();
+        foreach ($categories as $item){
+           $item->listingCount = ListingCategory::where('category_id', $item->id)->count();
+        }
+        return view('buy-a-business')->with(['categories' => $categories]);
+    }
+
+    public function searchBusiness(Request $request){
+        try {
+
+           $listing = Listing::where('status','approved')->OrderBy('id', 'DESC')->offset($request->offset)->limit($request->limit)->get();
+            $totalItems = Listing::where('status','approved')->OrderBy('id', 'DESC')->count();
+
+            foreach ($listing as $item){
+                $item->location = City::where('id', $item->city_id)->first()['name'];
+                $item->photos = ListingPhotos::where('listing_id', $item->id)->get();
+//                $coin->launch_date = Carbon::parse( $coin->launch_date)->diffForHumans();
+//                $coin->isUpvoted = 0;
+//                if (Upvote::where('coin_id', $coin->id)->where('ip', $request->ip())->where('useragent', $request->useragent)->exists()) {
+//                    if (Upvote::where('coin_id', $coin->id)->where('ip', $request->ip())->where('useragent', $request->useragent)->whereDate('created_at', Carbon::today())->exists()){
+//                        $coin->isUpvoted = 1;
+//                    }
+//                }
+            }
+            return json_encode(['status' => true, 'data' => $listing, 'totalItems' => $totalItems]);
+
+        }catch (\Exception $exception){
+            return json_encode(['status' => false, 'message' => $exception->getMessage()]);
+        }
+    }
+
+    public function getListingPhoto($id){
+        $fileN = ListingPhotos::where('id', $id)->first()['photo'];
+        $file =  base_path('/data') . '/files' . '/' . $fileN;
+        $type = mime_content_type($file);
+        header('Content-Type:' . $type);
+        header('Content-Length: ' . filesize($file));
+        return readfile($file);
     }
 
     public function userlogin(){

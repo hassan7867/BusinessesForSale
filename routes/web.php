@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/{url_code?}', "\App\Http\Controllers\UserController@welcome");
+Route::get('/', "\App\Http\Controllers\UserController@welcome");
 
 Route::get('selectcountry', "\App\Http\Controllers\UserController@openList");
 Route::post('select-country-submission', "\App\Http\Controllers\FrontController@selectCountrySubmission");
@@ -22,12 +22,17 @@ Route::get('optimize-app', function () {
 });
 Route::get('clear-env', function () {
     \Illuminate\Support\Facades\Artisan::call('config:clear');
+    \Illuminate\Support\Facades\Artisan::call('cache:clear');
     return "done!";
 });
 Route::group(['prefix' => '{url_code}'], function () {
     Route::get('pricing-table', "\App\Http\Controllers\UserController@openPricingPage");
     Route::get('sell-private-business/{priceId}', "\App\Http\Controllers\UserController@registerPrivateSellerPage");
+    Route::get('buy-a-business', "\App\Http\Controllers\UserController@buyBusiness");
 });
+
+Route::post('search-business', "\App\Http\Controllers\UserController@searchBusiness");
+Route::get('get-listing-photo/{id}', "\App\Http\Controllers\UserController@getListingPhoto");
 
 Route::post('save-basic-details', "\App\Http\Controllers\UserController@saveBasicDetails");
 Route::post('get-categories', "\App\Http\Controllers\UserController@getCategories");

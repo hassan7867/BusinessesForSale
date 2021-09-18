@@ -203,26 +203,11 @@
                             <ul id="mainmenu">
                                 <li>
                                     <a href="{{url('')}}">Home<span></span></a>
-{{--                                    <ul>--}}
-{{--                                        <li><a href="03_grey-index.html">New: Homepage Grey</a></li>--}}
-{{--                                        <li><a href="index.html">Homepage 1</a></li>--}}
-{{--                                        <li><a href="index-2.html">Homepage 2</a></li>--}}
-{{--                                        <li><a href="index-3.html">Homepage 3</a></li>--}}
-{{--                                        <li><a href="index-4.html">Homepage 4</a></li>--}}
-{{--                                    </ul>--}}
                                 </li>
-{{--                                <li>--}}
-{{--                                    <a href="#">Explore<span></span></a>--}}
-{{--                                    <ul>--}}
-{{--                                        <li><a href="explore.html">Explore</a></li>--}}
-{{--                                        <li><a href="collection.html">Collections</a></li>--}}
-{{--                                        <li><a href="item-details.html">Item Details</a></li>--}}
-{{--                                    </ul>--}}
-{{--                                </li>--}}
                                 <li>
                                     <a href="#">Buy a Business<span></span></a>
                                     <ul>
-                                        <li><a href="#">Business for sale</a></li>
+                                        <li><a href="{{url(\Illuminate\Support\Facades\Session::get('url_code') . '/buy-a-business')}}">Business for sale</a></li>
                                         <li><a href="#">Register as buyer</a></li>
                                     </ul>
                                 </li>

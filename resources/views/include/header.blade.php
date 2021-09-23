@@ -24,6 +24,7 @@
     <link id="colors" href="{{url('')}}/css/colors/scheme-01.css" rel="stylesheet" type="text/css" />
     <link href="{{url('')}}/css/coloring.css" rel="stylesheet" type="text/css" />
 
+    <script src="{{url('')}}/js/popper.js"></script>
     <script src="{{url('')}}/js/jquery.min.js"></script>
     <script src="{{url('')}}/js/bootstrap.min.js"></script>
     <script src="{{url('')}}/js/bootstrap.bundle.min.js"></script>
@@ -40,7 +41,6 @@
     <script src="{{url('')}}/js/jquery.lazy.min.js"></script>
     <script src="{{url('')}}/js/jquery.lazy.plugins.min.js"></script>
     <script src="{{url('')}}/js/designesia.js"></script>
-    <script src="{{url('')}}/js/popper.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <style>
@@ -148,6 +148,22 @@
         .respnavbarclass2{
             display: none;
         }
+        .logorespinmobileonn{
+            display: none;
+        }
+
+        .rowcustom {
+            width:200px;
+            background:blue;
+            display:flex;
+            overflow:hidden;
+        }
+
+        .colcustom{
+            width:33%;
+            margin-right:5px;
+            background:red;
+        }
 
         @media screen and (max-width: 700px) {
             .respnavbarclass{
@@ -155,6 +171,12 @@
             }
             .respnavbarclass2{
                 display: inline;
+            }
+            .logorespinmobileoff{
+                display: none!important;
+            }
+            .logorespinmobileonn{
+                display: block;
             }
         }
 
@@ -168,30 +190,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <div class="logorespinmobileonn">
+                        <div class="row">
+                            <div class="col" style="padding-left: 0px;padding-right: 0px">
+                                <i class="fa fa-list respnavbarclass2" id="navbarSideButton" style="float: left;color: black;font-size: 25px;margin-top: 10px"></i>
+                            </div>
+                            <div class="col" style="padding-left: 0px;">
+                                <a href="{{url('/')}}">
+                                <img alt="" class="logo" src="{{url('')}}/logo.png" style="height: 40px" />
+                                <img alt="" class="logo-2" src="{{url('')}}/logo.png" style="height: 40px" />
+                                </a>
+                            </div>
+                            <div class="col" style="margin-right:0;float: right;padding-right: 0px">
+                                <a href="{{url(\Illuminate\Support\Facades\Session::get('url_code') .'/pricing-table')}}">
+                                    <i class="fa fa-upload" title="Create an AD" style="float: right;color: black;font-size: 25px;margin-top: 10px"></i>
+
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
                     <div class="de-flex sm-pt10">
-                        <div class="de-flex-col">
+                        <div class="de-flex-col logorespinmobileoff" >
                             <div class="de-flex-col">
-{{--                                <div style="float: left;display: inline">--}}
-                                    <i class="navbar-toggler fa fa-list respnavbarclass2" id="navbarSideButton" type="button" style="float: left;color: black;font-size: 25px;margin-top: 10px"></i>
-{{--                                </div>--}}
-                                <!-- logo begin -->
                                 <div id="logo" style="display: inline">
-{{--                                    <a href="{{url('')}}">--}}
-{{--                                        <h3 style="color: black">{{env('APP_NAME')}}</h3>--}}
-{{--                                    </a>--}}
                                     <a href="{{url('/')}}">
                                         <img alt="" class="logo" src="{{url('')}}/logo.png" style="height: 50px" />
                                         <img alt="" class="logo-2" src="{{url('')}}/logo.png" style="height: 50px" />
                                     </a>
-
                                 </div>
-                                <!-- logo close -->
                             </div>
-
-                            {{--<div class="de-flex-col">--}}
-                                {{--<input id="quick_search" class="xs-hide" name="quick_search" placeholder="search item here..." type="text" />--}}
-                            {{--</div>--}}
                         </div>
+
                         <div class="de-flex-col header-col-mid">
                             <!-- mainmenu begin -->
                             @if(\Request::is('/'))
@@ -221,9 +251,6 @@
                                 <li>
                                     <a href="#">Value a business<span></span></a>
                                 </li>
-{{--                                <li>--}}
-{{--                                    <a href="activity.html">Activity<span></span></a>--}}
-{{--                                </li>--}}
                                 <li>
                                    @if(\Illuminate\Support\Facades\Session::has('userId'))
                                         <a href="{{url('user-dashboard')}}">My Account<span></span></a>
@@ -231,20 +258,6 @@
                                         <a href="#" data-toggle="modal" data-target="#myModal1122" >Login<span></span></a>
 
                                     @endif
-{{--                                    <ul>--}}
-{{--                                        <li><a href="icons-elegant.html">Elegant Icons</a></li>--}}
-{{--                                        <li><a href="icons-etline.html">Etline Icons</a></li>--}}
-{{--                                        <li><a href="icons-font-awesome.html">Font Awesome Icons</a></li>--}}
-{{--                                        <li><a href="accordion.html">Accordion</a></li>--}}
-{{--                                        <li><a href="alerts.html">Alerts</a></li>--}}
-{{--                                        <li><a href="counters.html">Counters</a></li>--}}
-{{--                                        <li><a href="modal.html">Modal</a></li>--}}
-{{--                                        <li><a href="popover.html">Popover</a></li>--}}
-{{--                                        <li><a href="pricing-table.html">Pricing Table</a></li>--}}
-{{--                                        <li><a href="progress-bar.html">Progress Bar</a></li>--}}
-{{--                                        <li><a href="tabs.html">Tabs</a></li>--}}
-{{--                                        <li><a href="tooltips.html">Tooltips</a></li>--}}
-{{--                                    </ul>--}}
                                 </li>
                                 <li>
                                     @if(\Illuminate\Support\Facades\Session::has('userId'))
@@ -282,7 +295,7 @@
                         <div class="card card-body">
                             <ul style="list-style: none">
                                 <li style="color: white;padding: 12px">
-                                    <a href="#" style="text-decoration: underline">Business for sale</a>
+                                    <a href="{{url(\Illuminate\Support\Facades\Session::get('url_code') . '/buy-a-business')}}" style="text-decoration: underline">Business for sale</a>
                                 </li>
                                 <li style="color: white;padding: 12px">
                                     <a href="#" style="text-decoration: underline">Register as buyer</a>
@@ -298,7 +311,7 @@
                         <div class="card card-body">
                             <ul style="list-style: none">
                                 <li style="color: white;padding: 12px">
-                                    <a href="{{url('list')}}" style="text-decoration: underline">Sell your business</a>
+                                    <a href="{{url(\Illuminate\Support\Facades\Session::get('url_code') .'/pricing-table')}}" style="text-decoration: underline">Sell your business</a>
                                 </li>
                                 <li style="color: white;padding: 12px">
                                     <a href="#" style="text-decoration: underline">How to sell your business</a>
@@ -327,7 +340,7 @@
                     @endif
 
                     <li class="navbar-side-item">
-                        <a href="{{url('list')}}" class="side-link" style="text-decoration: underline">Create AN AD</a>
+                        <a href="{{url(\Illuminate\Support\Facades\Session::get('url_code') .'/pricing-table')}}" class="side-link" style="text-decoration: underline">Create AN AD</a>
                     </li>
                 </ul>
 

@@ -45,6 +45,7 @@
                                         <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Name</th>
                                         <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Parent Category</th>
                                         <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Has SubCategory</th>
+                                        <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Popular</th>
                                         <th class="sorting wid-20" tabindex="0" rowspan="1" colspan="1">Actions</th>
                                     </tr>
                                     </thead>
@@ -68,10 +69,25 @@
                                                 <td><i class="fa fa-check text-success" title="Has Subcategory"></i>
                                                 </td>
                                             @endif
-                                                <td> &nbsp;
-                                                <a
-                                                        class="edit" data-toggle="tooltip" data-placement="top"
-                                                        href="{{url('delete-category')}}/{{$categories->id}}"><button class="btn btn-danger btn-sm">Delete</button></a>&nbsp;</td>
+                                            @if($categories->is_popular == 0)
+                                               <td>NO</td>
+                                            @else
+                                                <td>YES</td>
+                                            @endif
+                                                <td>
+                                                    @if($categories->has_subcategory == "0")
+                                                    @if($categories->is_popular == 0)&nbsp;
+                                                    <a class="edit" data-toggle="tooltip" data-placement="top" href="{{url('popular-category')}}/{{$categories->id}}"><button class="btn btn-success btn-sm">Add to Popular</button></a>&nbsp;
+                                                    @else
+                                                        <a class="edit" data-toggle="tooltip" data-placement="top" href="{{url('unpopular-category')}}/{{$categories->id}}"><button class="btn btn-danger btn-sm">Remove Popular</button></a>&nbsp;
+                                                    @endif
+                                                    @else
+                                                        <a class="edit" data-toggle="tooltip" data-placement="top" href="#"><button class="btn btn-success btn-sm" disabled>Add to Popular</button></a>&nbsp;
+                                                    @endif
+
+                                                <a class="edit" data-toggle="tooltip" data-placement="top" href="{{url('delete-category')}}/{{$categories->id}}" style="margin-left: 10px"><button class="btn btn-danger btn-sm">Delete</button></a>&nbsp;
+
+                                                </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

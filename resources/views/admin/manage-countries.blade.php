@@ -63,14 +63,14 @@
                                             <td>{{$country->url_code}}</td>
                                             <td>{{$country->from_usd}}</td>
                                                 <td> &nbsp;
-                                                    <a
-                                                            class="edit" data-toggle="tooltip" data-placement="top"
-                                                            title="Delete"
-                                                            href="{{url('delete-country')}}/{{$country->id}}"><i class="fa fa-times text-danger"></i></a>
+{{--                                                    @if($country->is_popular == 0)&nbsp;--}}
+{{--                                                    <a class="edit" data-toggle="tooltip" data-placement="top" href="{{url('popular-category')}}/{{$country->id}}"><button class="btn btn-success btn-sm">Add to Popular</button></a>&nbsp;--}}
+{{--                                                    @else--}}
+{{--                                                        <a class="edit" data-toggle="tooltip" data-placement="top" href="{{url('unpopular-category')}}/{{$country->id}}"><button class="btn btn-danger btn-sm">Remove Popular</button></a>&nbsp;--}}
+{{--                                                    @endif--}}
 
-
-                                                    <a
-                                                        class="edit" data-toggle="tooltip" data-placement="top"
+                                                    <a class="edit" data-toggle="tooltip" data-placement="top" title="Delete" href="{{url('delete-country')}}/{{$country->id}}" style="margin-left: 10px"><i class="fa fa-times text-danger"></i></a>
+                                                    <a class="edit" data-toggle="tooltip" data-placement="top"
                                                         title="Edit"
                                                         href="{{url('edit-country')}}/{{$country->id}}" style="margin-left: 10px"><i class="fa fa-edit text-success"></i></a>
                                                     &nbsp;</td>

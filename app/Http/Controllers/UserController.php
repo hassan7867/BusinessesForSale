@@ -15,7 +15,9 @@ use App\Models\Settings;
 use App\Models\Subscription;
 use App\Models\SubscriptionPackage;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Stripe\Charge;
 use Stripe\Stripe;
@@ -37,7 +39,11 @@ class UserController extends Controller
                 return redirect('' .'?lng=' . Session::get('url_code'));
             }
 //            return redirect('' . '/' . Session::get('url_code'));
-            return view('welcome');
+            $categories = Category::where('has_subcategory', 0)->get();
+            foreach ($categories as $item){
+                $item->listingCount = ListingCategory::where('category_id', $item->id)->count();
+            }
+            return view('welcome')->with(['categories' => $categories]);
         }else{
 //            dd('here you go!');
 //            return;
@@ -131,22 +137,109 @@ class UserController extends Controller
         return view('buy-a-business')->with(['categories' => $categories]);
     }
 
+    public function businessDetails($lng, $businessId){
+        $listing = Listing::where('id', $businessId)->first();
+        $listing->location = City::where('id', $listing->city_id)->first();
+        $listing->photos = ListingPhotos::where('listing_id', $listing->id)->get();
+        $categories = ListingCategory::where('listing_id', $listing->id)->get();
+        $listing->categories = '';
+        foreach ($categories as $cat){
+            $listing->categories .= ' ' . Category::where('id', $cat->category_id)->first()['name'] . ' |';
+        }
+        $listing->categories = substr_replace($listing->categories ,"",-1);
+        $countrySelected = \App\Models\Countries::where('url_code', $lng)->first();
+        return view('listing-detail')->with(['listing' => $listing, 'countrySelected' => $countrySelected]);
+    }
+
     public function searchBusiness(Request $request){
         try {
 
-           $listing = Listing::where('status','approved')->OrderBy('id', 'DESC')->offset($request->offset)->limit($request->limit)->get();
-            $totalItems = Listing::where('status','approved')->OrderBy('id', 'DESC')->count();
+           $listing = Listing::where('status','approved');
 
+            if (!empty($request->categorySelected) && $request->categorySelected != 'any'){
+                $categoryId = $request->categorySelected;
+                $listing = $listing->whereExists(function ($query) use ($categoryId) {
+                    $query->select(DB::raw('*'))
+                        ->from('listing_categories')
+                        ->whereRaw('listings.id = listing_categories.listing_id')->where('category_id',$categoryId);
+                });
+            }
+            if (!empty($request->locationSelector)){
+                $cityId = City::where('name', $request->locationSelector)->first()['id'];
+                $listing = $listing->where('city_id', $cityId);
+            }
+
+            if ($request->ageOfListing == "age14"){
+                $listing = $listing->where('created_at', '>=', Carbon::now()->subDays(14)->toDateTimeString());
+            }
+            else if ($request->ageOfListing == "ageMonth"){
+                $listing = $listing->where('created_at', '>=', Carbon::now()->subDays(30)->toDateTimeString());
+            }
+            else if ($request->ageOfListing == "age3Months"){
+                $listing = $listing->where('created_at', '>=', Carbon::now()->subDays(90)->toDateTimeString());
+            }
+
+            if ($request->freeholdType == 'true'){
+                $listing = $listing->where('property_status', 'Free Hold');
+            }
+            if ($request->LeaseholdType == 'true'){
+                $listing = $listing->where('property_status', 'Lease');
+            }
+            if ($request->RelocatableType == 'true'){
+                $listing = $listing->where('relocatable', 'Yes');
+            }
+            if ($request->HomebasedType == 'true'){
+                $listing = $listing->where('home_based', 'Yes');
+            }
+            if ($request->accommodationType == 'true'){
+                $listing = $listing->where('accomodation_included', 'Yes');
+            }
+            if ($request->Franchiseype == 'true'){
+                $listing = $listing->where('administrative', 'Yes');
+            }
+
+            if ((int)$request->lowprice >= 0 && (int)$request->highprice > 0){
+                $listing = $listing->where('asking_price', '>=', (int)$request->lowprice)->where('asking_price', '<=', (int)$request->highprice);
+            }
+            if ((int)$request->lowturnover >= 0 && (int)$request->highturnover > 0){
+                $listing = $listing->where('turn_over', '>=', (int)$request->lowturnover)->where('turn_over', '<=', (int)$request->highturnover);
+            }
+            if ((int)$request->lowProfit >= 0 && (int)$request->highProfit > 0){
+                $listing = $listing->where('net_profit', '>=', (int)$request->lowProfit)->where('net_profit', '<=', (int)$request->highProfit);
+            }
+
+            if ($request->sortby == 'most-recent'){
+              $listing = $listing->OrderBy('id', 'DESC');
+            }
+            else if ($request->sortby == 'price-lowest'){
+                $listing = $listing->OrderBy('asking_price', 'ASC');
+            }
+            else if ($request->sortby == 'price-highest'){
+                $listing = $listing->OrderBy('asking_price', 'DESC');
+            }
+            else if ($request->sortby == 'turnover-high-low'){
+                $listing = $listing->OrderBy('turn_over', 'DESC');
+            }
+            else if ($request->sortby == 'profit-high-low'){
+                $listing = $listing->OrderBy('net_profit', 'DESC');
+            }
+
+
+
+            $listing = $listing->offset($request->offset)->limit($request->limit)->get();
+            $totalItems = count($listing);
+            $countrySelected = \App\Models\Countries::where('url_code', Session::get('url_code'))->first();
             foreach ($listing as $item){
                 $item->location = City::where('id', $item->city_id)->first()['name'];
                 $item->photos = ListingPhotos::where('listing_id', $item->id)->get();
-//                $coin->launch_date = Carbon::parse( $coin->launch_date)->diffForHumans();
-//                $coin->isUpvoted = 0;
-//                if (Upvote::where('coin_id', $coin->id)->where('ip', $request->ip())->where('useragent', $request->useragent)->exists()) {
-//                    if (Upvote::where('coin_id', $coin->id)->where('ip', $request->ip())->where('useragent', $request->useragent)->whereDate('created_at', Carbon::today())->exists()){
-//                        $coin->isUpvoted = 1;
-//                    }
-//                }
+                $categories = ListingCategory::where('listing_id', $item->id)->get();
+                $item->categories = '';
+                foreach ($categories as $cat){
+                    $item->categories .= ' ' . Category::where('id', $cat->category_id)->first()['name'] . ' |';
+                }
+                $item->categories = substr_replace($item->categories ,"",-1);
+                $item->asking_price = $item->asking_price * $countrySelected->from_usd;
+                $item->price_symbol = $countrySelected->symbol;
             }
             return json_encode(['status' => true, 'data' => $listing, 'totalItems' => $totalItems]);
 

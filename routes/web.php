@@ -29,6 +29,7 @@ Route::group(['prefix' => '{url_code}'], function () {
     Route::get('pricing-table', "\App\Http\Controllers\UserController@openPricingPage");
     Route::get('sell-private-business/{priceId}', "\App\Http\Controllers\UserController@registerPrivateSellerPage");
     Route::get('buy-a-business', "\App\Http\Controllers\UserController@buyBusiness");
+    Route::get('business-details/{id}', "\App\Http\Controllers\UserController@businessDetails");
 });
 
 Route::post('search-business', "\App\Http\Controllers\UserController@searchBusiness");
@@ -81,3 +82,5 @@ Route::post('/save-region', 'App\Http\Controllers\AdminController@saveRegion');
 Route::post('/save-city', 'App\Http\Controllers\AdminController@saveCity');
 Route::post('/save-category', 'App\Http\Controllers\AdminController@saveCategory');
 Route::post('/update-country', 'App\Http\Controllers\AdminController@updateCountry');
+Route::get('popular-category/{id}', "\App\Http\Controllers\AdminController@popularCategory");
+Route::get('unpopular-category/{id}', "\App\Http\Controllers\AdminController@unpopularCategory");

@@ -47,6 +47,22 @@ class AdminController extends Controller
         return redirect('/admin-login');
     }
 
+    public function popularCategory($id){
+        $cat = Category::where('id', $id)->first();
+        $cat->is_popular = 1;
+        $cat->update();
+        session()->flash('msg', 'Added successfully!');
+        return redirect()->back();
+    }
+
+    public function unpopularCategory($id){
+        $cat = Category::where('id', $id)->first();
+        $cat->is_popular = 0;
+        $cat->update();
+        session()->flash('msg', 'Removed successfully!');
+        return redirect()->back();
+    }
+
     public function allBusinessesPage()
     {
         $allBusinessListing = Listing::all();

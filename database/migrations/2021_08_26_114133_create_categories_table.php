@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('parent_id')->default(-1);
             $table->string('has_subcategory')->default(0);
+            $table->string('is_popular')->default(0);
             $table->timestamps();
         });
     }

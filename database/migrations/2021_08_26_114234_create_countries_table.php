@@ -22,6 +22,7 @@ class CreateCountriesTable extends Migration
             $table->string('symbol');
             $table->string('url_code')->nullable();
             $table->string('from_usd')->default(1);
+            $table->string('is_popular')->default(0);
             $table->timestamps();
         });
     }
